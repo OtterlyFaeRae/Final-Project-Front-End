@@ -45,8 +45,11 @@ function App() {
 					<h3>User Logged In</h3>
 					<Navbar />
 				</>
+			) : signUp ? (
+				<SignUp toggle={setSignUp} />
 			) : (
-				signUp ? (<SignUp toggle = {setSignUp} />) : (<LoginForm toggle = {setSignUp} logIn = {logIn} />)
+
+				<LoginForm toggle={setSignUp} />
 			)}
 
 			<Routes>

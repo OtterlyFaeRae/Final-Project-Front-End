@@ -43,8 +43,10 @@ function App() {
 					<button onClick={logOut}>Logout</button>
 					<h3>User Logged In</h3>
 				</>
+			) : signUp ? (
+				<SignUp toggle={setSignUp} />
 			) : (
-				signUp ? (<SignUp toggle = {setSignUp} />) : (<LoginForm toggle = {setSignUp}/>)
+				<LoginForm toggle={setSignUp} />
 			)}
 
 			{/* NAVBAR GOES HERE w LINKS TO PAGES*/}

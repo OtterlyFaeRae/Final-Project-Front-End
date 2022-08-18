@@ -1,7 +1,7 @@
-const LoginForm = ({toggle}) => {
+const LoginForm = ({toggle, logIn}) => {
   return (
     <div className="login-form">
-      <form>
+      <form onSubmit={logIn}>
           <input placeholder="Username"/>
         <br></br>
           <input type="password" placeholder="Password"/>

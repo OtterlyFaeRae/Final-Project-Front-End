@@ -15,6 +15,7 @@ import { Link, Routes, Route, BrowserRouter } from "react-router-dom";
 import Protected from "./components/Protected";
 import LoginForm from "./components/LoginForm";
 import SignUp from "./components/SignUp";
+import Navbar from "./components/Navbar";
 
 // ------------------------------------------------------------------- //
 function App() {
@@ -42,38 +43,11 @@ function App() {
 				<>
 					<button onClick={logOut}>Logout</button>
 					<h3>User Logged In</h3>
+					<Navbar />
 				</>
 			) : (
-				signUp ? (<SignUp toggle = {setSignUp} />) : (<LoginForm toggle = {setSignUp}/>)
+				signUp ? (<SignUp toggle = {setSignUp} />) : (<LoginForm toggle = {setSignUp} logIn = {logIn} />)
 			)}
-
-			{/* NAVBAR GOES HERE w LINKS TO PAGES*/}
-			{/* Can be placed seperately in Navbar.js */}
-
-			<div className="NAVBAR_STYLE_NAME">
-				{/* Links to Pages */}
-				<ul className="NAVBAR_LIST_STYLE_NAME">
-					<li>
-						<Link to="/">Landing</Link>
-					</li>
-
-					<li>
-						<Link to="/portfolio">Portfolio</Link>
-					</li>
-
-					<li>
-						<Link to="/buy">Buy</Link>
-					</li>
-
-					<li>
-						<Link to="/login">Login</Link>
-					</li>
-
-					<li>
-						<Link to="/sell">Sell</Link>
-					</li>
-				</ul>
-			</div>
 
 			<Routes>
 				<Route path="/login" element={<Login />} />

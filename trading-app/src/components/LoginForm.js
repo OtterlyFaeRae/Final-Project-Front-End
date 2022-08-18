@@ -1,4 +1,4 @@
-const LoginForm = ({toggle}) => {
+const LoginForm = ({toggle, logIn}) => {
   return (
     <div className="login-form">
       <form>

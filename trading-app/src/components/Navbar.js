@@ -1,27 +1,42 @@
 import {Link} from "react-router-dom";
+import styled from "styled-components"
 
-const Navbar = () => {
+const Navbar = ({ setIsLoggedIn, isLoggedIn }) => {
   return (
-    <nav className='nav'>
-      <ul>
-        <li>
+    <Cont>
+      <LinksCont>
+        <NavItem>
           <Link to='/'>Landing</Link>
-        </li>
-        <li>
+        </NavItem>
+        <NavItem>
           <Link to='/Login'>Login</Link>
-        </li>
-        <li>
+        </NavItem>
+        <NavItem>
           <Link to='/Buy'>Buy</Link>
-        </li>
-        <li>
+        </NavItem>
+        <NavItem>
           <Link to='/Sell'>Sell</Link>
-        </li>
-        <li>
+        </NavItem>
+        <NavItem>
           <Link to='/Portfolio'>Portfolio</Link>
-        </li>
-      </ul>
-    </nav>
+        </NavItem>
+        <NavItem>
+          <button onClick={ () => setIsLoggedIn( !isLoggedIn ) }>switch logged in</button>
+        </NavItem>
+      </LinksCont>
+    </Cont>
   );
 };
 
 export default Navbar;
+
+const Cont = styled.div`
+`
+const LinksCont = styled.ul`
+  display: flex;
+  justify-content: flex-end;
+
+`
+const NavItem = styled.li`
+padding: 0 1rem;
+`

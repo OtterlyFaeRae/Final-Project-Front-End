@@ -1,7 +1,4 @@
 import "./App.css";
-
-import Navbar from "./components/Navbar";
-
 import { useState } from "react";
 
 // import all the pages here
@@ -19,11 +16,6 @@ import Protected from "./components/Protected";
 
 // ------------------------------------------------------------------- //
 function App() {
-  return (
-    <div className='App'>
-      <Navbar />
-    </div>
-  );
   // login setup, determines if you are logged in, #TODO --> connect it with backend login function
   // state hooked variables
   const [isLoggedIn, setIsLoggedIn] = useState(false);

@@ -35,7 +35,6 @@ const Cont = styled.div`
 const LinksCont = styled.ul`
   display: flex;
   justify-content: flex-end;
-
 `
 const NavItem = styled.li`
 padding: 0 1rem;

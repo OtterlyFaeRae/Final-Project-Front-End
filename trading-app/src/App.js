@@ -78,7 +78,7 @@ function App() {
 			<Routes>
 				<Route path="/login" element={<Login />} />
 
-				----------------- PROTECTED PAGES  ------------------------
+				{/* ----------------- PROTECTED PAGES  ------------------------ */}
 
 				{/* Landing Page */}
 				<Route

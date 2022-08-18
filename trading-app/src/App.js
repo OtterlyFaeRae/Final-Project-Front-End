@@ -13,12 +13,15 @@ import { Link, Routes, Route, BrowserRouter } from "react-router-dom";
 
 // import components
 import Protected from "./components/Protected";
+import LoginForm from "./components/LoginForm";
+import SignUp from "./components/SignUp";
 
 // ------------------------------------------------------------------- //
 function App() {
 	// login setup, determines if you are logged in, #TODO --> connect it with backend login function
 	// state hooked variables
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [signUp, setSignUp] = useState(false);
 
 	// ------------------------------------------------------------------- //
 	// state altering functions
@@ -41,10 +44,7 @@ function App() {
 					<h3>User Logged In</h3>
 				</>
 			) : (
-				<>
-					<button onClick={logIn}>LogIn </button>
-					<h3>User Logged Out</h3>
-				</>
+				signUp ? (<SignUp toggle = {setSignUp} />) : (<LoginForm toggle = {setSignUp}/>)
 			)}
 
 			{/* NAVBAR GOES HERE w LINKS TO PAGES*/}
@@ -78,7 +78,7 @@ function App() {
 			<Routes>
 				<Route path="/login" element={<Login />} />
 
-				{/* ----------------- PROTECTED PAGES  ------------------------*/}
+				{/* ----------------- PROTECTED PAGES  ------------------------ */}
 
 				{/* Landing Page */}
 				<Route

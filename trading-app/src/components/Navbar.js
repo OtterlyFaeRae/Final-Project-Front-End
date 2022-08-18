@@ -3,7 +3,10 @@ const Navbar = () => {
     <nav className='nav'>
       <ul>
         <li>
-          <Link to='/Landing'>Landing</Link>
+          <Link to='/'>Landing</Link>
+        </li>
+        <li>
+          <Link to='/Login'>Login</Link>
         </li>
         <li>
           <Link to='/Buy'>Buy</Link>

@@ -36,11 +36,17 @@ function App() {
 	return (
 		<BrowserRouter>
 
-			<Navbar 
-				setIsLoggedIn={setIsLoggedIn} 
-				isLoggedIn={isLoggedIn} 
-			/>
-
+				{/* Login and Log out state functions */}
+				{isLoggedIn ? (
+					<>
+						<button onClick={logOut}>Logout</button>
+						<h3>User Logged In</h3>
+						<Navbar />
+					</>
+				) : (
+					signUp ? (<SignUp toggle = {setSignUp} />) : (<LoginForm toggle = {setSignUp} logIn = {logIn} />)
+				)}
+			</div>
 			<Routes>
 				<Route path="/login" element={
 				<Login 

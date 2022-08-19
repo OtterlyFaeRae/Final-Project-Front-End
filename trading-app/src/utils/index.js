@@ -6,7 +6,7 @@ export const signUp = async (username, email, password, setter) => {
             body: JSON.stringify({
               username: username,
               email: email,
-              password: password,
+              pass: password,
             }),
           });
           const data = await response.json()
@@ -18,12 +18,12 @@ export const signUp = async (username, email, password, setter) => {
 
 export const login = async (username, password, setter) => {
     try {
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch(`${process.env.REACT_APP_REST_API}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           username: username,
-          password: password,
+          pass: password,
         }),
       });
       const data = await response.json();
@@ -33,11 +33,13 @@ export const login = async (username, password, setter) => {
     }
   };
 
-  export const getToken = async () => {
+  export const getToken = async (token) => {
     try {
         const response = await fetch("http://localhost:5000/login", {
             method: "GET",
-            'Authorization': token
+            headers: {
+              'Authorization': token
+            }
           });
           const data = await response.json()
           console.log(data)
@@ -46,10 +48,9 @@ export const login = async (username, password, setter) => {
     }
   }
 
-  export const updateUser = async (username, email, password)
+  // export const updateUser = async (username, email, password) => {
 
-
-  
+  // }
 
   export const deleteUser = async (username, password, setter) => {
     try {

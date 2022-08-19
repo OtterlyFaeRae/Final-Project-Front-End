@@ -7,6 +7,8 @@ const LoginForm = ({toggle, logIn}) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const response = await login(username, password)
+    setUsername('');
+    setPassword('');
     console.log(response)
   }
   return (

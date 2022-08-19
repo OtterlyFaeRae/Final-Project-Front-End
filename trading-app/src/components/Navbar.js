@@ -1,3 +1,4 @@
+
 import {Link} from "react-router-dom";
 import styled from "styled-components"
 
@@ -37,5 +38,4 @@ const LinksCont = styled.ul`
   justify-content: flex-end;
 `
 const NavItem = styled.li`
-padding: 0 1rem;
-`
+padding: 0 1rem`

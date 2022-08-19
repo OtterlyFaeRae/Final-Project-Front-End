@@ -10,7 +10,10 @@ function Login({ logOut, logIn, isLoggedIn, setIsLoggedIn }) {
 
 	return (
 		<div>
-
+			<Navbar 
+				setIsLoggedIn={setIsLoggedIn} 
+				isLoggedIn={isLoggedIn} 
+			/>
 			<div>Main Title - TradeWarZ</div>
 
 				{/* Login and Log out state functions */}

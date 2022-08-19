@@ -1,4 +1,4 @@
-export const signUp = async (username, email, password, setter) => {
+export const signUp = async (username, email, password) => {
     try {
         const response = await fetch(`${process.env.REACT_APP_REST_API}/user`, {
             method: "POST",
@@ -6,17 +6,18 @@ export const signUp = async (username, email, password, setter) => {
             body: JSON.stringify({
               username: username,
               email: email,
-              pass: password,
+              pass: password
             }),
           });
           const data = await response.json()
           console.log(data);
+          return data
     } catch (error) {
         console.log(error) 
     }
 }
 
-export const login = async (username, password, setter) => {
+export const login = async (username, password) => {
     try {
       const response = await fetch(`${process.env.REACT_APP_REST_API}/login`, {
         method: "POST",

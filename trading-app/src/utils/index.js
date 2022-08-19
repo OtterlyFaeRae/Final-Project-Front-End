@@ -1,8 +1,9 @@
 import { changeToken } from "./helpers";
 
-export const signUp = async (username, email, password, setUser, setCookie) => {
+export const signUp = async (username, email, password, setUser, setCookie, setIsLoggedIn) => {
 
     try {
+        console.log('Signup Hit')
         const response = await fetch(`${process.env.REACT_APP_REST_API}/user`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -14,9 +15,10 @@ export const signUp = async (username, email, password, setUser, setCookie) => {
           });
           const data = await response.json()
           console.log("Found user : ");
-          console.log(data.user);
+          console.log(data);
           setUser( data.user)
-          changeToken(setCookie, data.Token) 
+          changeToken(setCookie, data.Token)
+          setIsLoggedIn(true)
           return data
     } catch (error) {
         console.log(error) 
@@ -24,7 +26,6 @@ export const signUp = async (username, email, password, setUser, setCookie) => {
 }
 
 export const login = async (username, password, setUser, setCookie) => {
-
     try {
       const response = await fetch(`${process.env.REACT_APP_REST_API}/login`, {
         method: "POST",
@@ -37,8 +38,7 @@ export const login = async (username, password, setUser, setCookie) => {
       const data = await response.json();
       console.log("Found user : ");
       console.log(data.user);
-      setUser( data.user)
-      changeToken(setCookie, data.Token)
+      return data;
     } catch (error) {
       console.log(error);
     }

@@ -1,13 +1,16 @@
 const {useState} = require('react')
 const {login} = require('../utils')
 
-const LoginForm = ({toggle, logIn}) => {
+const LoginForm = ({toggle, setUser, changeToken, setCookie, setIsLoggedIn}) => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault()
     const response = await login(username, password)
+    setUser(response.user)
+    changeToken(setCookie, response.Token)
+    setIsLoggedIn(true)
     setUsername('');
     setPassword('');
     console.log(response)

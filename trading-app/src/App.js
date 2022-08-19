@@ -67,6 +67,7 @@ function App() {
 							<Landing 
 								isLoggedIn={isLoggedIn}
 								setIsLoggedIn={setIsLoggedIn}
+								user={user}
 							/>
 						</Protected>
 					}
@@ -82,6 +83,7 @@ function App() {
 							<Portfolio 
 								isLoggedIn={isLoggedIn}
 								setIsLoggedIn={setIsLoggedIn}
+								user={user}
 							/>
 						</Protected>
 					}
@@ -95,6 +97,7 @@ function App() {
 							<Buy 
 								isLoggedIn={isLoggedIn}
 								setIsLoggedIn={setIsLoggedIn}
+								user={user}
 							/>
 						</Protected>
 					}
@@ -108,6 +111,7 @@ function App() {
 							<Sell 
 								isLoggedIn={isLoggedIn}
 								setIsLoggedIn={setIsLoggedIn}
+								user={user}
 							/>
 						</Protected>
 					}

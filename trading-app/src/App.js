@@ -45,8 +45,7 @@ function App() {
 					</>
 				) : (
 					signUp ? (<SignUp toggle = {setSignUp} />) : (<LoginForm toggle = {setSignUp} logIn = {logIn} />)
-				)}
-			</div>
+				)};
 			<Routes>
 				<Route path="/login" element={
 				<Login 

@@ -83,3 +83,8 @@ button {
   word-break: break-word;
   border: 0;
 }
+
+.Logo {
+  width: 100px;
+  height: 100px;
+}

@@ -21,7 +21,7 @@ function Login({ logOut, logIn, isLoggedIn, setIsLoggedIn, cookies, setCookie, u
 				{isLoggedIn ? (
 					<>
 						<button onClick={logOut}>Logout</button>
-						<h3>User Logged In</h3>
+						<h3>{user.username} Logged In</h3>
 					</>
 				) : (
 					signUp ? 

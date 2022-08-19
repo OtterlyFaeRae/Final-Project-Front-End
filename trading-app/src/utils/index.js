@@ -1,4 +1,4 @@
-export const signUp = async (username, email, password, setter) => {
+export const signUp = async (username, email, password,) => {
     try {
         const response = await fetch("http://localhost:5000/user", {
             method: "POST",
@@ -16,7 +16,7 @@ export const signUp = async (username, email, password, setter) => {
     }
 }
 
-export const login = async (username, password, setter) => {
+export const login = async (username, password,) => {
     try {
       const response = await fetch("http://localhost:5000/login", {
         method: "POST",
@@ -51,7 +51,7 @@ export const login = async (username, password, setter) => {
 
   
 
-  export const deleteUser = async (username, password, setter) => {
+  export const deleteUser = async (username, password) => {
     try {
       const response = await fetch("http://localhost:5000/user", {
         headers: { "Content-Type": "application/json" },

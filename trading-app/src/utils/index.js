@@ -33,11 +33,13 @@ export const login = async (username, password,) => {
     }
   };
 
-  export const getToken = async () => {
+  export const getToken = async (token) => {
     try {
         const response = await fetch("http://localhost:5000/login", {
             method: "GET",
-            'Authorization': token
+            headers: {
+              'Authorization': token
+            }
           });
           const data = await response.json()
           console.log(data)
@@ -46,7 +48,7 @@ export const login = async (username, password,) => {
     }
   }
 
-  export const updateUser = async (username, email, password)
+  // export const updateUser = async (username, email, password)
 
 
   

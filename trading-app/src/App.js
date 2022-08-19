@@ -7,6 +7,7 @@ import Buy from "./pages/Buy";
 import Landing from "./pages/Landing";
 import Portfolio from "./pages/Portfolio";
 import Sell from "./pages/Sell";
+import Connections from "./pages/Connections";
 import { useCookies } from 'react-cookie'
 
 // react router dom modules
@@ -73,7 +74,9 @@ function App() {
 				<Route
 					path="/portfolio"
 					element={
-						<Protected isLoggedIn={isLoggedIn}>
+						<Protected 
+						isLoggedIn={isLoggedIn}
+						>
 							<Portfolio />
 						</Protected>
 					}
@@ -95,6 +98,23 @@ function App() {
 					element={
 						<Protected isLoggedIn={isLoggedIn}>
 							<Sell />
+						</Protected>
+					}
+				/>
+
+				{/* For testing connections */}
+				<Route
+					path="/connections"
+					element={
+						<Protected 
+						isLoggedIn={isLoggedIn}
+						setIsLoggedIn={setIsLoggedIn}
+						cookies={cookies}
+						setCookie={setCookie}
+						user={user}
+						setUser={setUser}
+						>
+							<Connections />
 						</Protected>
 					}
 				/>

@@ -7,13 +7,7 @@ const LoginForm = ({toggle, setUser, changeToken, setCookie, setIsLoggedIn}) => 
   const [password, setPassword] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await login(username, password)
-    setUser(response.user)
-    changeToken(setCookie, response.Token)
-    setIsLoggedIn(true)
-    setUsername('');
-    setPassword('');
-    console.log(response)
+    await login(username, password, setUser, setCookie, setIsLoggedIn)
   }
 
   return (

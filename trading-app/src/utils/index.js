@@ -16,16 +16,21 @@ export const signUp = async (username, email, password, setUser, setCookie, setI
           const data = await response.json()
           console.log("Found user : ");
           console.log(data);
-          setUser( data.user)
-          changeToken(setCookie, data.Token)
-          setIsLoggedIn(true)
-          return data
+          if (response.status !== 200) {
+            setUser("")
+            changeToken(setCookie, "")
+            setIsLoggedIn(false)
+          } else {
+            setUser( data.user)
+            changeToken(setCookie, data.Token)
+            setIsLoggedIn(true)
+          }
     } catch (error) {
         console.log(error) 
     }
 }
 
-export const login = async (username, password, setUser, setCookie) => {
+export const login = async (username, password, setUser, setCookie, setIsLoggedIn) => {
     try {
       const response = await fetch(`${process.env.REACT_APP_REST_API}/login`, {
         method: "POST",
@@ -37,8 +42,16 @@ export const login = async (username, password, setUser, setCookie) => {
       });
       const data = await response.json();
       console.log("Found user : ");
-      console.log(data.user);
-      return data;
+      console.log(data);
+      if (response.status !== 200) {
+        setUser("")
+        changeToken(setCookie, "")
+        setIsLoggedIn(false)
+      } else {
+        setUser( data.user)
+        changeToken(setCookie, data.Token)
+        setIsLoggedIn(true)
+      }
     } catch (error) {
       console.log(error);
     }
@@ -96,7 +109,7 @@ export const login = async (username, password, setUser, setCookie) => {
     }
 }
 
-export const addStocks = async (name, symbol, number, cookies) => {
+export const addStocks = async (name, symbol, number, cookies, setUser) => {
   try {
     const response = await fetch(`${process.env.REACT_APP_REST_API}/user/stocks`, {
       headers: { 
@@ -114,7 +127,15 @@ export const addStocks = async (name, symbol, number, cookies) => {
     });
     const data = await response.json();
     console.log(data);
+    setUser(data.user)
+
   }catch (error) {
       console.log(error)
   }
+}
+
+export const logout = async (setUser, setCookie, setIsLoggedIn) => {
+  setUser("")
+  changeToken(setCookie, "")
+  setIsLoggedIn(false)
 }

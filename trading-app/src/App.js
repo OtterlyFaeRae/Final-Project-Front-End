@@ -18,6 +18,9 @@ import Protected from "./components/Protected";
 import LoginForm from "./components/LoginForm";
 import { checkToken } from "./utils";
 
+// utils
+import { logout } from "./utils"
+
 
 // ------------------------------------------------------------------- //
 function App() {
@@ -37,6 +40,7 @@ function App() {
 		setIsLoggedIn(true); // once logged just set setIsLoggedIn as false
 	};
 	const logOut = () => {
+		logout(setUser, setCookie, setIsLoggedIn)
 		setIsLoggedIn(false);
 	};
 	// ------------------------------------------------------------------- //

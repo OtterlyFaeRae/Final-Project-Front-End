@@ -6,19 +6,19 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies })
  
     const handleSignUp  = async () => {
         // recieve user and token.  set user set token.
-        await signUp("test7", "email7", "password7", setUser, setCookie)
+        await signUp("test7", "email7", "password7", setUser, setCookie, setIsLoggedIn)
     }
     const handleLogin  = async () => {
         // recieve user and token.  set user set token.
-        await login("Red", "Red", setUser, setCookie)
+        await login("Red", "Red", setUser, setCookie, setIsLoggedIn)
     }
     const handleCheckCookies  = async () => {
         // recieve user and token.  set user set token.
-        await checkToken(cookies, setCookie, setUser)
+        await checkToken(cookies, setCookie, setUser, setIsLoggedIn)
     }
     const handleAddStocks  = async () => {
         // recieve user and token.  set user set token.
-        await addStocks("apple", "AAPL", 1, cookies)
+        await addStocks("apple", "AAPL", 1, cookies, setUser)
     }
 
 	return (

@@ -43,11 +43,11 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 						&&
 						stocks.map( (stock, i) => (
 							<PortfolioItem 
-								name={stock[0].name} 
-								symbol={stock[0].symbol} 
-								price={""} 
-								number={stock[0].number}
 								key={i}
+								name={stock.name} 
+								symbol={stock.symbol} 
+								price={""} 
+								number={stock.number}
 							/>
 						))
 					}

@@ -48,7 +48,7 @@ export const login = async (username, password,) => {
     }
   }
 
-  // export const updateUser = async (username, email, password)
+  export const updateUser = async (username, email, password)
 
 
   

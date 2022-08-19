@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components"
 import DropdownItem from "../components/DropdownItem";
 import Navbar from "../components/Navbar"
+import BuyStock from "../components/BuyStock"
 
 function Buy({ setIsLoggedIn, isLoggedIn }) {
 
@@ -17,13 +18,15 @@ function Buy({ setIsLoggedIn, isLoggedIn }) {
         setInput(e.target.value)
     }
 
-    const handleKeyDown = event => {
-        if (event.key === "Enter") {
+    const handleKeyDown = e => {
+        if (e.key === "Enter") {
+			SetStockToBuy( () => e.target.value )
             setInput("");
         }
     }
 
-	const handleClickSearch = ({ setIsLoggedIn, isLoggedIn }) => {
+	const handleClickSearch = () => {
+		SetStockToBuy( () => input )
         setInput("")
     }
 
@@ -42,12 +45,19 @@ function Buy({ setIsLoggedIn, isLoggedIn }) {
 			<DropdownCont>
 				<DropdownList>
 					{
+						input 
+						&&
 						tempStocks.map( (x,i) => (
 							<DropdownItem stock={tempStocks[i]} key={i}/>
 						))
 					}
 				</DropdownList>
 			</DropdownCont>
+			{
+				stockToBuy && !input
+				&&
+				<BuyStock />
+			}
 		</Cont>
 	);
 }
@@ -65,5 +75,5 @@ const DropdownCont = styled.div`
 `
 const DropdownList = styled.ul`
 `
-// const Cont = styled.div`
+// const BuyCont = styled.div`
 // `

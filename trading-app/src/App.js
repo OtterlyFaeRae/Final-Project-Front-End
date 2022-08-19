@@ -51,6 +51,10 @@ function App() {
 					setIsLoggedIn={setIsLoggedIn} 
 					login={logIn} 
 					logOut={logOut}
+					cookies={cookies}
+					setCookie={setCookie}
+					user={user}
+					setUser={setUser}
 				/>} />
 
 				{/* ----------------- PROTECTED PAGES  ------------------------ */}

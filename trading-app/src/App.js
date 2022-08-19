@@ -37,7 +37,7 @@ function App() {
 		<BrowserRouter>
 
 				{/* Login and Log out state functions */}
-				{isLoggedIn ? (
+				{/* {isLoggedIn ? (
 					<>
 						<button onClick={logOut}>Logout</button>
 						<h3>User Logged In</h3>
@@ -45,7 +45,7 @@ function App() {
 					</>
 				) : (
 					signUp ? (<SignUp toggle = {setSignUp} />) : (<LoginForm toggle = {setSignUp} logIn = {logIn} />)
-				)};
+				)}; */}
 			<Routes>
 				<Route path="/login" element={
 				<Login 

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components"
 import DropdownItem from "../components/DropdownItem";
+import Navbar from "../components/Navbar"
 
-function Buy() {
+function Buy({ setIsLoggedIn, isLoggedIn }) {
 
 	const [ input, setInput ] = useState("")
 	const [ tempStocks, setTempStocks ] = useState(['stock1', 'stock2', 'stock3', 'stock3'])
@@ -22,12 +23,16 @@ function Buy() {
         }
     }
 
-	const handleClickSearch = () => {
+	const handleClickSearch = ({ setIsLoggedIn, isLoggedIn }) => {
         setInput("")
     }
 
 	return (
 		<Cont>
+			<Navbar 
+				setIsLoggedIn={setIsLoggedIn} 
+				isLoggedIn={isLoggedIn} 
+			/>
 			<h2>This is the Buy page</h2>
 			<SearchCont>
 				<input type="text" placeholder="Search" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input} ></input>

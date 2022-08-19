@@ -1,6 +1,6 @@
 export const signUp = async (username, email, password, setter) => {
     try {
-        const response = await fetch("http://localhost:5000/user", {
+        const response = await fetch(`${process.env.REACT_APP_REST_API}/user`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -35,7 +35,7 @@ export const login = async (username, password, setter) => {
 
   export const getToken = async (token) => {
     try {
-        const response = await fetch("http://localhost:5000/login", {
+        const response = await fetch(`${process.env.REACT_APP_REST_API}/login`, {
             method: "GET",
             headers: {
               'Authorization': token
@@ -54,7 +54,7 @@ export const login = async (username, password, setter) => {
 
   export const deleteUser = async (username, password, setter) => {
     try {
-      const response = await fetch("http://localhost:5000/user", {
+      const response = await fetch(`${process.env.REACT_APP_REST_API}user`, {
         headers: { "Content-Type": "application/json" },
         method: "DELETE",
         body: JSON.stringify({

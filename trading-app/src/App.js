@@ -36,19 +36,20 @@ function App() {
 	// main render component
 	return (
 		<BrowserRouter>
-			<div>Main Title - TradeWarZ</div>
+			<div className= "container">
+				<h1>TradeWarZ</h1>
 
-			{/* Login and Log out state functions */}
-			{isLoggedIn ? (
-				<>
-					<button onClick={logOut}>Logout</button>
-					<h3>User Logged In</h3>
-					<Navbar />
-				</>
-			) : (
-				signUp ? (<SignUp toggle = {setSignUp} />) : (<LoginForm toggle = {setSignUp} logIn = {logIn} />)
-			)}
-
+				{/* Login and Log out state functions */}
+				{isLoggedIn ? (
+					<>
+						<button onClick={logOut}>Logout</button>
+						<h3>User Logged In</h3>
+						<Navbar />
+					</>
+				) : (
+					signUp ? (<SignUp toggle = {setSignUp} />) : (<LoginForm toggle = {setSignUp} logIn = {logIn} />)
+				)}
+			</div>
 			<Routes>
 				<Route path="/login" element={<Login />} />
 

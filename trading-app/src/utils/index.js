@@ -44,7 +44,7 @@ export const login = async (username, password, setUser, setCookie) => {
     }
   };
 
-  export const checkToken = async (cookies, setCookie, setUser) => {
+  export const checkToken = async (cookies, setCookie, setUser, setIsLoggedIn) => {
   
     try {
         const response = await fetch(`${process.env.REACT_APP_REST_API}/login`, {
@@ -56,8 +56,15 @@ export const login = async (username, password, setUser, setCookie) => {
           });
           const data = await response.json()
           console.log(data)
-          setUser( data.user)
-          changeToken(setCookie, data.Token)
+          if (response.status != 200) {
+            setUser("")
+            changeToken(setCookie, "")
+            setIsLoggedIn(false)
+          } else {
+            setUser( data.user)
+            changeToken(setCookie, data.Token)
+            setIsLoggedIn(true)
+          }
     } catch (error) {
         console.log(error)
     }

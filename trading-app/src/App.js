@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // import all the pages here
 import Login from "./pages/Login";
@@ -16,15 +16,20 @@ import { Link, Routes, Route, BrowserRouter } from "react-router-dom";
 // import components
 import Protected from "./components/Protected";
 import LoginForm from "./components/LoginForm";
+import { checkToken } from "./utils";
 
 
 // ------------------------------------------------------------------- //
 function App() {
 	// login setup, determines if you are logged in, #TODO --> connect it with backend login function
 	// state hooked variables
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	const [cookies, setCookie] = useCookies(["token"]);
 	const [ user, setUser ] = useState("")
+
+	useEffect( () => {
+		checkToken(cookies, setCookie, setUser, setIsLoggedIn)
+	}, [])
 
 	// ------------------------------------------------------------------- //
 	// state altering functions
@@ -39,16 +44,6 @@ function App() {
 	return (
 		<BrowserRouter>
 
-				{/* Login and Log out state functions */}
-				{/* {isLoggedIn ? (
-					<>
-						<button onClick={logOut}>Logout</button>
-						<h3>User Logged In</h3>
-						<Navbar />
-					</>
-				) : (
-					signUp ? (<SignUp toggle = {setSignUp} />) : (<LoginForm toggle = {setSignUp} logIn = {logIn} />)
-				)}; */}
 			<Routes>
 				<Route path="/login" element={
 				<Login 
@@ -65,7 +60,10 @@ function App() {
 					path="/"
 					element={
 						<Protected isLoggedIn={isLoggedIn}>
-							<Landing />
+							<Landing 
+								isLoggedIn={isLoggedIn}
+								setIsLoggedIn={setIsLoggedIn}
+							/>
 						</Protected>
 					}
 				/>
@@ -77,7 +75,10 @@ function App() {
 						<Protected 
 						isLoggedIn={isLoggedIn}
 						>
-							<Portfolio />
+							<Portfolio 
+								isLoggedIn={isLoggedIn}
+								setIsLoggedIn={setIsLoggedIn}
+							/>
 						</Protected>
 					}
 				/>
@@ -87,7 +88,10 @@ function App() {
 					path="/buy"
 					element={
 						<Protected isLoggedIn={isLoggedIn}>
-							<Buy />
+							<Buy 
+								isLoggedIn={isLoggedIn}
+								setIsLoggedIn={setIsLoggedIn}
+							/>
 						</Protected>
 					}
 				/>
@@ -97,7 +101,10 @@ function App() {
 					path="/sell"
 					element={
 						<Protected isLoggedIn={isLoggedIn}>
-							<Sell />
+							<Sell 
+								isLoggedIn={isLoggedIn}
+								setIsLoggedIn={setIsLoggedIn}
+							/>
 						</Protected>
 					}
 				/>

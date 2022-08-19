@@ -7,6 +7,7 @@ import Buy from "./pages/Buy";
 import Landing from "./pages/Landing";
 import Portfolio from "./pages/Portfolio";
 import Sell from "./pages/Sell";
+import Navbar from "./components/Navbar"
 
 // react router dom modules
 import { Link, Routes, Route, BrowserRouter } from "react-router-dom";
@@ -14,15 +15,13 @@ import { Link, Routes, Route, BrowserRouter } from "react-router-dom";
 // import components
 import Protected from "./components/Protected";
 import LoginForm from "./components/LoginForm";
-import SignUp from "./components/SignUp";
-import Navbar from "./components/Navbar";
+
 
 // ------------------------------------------------------------------- //
 function App() {
 	// login setup, determines if you are logged in, #TODO --> connect it with backend login function
 	// state hooked variables
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const [signUp, setSignUp] = useState(false);
 
 	// ------------------------------------------------------------------- //
 	// state altering functions
@@ -36,8 +35,6 @@ function App() {
 	// main render component
 	return (
 		<BrowserRouter>
-			<div className= "container">
-				<h1>TradeWarZ</h1>
 
 				{/* Login and Log out state functions */}
 				{isLoggedIn ? (
@@ -51,7 +48,13 @@ function App() {
 				)}
 			</div>
 			<Routes>
-				<Route path="/login" element={<Login />} />
+				<Route path="/login" element={
+				<Login 
+					isLoggedIn={isLoggedIn} 
+					setIsLoggedIn={setIsLoggedIn} 
+					login={logIn} 
+					logOut={logOut}
+				/>} />
 
 				{/* ----------------- PROTECTED PAGES  ------------------------ */}
 

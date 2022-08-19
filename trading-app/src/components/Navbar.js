@@ -7,6 +7,9 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn }) => {
     <Cont>
       <LinksCont>
         <NavItem>
+          <Link to='/connections'>Connections</Link>
+        </NavItem>
+        <NavItem>
           <Link to='/'>Landing</Link>
         </NavItem>
         <NavItem>

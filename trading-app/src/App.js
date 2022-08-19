@@ -7,7 +7,8 @@ import Buy from "./pages/Buy";
 import Landing from "./pages/Landing";
 import Portfolio from "./pages/Portfolio";
 import Sell from "./pages/Sell";
-import Navbar from "./components/Navbar"
+import Connections from "./pages/Connections";
+import { useCookies } from 'react-cookie'
 
 // react router dom modules
 import { Link, Routes, Route, BrowserRouter } from "react-router-dom";
@@ -22,6 +23,8 @@ function App() {
 	// login setup, determines if you are logged in, #TODO --> connect it with backend login function
 	// state hooked variables
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [cookies, setCookie] = useCookies(["token"]);
+	const [ user, setUser ] = useState("")
 
 	// ------------------------------------------------------------------- //
 	// state altering functions
@@ -71,7 +74,9 @@ function App() {
 				<Route
 					path="/portfolio"
 					element={
-						<Protected isLoggedIn={isLoggedIn}>
+						<Protected 
+						isLoggedIn={isLoggedIn}
+						>
 							<Portfolio />
 						</Protected>
 					}
@@ -93,6 +98,25 @@ function App() {
 					element={
 						<Protected isLoggedIn={isLoggedIn}>
 							<Sell />
+						</Protected>
+					}
+				/>
+
+				{/* For testing connections */}
+				<Route
+					path="/connections"
+					element={
+						<Protected 
+						isLoggedIn={isLoggedIn}
+						>
+							<Connections 
+								isLoggedIn={isLoggedIn}
+								setIsLoggedIn={setIsLoggedIn}
+								cookies={cookies}
+								setCookie={setCookie}
+								user={user}
+								setUser={setUser}
+							/>
 						</Protected>
 					}
 				/>

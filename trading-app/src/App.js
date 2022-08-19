@@ -108,13 +108,15 @@ function App() {
 					element={
 						<Protected 
 						isLoggedIn={isLoggedIn}
-						setIsLoggedIn={setIsLoggedIn}
-						cookies={cookies}
-						setCookie={setCookie}
-						user={user}
-						setUser={setUser}
 						>
-							<Connections />
+							<Connections 
+								isLoggedIn={isLoggedIn}
+								setIsLoggedIn={setIsLoggedIn}
+								cookies={cookies}
+								setCookie={setCookie}
+								user={user}
+								setUser={setUser}
+							/>
 						</Protected>
 					}
 				/>

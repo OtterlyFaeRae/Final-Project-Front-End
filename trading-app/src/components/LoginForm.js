@@ -2,6 +2,7 @@ const {useState} = require('react')
 const {login} = require('../utils')
 
 const LoginForm = ({toggle, logIn}) => {
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const handleSubmit = async (e) => {
@@ -11,6 +12,7 @@ const LoginForm = ({toggle, logIn}) => {
     setPassword('');
     console.log(response)
   }
+
   return (
     <div className="login-form">
       <h2>Login</h2>

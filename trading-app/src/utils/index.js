@@ -1,6 +1,7 @@
 import { changeToken } from "./helpers";
 
 export const signUp = async (username, email, password, setUser, setCookie) => {
+
     try {
         const response = await fetch(`${process.env.REACT_APP_REST_API}/user`, {
             method: "POST",
@@ -23,6 +24,7 @@ export const signUp = async (username, email, password, setUser, setCookie) => {
 }
 
 export const login = async (username, password, setUser, setCookie) => {
+
     try {
       const response = await fetch(`${process.env.REACT_APP_REST_API}/login`, {
         method: "POST",
@@ -43,10 +45,12 @@ export const login = async (username, password, setUser, setCookie) => {
   };
 
   export const checkToken = async (cookies, setCookie, setUser) => {
+  
     try {
         const response = await fetch(`${process.env.REACT_APP_REST_API}/login`, {
             method: "GET",
             headers: {
+
               'Authorization': cookies.token
             }
           });
@@ -63,7 +67,7 @@ export const login = async (username, password, setUser, setCookie) => {
 
   // }
 
-  export const deleteUser = async (username, password, setter) => {
+  export const deleteUser = async (username, password) => {
     try {
       const response = await fetch(`${process.env.REACT_APP_REST_API}user`, {
         headers: { "Content-Type": "application/json" },

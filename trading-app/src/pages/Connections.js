@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar"
-import { signUp, login, checkToken } from "../utils"
+import { signUp, login, checkToken, addStocks } from "../utils"
 
 function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies }) {
  
@@ -16,6 +16,10 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies })
         // recieve user and token.  set user set token.
         await checkToken(cookies, setCookie, setUser)
     }
+    const handleAddStocks  = async () => {
+        // recieve user and token.  set user set token.
+        await addStocks("apple", "AAPL", 1, cookies)
+    }
 
 	return (
 		<div>
@@ -28,6 +32,7 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies })
             <button onClick={handleSignUp}>Sign up</button>
             <button onClick={handleLogin}>login</button>
             <button onClick={handleCheckCookies}>checkToken</button>
+            <button onClick={handleAddStocks}>addStocks</button>
             <button>delete user</button>
             <button>logout (maybe)</button>
     

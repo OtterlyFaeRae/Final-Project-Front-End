@@ -50,13 +50,13 @@ export const login = async (username, password, setUser, setCookie) => {
         const response = await fetch(`${process.env.REACT_APP_REST_API}/login`, {
             method: "GET",
             headers: {
-
+              headers: { "Content-Type": "application/json" },
               'Authorization': cookies.token
             }
           });
           const data = await response.json()
           console.log(data)
-          if (response.status != 200) {
+          if (response.status !== 200) {
             setUser("")
             changeToken(setCookie, "")
             setIsLoggedIn(false)
@@ -74,10 +74,12 @@ export const login = async (username, password, setUser, setCookie) => {
 
   // }
 
-  export const deleteUser = async (username, password) => {
+  export const deleteUser = async (username, password, cookies) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_REST_API}user`, {
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch(`${process.env.REACT_APP_REST_API}/user`, {
+        headers: {
+          'Authorization': cookies.token
+        },
         method: "DELETE",
         body: JSON.stringify({
           username: username,
@@ -92,4 +94,27 @@ export const login = async (username, password, setUser, setCookie) => {
     }catch (error) {
         console.log(error)
     }
+}
+
+export const addStocks = async (name, symbol, number, cookies) => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_REST_API}/user/stocks`, {
+      headers: { 
+        "Content-Type": "application/json",
+        'Authorization': cookies.token
+    },
+      method: "PATCH",
+      body: JSON.stringify({
+        "addStock": {
+          "name": name,
+          "symbol": symbol,
+          "number": number
+        }
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+  }catch (error) {
+      console.log(error)
+  }
 }

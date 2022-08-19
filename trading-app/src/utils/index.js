@@ -1,4 +1,4 @@
-export const signUp = async (username, email, password) => {
+export const signUp = async (username, email, password, setUser, setCookie) => {
     try {
         const response = await fetch(`${process.env.REACT_APP_REST_API}/user`, {
             method: "POST",
@@ -10,14 +10,16 @@ export const signUp = async (username, email, password) => {
             }),
           });
           const data = await response.json()
-          console.log(data);
+          console.log(data.user);
+          setUser( () => data.user)
+          // setCookie(data.Token)
           return data
     } catch (error) {
         console.log(error) 
     }
 }
 
-export const login = async (username, password) => {
+export const login = async (username, password, setUser, setCookie) => {
     try {
       const response = await fetch(`${process.env.REACT_APP_REST_API}/login`, {
         method: "POST",
@@ -28,7 +30,9 @@ export const login = async (username, password) => {
         }),
       });
       const data = await response.json();
-      console.log(data);
+      console.log(data.username);
+      // setUser(data.username)
+      // changeToken(setCookie, data.token)
     } catch (error) {
       console.log(error);
     }

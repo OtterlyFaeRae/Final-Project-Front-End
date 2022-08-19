@@ -24,7 +24,7 @@ function App() {
 	// state hooked variables
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [cookies, setCookie] = useCookies(["token"]);
-	const [ user, setUser ] = useState()
+	const [ user, setUser ] = useState("")
 
 	// ------------------------------------------------------------------- //
 	// state altering functions

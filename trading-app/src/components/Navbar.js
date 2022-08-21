@@ -6,13 +6,10 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn }) => {
     <Cont>
       <LinksCont>
         <NavItem>
-          <Link to='/connections'>Connections</Link>
-        </NavItem>
-        <NavItem>
           <Link to='/'>Landing</Link>
         </NavItem>
         <NavItem>
-          <Link to='/Login'>Login</Link>
+          <Link to='/Portfolio'>Portfolio</Link>
         </NavItem>
         <NavItem>
           <Link to='/Buy'>Buy</Link>
@@ -21,11 +18,11 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn }) => {
           <Link to='/Sell'>Sell</Link>
         </NavItem>
         <NavItem>
-          <Link to='/Portfolio'>Portfolio</Link>
+          <Link to='/connections'>Connections</Link>
         </NavItem>
-        {/* <NavItem>
-          <button onClick={ () => setIsLoggedIn( !isLoggedIn ) }>switch logged in</button>
-        </NavItem> */}
+        <NavItem>
+          <Link to='/Login'>Login</Link>
+        </NavItem>
       </LinksCont>
     </Cont>
   );

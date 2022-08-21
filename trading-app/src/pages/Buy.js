@@ -48,34 +48,36 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser }) {
 	}, [price])
 
 	return (
-		<Cont>
+		<>
 			<Navbar 
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
 			/>
-			<h2>This is the Buy page. Cash {user.cash}.</h2>
-			<SearchCont>
-				<input type="text" placeholder="Search" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input} ></input>
-				<button onClick={handleClickClear} >X</button>
-				<button onClick={handleClickSearch}>search</button>
-			</SearchCont>
-			<DropdownCont>
-				<DropdownList>
-					{
-						input 
-						&&
-						tempStocks.map( (x,i) => (
-							<DropdownItem stock={tempStocks[i]} key={i}/>
-						))
-					}
-				</DropdownList>
-			</DropdownCont>
-			{
-				stockToBuy 
-				&&
-				<BuyStock price={price} stockToBuy={stockToBuy} user={user} cookies={cookies} setUser={setUser}/>
-			}
-		</Cont>
+			<Cont>
+				<h2>This is the Buy page. Cash {user.cash}.</h2>
+				<SearchCont>
+					<input type="text" placeholder="Search" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input} ></input>
+					<button onClick={handleClickClear} >X</button>
+					<button onClick={handleClickSearch}>search</button>
+				</SearchCont>
+				<DropdownCont>
+					<DropdownList>
+						{
+							input 
+							&&
+							tempStocks.map( (x,i) => (
+								<DropdownItem stock={tempStocks[i]} key={i}/>
+							))
+						}
+					</DropdownList>
+				</DropdownCont>
+				{
+					stockToBuy 
+					&&
+					<BuyStock price={price} stockToBuy={stockToBuy} user={user} cookies={cookies} setUser={setUser}/>
+				}
+			</Cont>
+		</>
 	);
 }
 

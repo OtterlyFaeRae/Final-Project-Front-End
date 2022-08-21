@@ -15,7 +15,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 	}, [user])
 
 	useEffect( () => {
-		getPortfolioPrices()
+		// getPortfolioPrices()
 	}, [])
 
 	const getPortfolioPrices = async () => {

@@ -1,4 +1,3 @@
-
 import {Link} from "react-router-dom";
 import styled from "styled-components"
 
@@ -24,9 +23,9 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn }) => {
         <NavItem>
           <Link to='/Portfolio'>Portfolio</Link>
         </NavItem>
-        <NavItem>
+        {/* <NavItem>
           <button onClick={ () => setIsLoggedIn( !isLoggedIn ) }>switch logged in</button>
-        </NavItem>
+        </NavItem> */}
       </LinksCont>
     </Cont>
   );

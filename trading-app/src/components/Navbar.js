@@ -21,7 +21,7 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn }) => {
           <Link to='/connections'>Connections</Link>
         </NavItem>
         <NavItem>
-          <Link to='/Login'>Login</Link>
+          <Link to='/Login'>Logout</Link>
         </NavItem>
       </LinksCont>
     </Cont>

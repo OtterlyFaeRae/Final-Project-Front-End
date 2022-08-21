@@ -3,22 +3,24 @@ import Navbar from "../components/Navbar"
 import PortfolioItem from "../components/PortfolioItem"
 import { useState } from "react"
 import styled from "styled-components";
+import { getPrices } from "../utils/stock-prices"
 
 function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 
 	const [ stocks, setStocks ] = useState([])
-	const [ prices, setPrices ] = useState([])
+	const [ prices, setPrices ] = useState("prices")
 
 	useEffect( () => {
 		setStocks(user.stocks)
 	}, [user])
 
 	useEffect( () => {
-		// setPrices( stockPrices )
+		getPortfolioPrices()
 	}, [])
 
 	const getPortfolioPrices = async () => {
-		return
+		const result = await getPrices(["AAPL", "GOOGL"])
+		setPrices(result)
 	}
 	
 	return (

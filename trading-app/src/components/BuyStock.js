@@ -12,23 +12,14 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
         setInput(e.target.value)
     }
 
-    const handleKeyDown = e => {
+    const handleKeyDown = async e => {
         if (e.key === "Enter") {
-            setInput("");
-            redir()
+            await buyStock()
         }
     }
 
 	const handleClick = async () => {
-        // redir()
         await buyStock()
-    }
-
-    const redir = () => {
-        if (input) {
-            navigate("/portfolio")
-            alert("Purchase sucessful.")
-        }
     }
 
     const buyStock = async () => {
@@ -56,15 +47,14 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
             }
             setInput("")
         }
-
     }
 
     const refreshPage = () => {
         window.location.reload(false);
-      }
+    }
 
     return (
-        <BuyCont>
+        <Cont>
         <h4>Buy container. Cash: ${user.cash}.</h4>
         {
             stockToBuy !== "No stock found."
@@ -86,13 +76,13 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
             </StockNotFoundCont>
         }
 
-    </BuyCont>
+    </Cont>
     )
 }
 
 export default BuyStock
 
-const BuyCont = styled.div`
+const Cont = styled.div`
     border: 2px solid black;
 `
 const StockCont = styled.div`

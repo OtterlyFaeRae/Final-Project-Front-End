@@ -41,10 +41,10 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 								symbol
 							</th>
 							<th>
-								price
+								quantity
 							</th>
 							<th>
-								quantity
+								price
 							</th>
 						</tr>
 					</thead>

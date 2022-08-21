@@ -11,10 +11,10 @@ const PortfolioItem = ({name, symbol, price, number}) => {
                 {symbol}
             </TableData>
             <TableData>
-                {price}
+                {number}
             </TableData>
             <TableData>
-                {number}
+                {price}
             </TableData>
         </TableRow>
     )

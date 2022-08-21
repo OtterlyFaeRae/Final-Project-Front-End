@@ -117,6 +117,7 @@ function App() {
 								isLoggedIn={isLoggedIn}
 								setIsLoggedIn={setIsLoggedIn}
 								user={user}
+								cookies={cookies}
 							/>
 						</Protected>
 					}

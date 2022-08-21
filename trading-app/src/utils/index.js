@@ -139,3 +139,24 @@ export const logout = async (setUser, setCookie, setIsLoggedIn) => {
   changeToken(setCookie, "")
   setIsLoggedIn(false)
 }
+
+export const updateCash = async (newCash, setUser, cookies) => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_REST_API}/update-cash`, {
+      headers: { 
+        "Content-Type": "application/json",
+        'Authorization': cookies.token
+    },
+      method: "PATCH",
+      body: JSON.stringify({
+          "newCash": newCash
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    // setUser(data.user)
+
+  } catch (error) {
+      console.log(error)
+  }
+}

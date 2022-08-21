@@ -7,10 +7,19 @@ import styled from "styled-components";
 function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 
 	const [ stocks, setStocks ] = useState([])
+	const [ prices, setPrices ] = useState([])
 
 	useEffect( () => {
 		setStocks(user.stocks)
 	}, [user])
+
+	useEffect( () => {
+		// setPrices( stockPrices )
+	}, [])
+
+	const getPortfolioPrices = async () => {
+		return
+	}
 	
 	return (
 		<Cont>
@@ -44,13 +53,43 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 						stocks.map( (stock, i) => (
 							<PortfolioItem 
 								key={i}
-								name={stock.name} 
-								symbol={stock.symbol} 
+								name={stock.symbol} 
+								symbol={stock.name} 
 								price={""} 
 								number={stock.number}
 							/>
 						))
 					}
+					{/* cash row */}
+					<tr>
+						<td>
+							 
+						</td>
+						<td>
+							
+						</td>
+						<td>
+							Cash:
+						</td>
+						<td>
+							{user.cash}
+						</td>
+					</tr>
+					{/* total row */}
+					<tr>
+						<td>
+							 
+						</td>
+						<td>
+							
+						</td>
+						<td>
+							Total:
+						</td>
+						<td>
+							
+						</td>
+					</tr>
 					</tbody>
 				</table>
 			</TableCont>

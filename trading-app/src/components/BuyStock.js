@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components"
 import { useNavigate } from 'react-router-dom'
+import { addStocks, updateCash } from "../utils";
 
-const BuyStock = ({}) => {
+const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
 
     const [ input, setInput ] = useState("")
     const navigate = useNavigate();
@@ -18,9 +19,9 @@ const BuyStock = ({}) => {
         }
     }
 
-	const handleClick = () => {
-        setInput("")
-        redir()
+	const handleClick = async () => {
+        // redir()
+        await buyStock()
     }
 
     const redir = () => {
@@ -30,21 +31,61 @@ const BuyStock = ({}) => {
         }
     }
 
+    const buyStock = async () => {
+        // if there is a quantity :
+        //      total = price * quantity
+        //      if total is greater than cash :
+        //              modal pop up "Insufficient funds."
+        //              clear input
+        //      else :
+        //              addStocks( symbol, name, quantity )
+        //              updateCash( cash - total )
+        //              modal pop up "Purchase sucessful"
+        //              redirect to portfolio page
+        if (input) {
+            const total = price * input
+            if (total > user.cash) {
+                alert("Insufficient funds.")
+                setInput("")
+            } else {
+                await addStocks( stockToBuy, "stock name", parseInt(input), cookies, setUser)
+                await updateCash( user.cash - total, setUser, cookies )
+                alert("Purchase sucessful.")
+                navigate("/portfolio")
+                refreshPage() // update user stocks
+            }
+            setInput("")
+        }
+
+    }
+
+    const refreshPage = () => {
+        window.location.reload(false);
+      }
+
     return (
         <BuyCont>
-        <h4>Buy container.</h4>
-        <StockCont>
-            <TopCont>
-                <p>Symbol</p>
-                <p>Stock</p>
-            </TopCont>
-            <BottomCont>
-                <p>Price</p>
-                <p>Quantity</p>
-				<input type="number" placeholder="Quantity" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input} ></input>
-                <button onClick={handleClick} placeholder="buy">Buy</button>
-            </BottomCont>
-        </StockCont>
+        <h4>Buy container. Cash: ${user.cash}.</h4>
+        {
+            stockToBuy !== "No stock found."
+            ?
+            <StockCont>
+                <TopCont>
+                    <p>Symbol</p>
+                    <p>{stockToBuy}</p>
+                </TopCont>
+                <BottomCont>
+                    <p>{price}</p>
+                    <input type="number" placeholder="Quantity" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input} ></input>
+                    <button onClick={handleClick} placeholder="buy">Buy</button>
+                </BottomCont>
+            </StockCont>
+            :
+            <StockNotFoundCont>
+                <p>No stock found.</p>
+            </StockNotFoundCont>
+        }
+
     </BuyCont>
     )
 }
@@ -66,4 +107,7 @@ const TopCont = styled.div`
 `
 const BottomCont = styled.div`
 	display: flex;
+`
+const StockNotFoundCont = styled.div`
+    margin: 4rem 7rem;
 `

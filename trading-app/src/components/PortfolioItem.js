@@ -3,20 +3,26 @@ import styled from "styled-components"
 const PortfolioItem = ({name, symbol, price, number}) => {
 
     return (
-        <TableRow>
-            <TableData>
-                {name}
-            </TableData>
-            <TableData>
-                {symbol}
-            </TableData>
-            <TableData>
-                {number}
-            </TableData>
-            <TableData>
-                {price}
-            </TableData>
-        </TableRow>
+        <>
+        {
+            number > 0
+            &&
+            <TableRow>
+                <TableData>
+                    {symbol}
+                </TableData>
+                <TableData>
+                    {number}
+                </TableData>
+                <TableData>
+                    {price}
+                </TableData>
+                <TableData>
+                    {price * number}
+                </TableData>
+            </TableRow>
+        }
+        </>
     )
 }
 

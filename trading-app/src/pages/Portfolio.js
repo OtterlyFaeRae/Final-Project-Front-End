@@ -3,25 +3,47 @@ import Navbar from "../components/Navbar"
 import PortfolioItem from "../components/PortfolioItem"
 import { useState } from "react"
 import styled from "styled-components";
-import { getPrices } from "../utils/stock-prices"
+// import { getPrices } from "../utils/stock-prices"
+// import { getPrices } from "../utils/finnhub-api"
+import { getPrices } from "../utils/finnhub-fetch"
 
 function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 
 	const [ stocks, setStocks ] = useState([])
 	const [ prices, setPrices ] = useState("prices")
+	const [ total, setTotal ] = useState(0)
 
 	useEffect( () => {
-		setStocks(user.stocks)
+		if (user) {
+			setStocks(user.stocks)
+		}
 	}, [user])
 
 	useEffect( () => {
-		// getPortfolioPrices()
-	}, [])
+		getPortfolioPrices()
+	}, [stocks])
 
 	const getPortfolioPrices = async () => {
-		const result = await getPrices(["AAPL", "GOOGL"])
+		const stockSymbols = stocks.map( x => x.name )
+		const result = await getPrices(stockSymbols)
 		setPrices(result)
 	}
+
+	const getTotal = () => {
+		// map though prices and stocks and make a new array of totals 
+		// use reduce to sum the array
+		// add users cash
+		const totalPrices = stocks.map( (stock, i) => 
+			stocks[i].number * prices[i]
+		)
+		const stockTotals =  totalPrices.reduce( (prev, curr) => prev + curr, 0)
+		const result = user.cash + stockTotals
+		setTotal(result)
+	}
+
+	useEffect( () => {
+		getTotal()
+	}, [prices])
 	
 	return (
 		<Cont>
@@ -35,29 +57,29 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 					<thead>
 						<tr>
 							<th>
-								name 
+								Stock 
 							</th>
 							<th>
-								symbol
+								Quantity
 							</th>
 							<th>
-								quantity
+								Value per share
 							</th>
 							<th>
-								price
+								Total value
 							</th>
 						</tr>
 					</thead>
 					<tbody>
 					{
-						stocks
+						stocks && stocks.length === prices.length 
 						&&
 						stocks.map( (stock, i) => (
 							<PortfolioItem 
 								key={i}
 								name={stock.symbol} 
 								symbol={stock.name} 
-								price={""} 
+								price={prices[i]} 
 								number={stock.number}
 							/>
 						))
@@ -74,7 +96,11 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 							Cash:
 						</td>
 						<td>
-							{user.cash}
+							{
+								user
+								&&
+								user.cash
+							}
 						</td>
 					</tr>
 					{/* total row */}
@@ -89,7 +115,12 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 							Total:
 						</td>
 						<td>
-							
+							{
+								total
+								&&
+								<p>{total}</p>
+							}
+		
 						</td>
 					</tr>
 					</tbody>

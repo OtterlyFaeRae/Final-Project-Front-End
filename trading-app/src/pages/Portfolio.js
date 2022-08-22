@@ -66,7 +66,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 					{/* cash row */}
 					<tr>
 						<td>
-							 
+						
 						</td>
 						<td>
 							
@@ -81,7 +81,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 					{/* total row */}
 					<tr>
 						<td>
-							 
+							
 						</td>
 						<td>
 							
@@ -103,7 +103,9 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 export default Portfolio;
 
 const Cont = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 `
 const TableCont = styled.div`
-
 `

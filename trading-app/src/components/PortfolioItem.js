@@ -23,6 +23,9 @@ const PortfolioItem = ({name, symbol, price, number}) => {
 export default PortfolioItem
 
 const TableRow = styled.tr`
+    border: solid 1px black;
+    background-color: red;
 `
 const TableData = styled.td`
+    border: solid 1px black;
 `

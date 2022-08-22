@@ -5,9 +5,6 @@ const PortfolioItem = ({name, symbol, price, number}) => {
     return (
         <TableRow>
             <TableData>
-                {name}
-            </TableData>
-            <TableData>
                 {symbol}
             </TableData>
             <TableData>
@@ -15,6 +12,9 @@ const PortfolioItem = ({name, symbol, price, number}) => {
             </TableData>
             <TableData>
                 {price}
+            </TableData>
+            <TableData>
+                {price * number}
             </TableData>
         </TableRow>
     )

@@ -17,13 +17,13 @@ const convert = (dollars) => {
 }
 
 
-convert(1)
-convert(2)
-convert(3)
-convert(4)
-convert(5)
-convert(6)
-convert(7)
-convert(8)
-convert(9)
-convert(10)
+// convert(1)
+// convert(2)
+// convert(3)
+// convert(4)
+// convert(5)
+// convert(6)
+// convert(7)
+// convert(8)
+// convert(9)
+// convert(10)

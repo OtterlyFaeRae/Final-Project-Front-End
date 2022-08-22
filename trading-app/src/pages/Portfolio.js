@@ -53,30 +53,29 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 			/>
 			<h2>This is the Portfolio Page</h2>
 			<TableCont>
-				<table>
-					<thead>
-						<tr>
-							<th>
+				<PortTable>
+					<PortTHead>
+						<TR>
+							<TH>
 								Stock 
-							</th>
-							<th>
+							</TH>
+							<TH>
 								Quantity
-							</th>
-							<th>
+							</TH>
+							<TH>
 								Value per share
-							</th>
-							<th>
+							</TH>
+							<TH>
 								Total value
-							</th>
-						</tr>
-					</thead>
-					<tbody>
+							</TH>
+						</TR>
+					</PortTHead>
+					<PortTBody>
 					{
-						stocks && stocks.length === prices.length 
-						&&
 						stocks.map( (stock, i) => (
 							<PortfolioItem 
 								key={i}
+								index={i}
 								name={stock.symbol} 
 								symbol={stock.name} 
 								price={prices[i]} 
@@ -85,46 +84,41 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 						))
 					}
 					{/* cash row */}
-					<tr>
-						<td>
+					<CashRow>
+						<TD>
 						
-						</td>
-						<td>
+						</TD>
+						<TD>
 							
-						</td>
-						<td>
+						</TD>
+						<EndBox colour={'#222224'}>
 							Cash:
-						</td>
-						<td>
+						</EndBox>
+						<EndBox colour={'#222224'}>
 							{
 								user
 								&&
 								user.cash
 							}
-						</td>
-					</tr>
+						</EndBox>
+					</CashRow>
 					{/* total row */}
-					<tr>
-						<td>
+					<TotalRow>
+						<TD>
 							
-						</td>
-						<td>
+						</TD>
+						<TD>
 							
-						</td>
-						<td>
+						</TD>
+						<EndBox colour={'#28292e'}>
 							Total:
-						</td>
-						<td>
-							{
-								total
-								&&
-								<p>{total}</p>
-							}
-		
-						</td>
-					</tr>
-					</tbody>
-				</table>
+						</EndBox>
+						<EndBox colour={'#28292e'}>
+							<p>{total}</p>
+						</EndBox>
+					</TotalRow>
+					</PortTBody>
+				</PortTable>
 			</TableCont>
 		</Cont>
 	);
@@ -136,6 +130,51 @@ const Cont = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding: auto;
 `
+
 const TableCont = styled.div`
+	display: table;
+	padding: auto;
+	align-content: center;
+	width: 40%;
+`
+
+const PortTable = styled.thead`
+	border-collapse: collapse;
+	color: white;
+`
+
+const PortTHead = styled.thead`
+	background: #31356e;
+	padding: auto;
+`
+
+const TH = styled.th`
+	width: 30%;
+`
+
+const TR = styled.tr`
+
+	text-align: center;
+`
+
+const TD = styled.td`
+	width: 30%;
+`
+
+const PortTBody = styled.tbody`
+	padding: auto;
+	width: 100%;
+	text-align: center;
+`
+
+const TotalRow = styled.tr`
+`
+const CashRow = styled.tr`
+`
+
+const EndBox = styled.td`
+	background: ${props => props.colour};
+	width: 10%;
 `

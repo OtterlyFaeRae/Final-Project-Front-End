@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
-const PortfolioItem = ({name, symbol, price, number}) => {
+const PortfolioItem = ({name, symbol, price, number, index}) => {
 
     return (
-        <TableRow>
+        <TableRow index = {index}>
             <TableData>
                 {symbol}
             </TableData>
@@ -20,12 +20,11 @@ const PortfolioItem = ({name, symbol, price, number}) => {
     )
 }
 
-export default PortfolioItem
-
 const TableRow = styled.tr`
-    border: solid 1px black;
-    background-color: red;
+    ${props => props.index % 2 === 1 ? 'background-color: #222224' : 'background-color: #28292e'}
 `
 const TableData = styled.td`
-    border: solid 1px black;
+    width: 25%;
 `
+
+export default PortfolioItem

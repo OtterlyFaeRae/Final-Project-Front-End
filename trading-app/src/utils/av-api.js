@@ -11,4 +11,4 @@ export const getPrice = async (symbol) => {
         console.log(error);
         return 0
     }
-  }
+}

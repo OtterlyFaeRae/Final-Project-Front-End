@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar"
 import { signUp, login, checkToken, addStocks, updateCash } from "../utils"
 
 function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies }) {
- 
     const handleSignUp  = async () => {
         // recieve user and token.  set user set token.
         await signUp("test7", "email7", "password7", setUser, setCookie, setIsLoggedIn)

@@ -12,6 +12,10 @@ function Login({ logOut, logIn, isLoggedIn, setIsLoggedIn, cookies, setCookie, u
 
 	return (
 		<div>
+			<Navbar 
+				setIsLoggedIn={setIsLoggedIn} 
+				isLoggedIn={isLoggedIn} 
+			/>
 			<h1>TradeWarZ</h1>
 				{/* Login and Log out state functions */}
 				{isLoggedIn ? (

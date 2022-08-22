@@ -4,6 +4,7 @@ import SignUp from "../components/SignUp"
 import LoginForm from "../components/LoginForm";
 import { useState } from "react";
 import { changeToken } from "../utils/helpers";
+import "../Login.css";
 
 function Login({ logOut, logIn, isLoggedIn, setIsLoggedIn, cookies, setCookie, user, setUser}) {
 
@@ -15,8 +16,7 @@ function Login({ logOut, logIn, isLoggedIn, setIsLoggedIn, cookies, setCookie, u
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
 			/>
-			<div>Main Title - TradeWarZ</div>
-
+			<h1>TradeWarZ</h1>
 				{/* Login and Log out state functions */}
 				{isLoggedIn ? (
 					<>
@@ -43,7 +43,6 @@ function Login({ logOut, logIn, isLoggedIn, setIsLoggedIn, cookies, setCookie, u
 						changeToken={changeToken}
 						/>)
 				)}
-			<h2>This is the Login page</h2>
 		</div>
 	);
 }

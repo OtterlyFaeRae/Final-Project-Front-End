@@ -6,7 +6,7 @@ import BuyStock from "../components/BuyStock"
 // import { getPrice } from "../utils/av-api";
 import { getPrices } from "../utils/finnhub-fetch";
 
-function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser }) {
+function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 
 	const [ input, setInput ] = useState("")
 	const [ tempStocks, setTempStocks ] = useState(['stock1', 'stock2', 'stock3', 'stock3'])
@@ -53,6 +53,7 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser }) {
 			<Navbar 
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
+				logOut={logOut}
 			/>
 			<Cont>
 				<h2>This is the Buy page.</h2>

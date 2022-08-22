@@ -1,6 +1,18 @@
 import styled from "styled-components"
+import { useEffect, useState } from "react"
 
 const PortfolioItem = ({name, symbol, price, number}) => {
+
+    const [ total, setTotal ] = useState(0)
+
+    const getTotal = async () => {
+        const result = price * number
+        setTotal( result.toFixed(2) )
+    }
+
+    useEffect( () => {
+        getTotal()
+    }, [price])
 
     return (
         <>
@@ -15,10 +27,10 @@ const PortfolioItem = ({name, symbol, price, number}) => {
                     {number}
                 </TableData>
                 <TableData>
-                    {price}
+                    {price.toFixed(2)}
                 </TableData>
                 <TableData>
-                    {price * number}
+                    {total}
                 </TableData>
             </TableRow>
         }

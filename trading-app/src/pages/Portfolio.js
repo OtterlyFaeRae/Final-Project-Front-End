@@ -7,7 +7,7 @@ import styled from "styled-components";
 // import { getPrices } from "../utils/finnhub-api"
 import { getPrices } from "../utils/finnhub-fetch"
 
-function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
+function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 
 	const [ stocks, setStocks ] = useState([])
 	const [ prices, setPrices ] = useState("prices")
@@ -38,7 +38,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 		)
 		const stockTotals =  totalPrices.reduce( (prev, curr) => prev + curr, 0)
 		const result = user.cash + stockTotals
-		setTotal(result)
+		setTotal(result.toFixed(2))
 	}
 
 	useEffect( () => {
@@ -50,6 +50,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 			<Navbar 
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
+				logOut={logOut}
 			/>
 			<h2>This is the Portfolio Page</h2>
 			<TableCont>
@@ -99,7 +100,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 							{
 								user
 								&&
-								user.cash
+								user.cash.toFixed(2)
 							}
 						</td>
 					</tr>

@@ -1,21 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar"
 import SignUp from "../components/SignUp"
 import LoginForm from "../components/LoginForm";
 import { useState } from "react";
 import { changeToken } from "../utils/helpers";
+import styled from "styled-components";
 import "../Login.css";
+import background from "../images/stocks3.jpg"
+import { useNavigate } from 'react-router-dom'
 
-function Login({ logOut, logIn, isLoggedIn, setIsLoggedIn, cookies, setCookie, user, setUser}) {
+function Login({ logOut, logIn, isLoggedIn, setIsLoggedIn, cookies, setCookie, user, setUser }) {
 
 	const [signUp, setSignUp] = useState(false);
+	const navigate = useNavigate();
+
+	useEffect( () => {
+		if (isLoggedIn) {
+			navigate("/")
+		}
+	}, [user])
 
 	return (
-		<div>
-			<Navbar 
-				setIsLoggedIn={setIsLoggedIn} 
-				isLoggedIn={isLoggedIn} 
-			/>
+		<Cont background={background}>
 			<h1>TradeWarZ</h1>
 				{/* Login and Log out state functions */}
 				{isLoggedIn ? (
@@ -43,8 +49,20 @@ function Login({ logOut, logIn, isLoggedIn, setIsLoggedIn, cookies, setCookie, u
 						changeToken={changeToken}
 						/>)
 				)}
-		</div>
+		</Cont>
 	);
 }
 
 export default Login;
+
+const Cont =  styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-image: url(${props => props.background});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+`

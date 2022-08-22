@@ -1,22 +1,34 @@
 import styled from "styled-components"
+import { useEffect, useState } from "react"
 
 const PortfolioItem = ({name, symbol, price, number, index}) => {
 
+    const [ total, setTotal ] = useState(0)
+
+    const getTotal = async () => {
+        const result = price * number
+        setTotal( result.toFixed(2) )
+    }
+
+    useEffect( () => {
+        getTotal()
+    }, [price])
+
     return (
-        <TableRow index = {index}>
-            <TableData>
-                {symbol}
-            </TableData>
-            <TableData>
-                {number}
-            </TableData>
-            <TableData>
-                {price}
-            </TableData>
-            <TableData>
-                {price * number}
-            </TableData>
-        </TableRow>
+            <TableRow index = {index}>
+                <TableData>
+                    {symbol}
+                </TableData>
+                <TableData>
+                    {number}
+                </TableData>
+                <TableData>
+                    {price}
+                </TableData>
+                <TableData>
+                    {total}
+                </TableData>
+            </TableRow>
     )
 }
 

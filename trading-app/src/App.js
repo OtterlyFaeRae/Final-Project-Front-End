@@ -21,7 +21,6 @@ import { checkToken } from "./utils";
 // utils
 import { logout } from "./utils"
 
-
 // ------------------------------------------------------------------- //
 function App() {
 	// login setup, determines if you are logged in, #TODO --> connect it with backend login function

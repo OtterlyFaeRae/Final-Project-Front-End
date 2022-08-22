@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { useEffect, useState } from "react"
 
-const PortfolioItem = ({name, symbol, price, number}) => {
+const PortfolioItem = ({name, symbol, price, number, index}) => {
 
     const [ total, setTotal ] = useState(0)
 
@@ -15,11 +15,7 @@ const PortfolioItem = ({name, symbol, price, number}) => {
     }, [price])
 
     return (
-        <>
-        {
-            number > 0
-            &&
-            <TableRow>
+            <TableRow index = {index}>
                 <TableData>
                     {symbol}
                 </TableData>
@@ -27,20 +23,20 @@ const PortfolioItem = ({name, symbol, price, number}) => {
                     {number}
                 </TableData>
                 <TableData>
-                    {price.toFixed(2)}
+                    {price}
                 </TableData>
                 <TableData>
                     {total}
                 </TableData>
             </TableRow>
-        }
-        </>
     )
 }
 
-export default PortfolioItem
-
 const TableRow = styled.tr`
+    ${props => props.index % 2 === 1 ? 'background-color: #222224' : 'background-color: #28292e'}
 `
 const TableData = styled.td`
+    width: 25%;
 `
+
+export default PortfolioItem

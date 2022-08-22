@@ -38,7 +38,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 		)
 		const stockTotals =  totalPrices.reduce( (prev, curr) => prev + curr, 0)
 		const result = user.cash + stockTotals
-		setTotal(result.toFixed(2))
+		setTotal(result)
 	}
 
 	useEffect( () => {

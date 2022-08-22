@@ -1,18 +1,10 @@
 
 import {Link} from "react-router-dom";
 import styled from "styled-components"
-const logo = require("../logo2.webp")
 
 const Navbar = ({ setIsLoggedIn, isLoggedIn }) => {
   return (
     <Cont>
-      <NavItem>
-      <Link to='/' >
-        <div>
-        <img src = {logo} alt='Logo' className='Logo'/>
-        </div>
-      </Link>
-      </NavItem>
       <LinksCont>
       
         <NavItem>

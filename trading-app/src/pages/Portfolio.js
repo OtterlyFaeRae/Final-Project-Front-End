@@ -4,6 +4,7 @@ import PortfolioItem from "../components/PortfolioItem"
 import { useState } from "react"
 import styled from "styled-components";
 import { getPrices } from "../utils/stock-prices"
+// import { getPrices } from "../utils/finnhub-api"
 
 function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 

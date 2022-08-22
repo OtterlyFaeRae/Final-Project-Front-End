@@ -14,4 +14,4 @@ export const convert = (dollars) => {
   }
   console.log(response)
   return response.poundsDisplay
-
+}

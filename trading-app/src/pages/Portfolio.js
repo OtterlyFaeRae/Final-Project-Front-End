@@ -57,16 +57,16 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user }) {
 					<thead>
 						<tr>
 							<th>
-								name 
+								Stock 
 							</th>
 							<th>
-								symbol
+								Quantity
 							</th>
 							<th>
-								quantity
+								Value per share
 							</th>
 							<th>
-								price
+								Total value
 							</th>
 						</tr>
 					</thead>

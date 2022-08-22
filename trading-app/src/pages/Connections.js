@@ -2,7 +2,8 @@ import React from "react";
 import Navbar from "../components/Navbar"
 import { signUp, login, checkToken, addStocks, updateCash } from "../utils"
 
-function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies }) {
+function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
+    logOut }) {
     const handleSignUp  = async () => {
         // recieve user and token.  set user set token.
         await signUp("test7", "email7", "password7", setUser, setCookie, setIsLoggedIn)
@@ -26,6 +27,7 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies })
 			<Navbar 
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
+                logOut={logOut}
 			/>
 			<h2>This page is for testing connections</h2>
 

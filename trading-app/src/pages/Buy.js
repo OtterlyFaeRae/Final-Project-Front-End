@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import styled from "styled-components"
 import DropdownItem from "../components/DropdownItem";
 import Navbar from "../components/Navbar"
 import BuyStock from "../components/BuyStock"
+import { getPrice } from "../utils/av-api";
 
-function Buy({ setIsLoggedIn, isLoggedIn }) {
+function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser }) {
 
 	const [ input, setInput ] = useState("")
 	const [ tempStocks, setTempStocks ] = useState(['stock1', 'stock2', 'stock3', 'stock3'])
-	const [ stockToBuy, SetStockToBuy ] = useState('')
+	const [ stockToBuy, SetStockToBuy ] = useState("")
+	const [ price, setPrice ] = useState("")
+	// const [ cash, setCash ] = useState(user.cash)
 
 	const handleClickClear = () => {
         setInput("")
@@ -19,46 +22,63 @@ function Buy({ setIsLoggedIn, isLoggedIn }) {
     }
 
     const handleKeyDown = e => {
-        if (e.key === "Enter") {
-			SetStockToBuy( () => e.target.value )
-            setInput("");
+        if (e.key === "Enter" && input) {
+			searchStock()
         }
     }
 
-	const handleClickSearch = () => {
-		SetStockToBuy( () => input )
-        setInput("")
+	const handleClickSearch = async () => {
+		if (input) {
+			searchStock()
+		}
     }
 
+	const searchStock = async () => {
+		const buyPrice = await getPrice(input)
+		SetStockToBuy( () => input )
+		if (!buyPrice) {
+			SetStockToBuy( () => "No stock found.");
+		}
+		setPrice( buyPrice )
+        setInput("")
+	}
+
+	useEffect( () => {
+
+	}, [price])
+
 	return (
-		<Cont>
+		<>
 			<Navbar 
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
 			/>
-			<h2>This is the Buy page</h2>
-			<SearchCont>
-				<input type="text" placeholder="Search" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input} ></input>
-				<button onClick={handleClickClear}  >X</button>
-				<button onClick={handleClickSearch}>search</button>
-			</SearchCont>
-			<DropdownCont>
-				<DropdownList>
-					{
-						input 
-						&&
-						tempStocks.map( (x,i) => (
-							<DropdownItem stock={tempStocks[i]} key={i}/>
-						))
-					}
-				</DropdownList>
-			</DropdownCont>
-			{
-				stockToBuy && !input
-				&&
-				<BuyStock />
-			}
-		</Cont>
+			<Cont>
+				<h2>This is the Buy page.</h2>
+				<p>Cash: {user.cash}</p>
+				<SearchCont>
+					<input type="text" placeholder="Search" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input} ></input>
+					<button onClick={handleClickClear} >X</button>
+					<button onClick={handleClickSearch}>search</button>
+				</SearchCont>
+				<DropdownCont>
+					<DropdownList>
+						{
+							input 
+							&&
+							tempStocks.map( (x,i) => (
+								<DropdownItem stock={tempStocks[i]} key={i}/>
+							))
+						}
+					</DropdownList>
+				</DropdownCont>
+				{
+					stockToBuy 
+					&&
+					<BuyStock price={price} stockToBuy={stockToBuy} user={user} cookies={cookies} setUser={setUser}/>
+				}
+			</Cont>
+		</>
 	);
 }
 

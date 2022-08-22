@@ -1,20 +1,25 @@
 import React from "react";
 import Navbar from "../components/Navbar"
-import { signUp, login, checkToken } from "../utils"
+import { signUp, login, checkToken, addStocks, updateCash } from "../utils"
 
 function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies }) {
  
     const handleSignUp  = async () => {
         // recieve user and token.  set user set token.
-        await signUp("test7", "email7", "password7", setUser, setCookie)
+        await signUp("test7", "email7", "password7", setUser, setCookie, setIsLoggedIn)
     }
     const handleLogin  = async () => {
-        // recieve user and token.  set user set token.
-        await login("Red", "Red", setUser, setCookie)
+        await login("Red", "Red", setUser, setCookie, setIsLoggedIn)
     }
     const handleCheckCookies  = async () => {
-        // recieve user and token.  set user set token.
-        await checkToken(cookies, setCookie, setUser)
+        await checkToken(cookies, setCookie, setUser, setIsLoggedIn)
+    }
+    const handleAddStocks  = async () => {
+        await addStocks("GOOGL", "GOOGL", 1, cookies, setUser)
+    }
+    const handleUpdateCash = async () => {
+        // note: change controler to just check token and return the user.
+        await updateCash(9000, setUser, cookies)
     }
 
 	return (
@@ -28,6 +33,8 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies })
             <button onClick={handleSignUp}>Sign up</button>
             <button onClick={handleLogin}>login</button>
             <button onClick={handleCheckCookies}>checkToken</button>
+            <button onClick={handleAddStocks}>addStocks</button>
+            <button onClick={handleUpdateCash}>updateCash</button>
             <button>delete user</button>
             <button>logout (maybe)</button>
     

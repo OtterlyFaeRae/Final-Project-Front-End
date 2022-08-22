@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar"
 import Select from 'react-select';
 import styled from "styled-components";
-import { getPrice } from "../utils/av-api";
+// import { getPrice } from "../utils/av-api";
 import SellStock from "../components/SellStock"
+import { getPrices } from "../utils/finnhub-fetch";
 
 function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser }) {
 	// dropdown menu source: https://appdividend.com/2022/03/12/react-dropdown-select/
@@ -31,7 +32,7 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser }) {
 	};
 
 	const searchStock = async () => {
-		const sellPrice = await getPrice(stockToSell.label)
+		const sellPrice = await getPrices([stockToSell.label])
 		setPrice( sellPrice )
 	}
 

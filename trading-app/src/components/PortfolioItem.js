@@ -7,7 +7,7 @@ const PortfolioItem = ({name, symbol, price, number}) => {
 
     const getTotal = async () => {
         const result = price * number
-        setTotal( result.toFixed(2) )
+        setTotal( result )
     }
 
     useEffect( () => {
@@ -17,7 +17,7 @@ const PortfolioItem = ({name, symbol, price, number}) => {
     return (
         <>
         {
-            number > 0
+            number > 0 
             &&
             <TableRow>
                 <TableData>
@@ -27,7 +27,7 @@ const PortfolioItem = ({name, symbol, price, number}) => {
                     {number}
                 </TableData>
                 <TableData>
-                    {price.toFixed(2)}
+                    {price}
                 </TableData>
                 <TableData>
                     {total}

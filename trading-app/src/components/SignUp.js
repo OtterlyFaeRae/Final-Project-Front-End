@@ -38,8 +38,6 @@ const Cont = styled.div`
   align-items: center;
   padding-top: 20px;
   padding-bottom: 30px;
-  padding-left: 125px;
-  padding-right: 125px;
   border-radius: 10px;
   border: solid;
   background-color: #212121;
@@ -66,6 +64,8 @@ const Input = styled.input`
   color: white;
   max-width: 220px;
   margin-bottom: 15px;
+  margin-left: 125px;
+  margin-right: 125px;
   &:focus {
     border-color: #5E5DF0;
   }

@@ -3,6 +3,9 @@ import styled from "styled-components"
 import { useNavigate } from 'react-router-dom'
 import { addStocks, updateCash } from "../utils";
 import Modal from 'react-modal';
+import "../Modal.css"
+import noMoney from "../images/no money.png"
+import yesMoney from "../images/cashInHand.png"
 
 const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
 
@@ -83,12 +86,13 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
 
     const customStyles = {
         content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: "auto",
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+          background: "#222224"
         },
     };
 
@@ -125,8 +129,9 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
         }
 
         <Modal
-            isOpen={modalOpen}
-            style={customStyles}
+         isOpen={modalOpen}
+         style={customStyles}
+         closeTimeoutMS={200}
 
         //  onAfterOpen={afterOpenModal}
         >
@@ -135,13 +140,16 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
             { !purchaseSuccesful
             ?
             <div>
-            <button onClick={closeModalUnsuccessful}>CLOSE</button>
-            <h1>INSUFFICENT FUNDS</h1>
+            <h1 className="Insufficent">INSUFFICIENT FUNDS</h1>
+            <img className="noMoney" src={noMoney} />
+            <h2 className="valid-ammount">PLEASE ENTER A VALID AMMOUNT</h2>
+            <button className="closeUnsuccessful" onClick={closeModalUnsuccessful}>CLOSE</button>
             </div>
             :
             <div>
-            <button onClick={closeModalSuccessful}>CLOSE</button>
-            <h1>Purchase successful</h1>
+            <h1 className="Insufficent">PURCHASE SUCCESSFUL</h1>
+            <img className="yesMoney" src={yesMoney} />
+            <button className="closeSuccessful" onClick={closeModalSuccessful}>CLOSE</button>
             </div>
             }
             </div>

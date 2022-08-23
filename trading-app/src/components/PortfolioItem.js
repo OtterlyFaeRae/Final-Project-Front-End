@@ -38,6 +38,8 @@ const TableRow = styled.tr`
 `
 const TableData = styled.td`
     width: 25%;
+    padding-top: 5px;
+    padding-bottom: 5px;
 `
 
 export default PortfolioItem

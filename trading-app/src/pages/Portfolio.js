@@ -85,7 +85,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 						))
 					}
 					{/* cash row */}
-					<CashRow>
+					<tr>
 						<TD>
 						
 						</TD>
@@ -102,9 +102,9 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 								user.cash.toFixed(2)
 							}
 						</EndBox>
-					</CashRow>
+					</tr>
 					{/* total row */}
-					<TotalRow>
+					<tr>
 						<TD>
 							
 						</TD>
@@ -117,7 +117,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 						<EndBox colour={'#28292e'}>
 							<p>{total}</p>
 						</EndBox>
-					</TotalRow>
+					</tr>
 					</PortTBody>
 				</PortTable>
 			</TableCont>
@@ -131,10 +131,7 @@ const Cont = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	!padding: auto;
 	justify-content: center;
-	align-items: center;
-	border: 1px solid black;
 `
 
 const TableCont = styled.div`
@@ -142,7 +139,6 @@ const TableCont = styled.div`
 	padding: auto;
 	margin: auto;
 	padding-top: 10%;
-	align-self: center;
 	width: 40%;
 `
 
@@ -161,12 +157,13 @@ const TH = styled.th`
 `
 
 const TR = styled.tr`
-
 	text-align: center;
 `
 
 const TD = styled.td`
 	width: 30%;
+	min-width: 70px;
+	padding: 1rem;
 `
 
 const PortTBody = styled.tbody`
@@ -175,12 +172,8 @@ const PortTBody = styled.tbody`
 	text-align: center;
 `
 
-const TotalRow = styled.tr`
-`
-const CashRow = styled.tr`
-`
-
 const EndBox = styled.td`
 	background: ${props => props.colour};
-	width: 10%;
+	width: 30%;
+	min-width: 70px;
 `

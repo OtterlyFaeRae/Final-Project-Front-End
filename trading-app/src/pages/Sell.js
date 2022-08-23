@@ -46,6 +46,28 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 		}
 	}, [stockToSell] )
 
+	// dropdown styles
+
+	const colourStyles = {
+		control: (styles) => ({ ...styles, backgroundColor: "black", border: "solid #31356E 2px" }),
+		option: (styles, { isDisabled }) => {
+		  return {
+			...styles,
+			backgroundColor: isDisabled ? "red" : "black",
+			color: "#FFF",
+			cursor: isDisabled ? "not-allowed" : "default",
+			border: '0 !important',
+			// This line disable the blue border
+			boxShadow: '0 !important',
+			'&:hover': {
+				backgroundColor: "white",
+				color: "black",
+			 }
+
+		  };
+		}
+	  };
+
 	return (
 		<>
 			<Navbar 
@@ -60,7 +82,12 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 					<div className="row">
 						<div className="col-md-4"></div>
 							<div className="col-md-4">
-								<Select onChange={ handleChange } options={ stocks } />
+								<Select 
+									placeholder={<div>Select stock...</div>}
+									onChange={ handleChange } 
+									options={ stocks } 
+									styles={colourStyles}
+								/>
 							</div>
 						<div className="col-md-4"></div>
 					</div>
@@ -85,5 +112,5 @@ const Cont = styled.div`
 `
 const DropdownCont = styled.div`
 margin: 1rem;
-	width: 200px;
+	width: 300px;
 `

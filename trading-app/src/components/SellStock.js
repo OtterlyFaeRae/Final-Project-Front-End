@@ -67,7 +67,7 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
                             </SymbolCont>
                             <OwnedStockBox>
                                 <p>Your stocks:</p>
-                                <p>{user.stocks.find(x => x.name === stockToSell.label).number}</p>
+                                <p>{user.stocks.find(x => x.name === stockToSell) ?  user.stocks.find(x => x.name === stockToSell).number : 'None.'}</p>
                             </OwnedStockBox>
                         </TopSubCont>
                             <ValBox>

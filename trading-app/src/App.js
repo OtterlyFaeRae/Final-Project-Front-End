@@ -156,17 +156,20 @@ function App() {
 export default App;
 
 const GlobalStyle = createGlobalStyle`
-  * {
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-	background-color: #212121;
-	color: white;
+	'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+	sans-serif;
+
 
 	// dev tool
 	/* outline: limegreen 1px solid; */
-  }
+}
+body {
+	background-color: #212121;
+	color: white;
+}
 `;

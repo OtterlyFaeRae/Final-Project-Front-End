@@ -49,6 +49,7 @@ const Cont = styled.div`
   border-bottom-style: solid;
   border-bottom-color: #5E5DF0;
   border-bottom-width: 1px;
+  background-color: #212121;
 `
 const LinksCont = styled.ul`
   display: flex;

@@ -131,13 +131,18 @@ const Cont = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: auto;
+	!padding: auto;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid black;
 `
 
 const TableCont = styled.div`
 	display: table;
 	padding: auto;
-	align-content: center;
+	margin: auto;
+	padding-top: 10%;
+	align-self: center;
 	width: 40%;
 `
 

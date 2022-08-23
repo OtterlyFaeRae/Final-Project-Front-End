@@ -57,7 +57,7 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 			/>
 			<Cont>
 				<h2>This is the Buy page.</h2>
-				<p>Cash: {user.cash}</p>
+				<p>Cash: {user.cash.toFixed(2)}</p>
 				<SearchCont>
 					<input type="text" placeholder="Search" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input} ></input>
 					<button onClick={handleClickClear} >X</button>

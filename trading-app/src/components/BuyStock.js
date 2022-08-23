@@ -94,7 +94,7 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
 
     return (
         <Cont>
-        <h4>Buy container. Cash: ${user.cash}.</h4>
+        <h4>Buy container. Cash: ${user.cash.toFixed(2)}.</h4>
         {
             stockToBuy !== "No stock found."
             ?

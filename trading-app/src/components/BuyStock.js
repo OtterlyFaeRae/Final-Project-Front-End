@@ -8,16 +8,7 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
 
     const [ input, setInput ] = useState("")
     const [modalOpen, setModalOpen] = useState(false)
-
-    const isModalOpen = () => {
-        setModalOpen(true)
-    }
-
-    const closeModal = () => {
-        setModalOpen(false)
-    }
-
-    Modal.setAppElement('#root');
+    const [purchaseSuccesful, setPurchaseSuccesful] = useState(false)
 
     const navigate = useNavigate();
 
@@ -56,9 +47,10 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
             } else {
                 await addStocks( stockToBuy, "stock name", parseInt(input), cookies, setUser)
                 await updateCash( user.cash - total, setUser, cookies )
-                isModalOpen();
-                navigate("/portfolio")
-                refreshPage() // update user stocks
+                setPurchaseSuccesful(true)
+                isModalOpen()
+                // navigate("/portfolio")
+                // refreshPage() // update user stocks
             }
             setInput("")
         }
@@ -67,6 +59,38 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
     const refreshPage = () => {
         window.location.reload(false);
     }
+
+    //MODAL FUNCTIONS
+    const closeModalUnsuccessful = () => {
+        closeModal()
+        setInput("")
+    }
+
+    const closeModalSuccessful = () => {
+        navigate("/portfolio")
+        refreshPage()
+    }
+
+    const isModalOpen = () => {
+        setModalOpen(true)
+    }
+
+    const closeModal = () => {
+        setModalOpen(false)
+    }
+
+    Modal.setAppElement('#root');
+
+    const customStyles = {
+        content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+        },
+      };
 
     return (
         <Cont>
@@ -93,13 +117,26 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
 
         <Modal
          isOpen={modalOpen}
+         style={customStyles}
 
         //  onAfterOpen={afterOpenModal}
         >
             <div>
-            <button onClick={closeModal}>CLOSE</button>
+            
+            { !purchaseSuccesful
+            ?
+            <div>
+            <button onClick={closeModalUnsuccessful}>CLOSE</button>
             <h1>INSUFFICENT FUNDS</h1>
             </div>
+            :
+            <div>
+            <button onClick={closeModalSuccessful}>CLOSE</button>
+            <h1>Purchase successful</h1>
+            </div>
+            }
+            </div>
+            
         </Modal>
 
     </Cont>

@@ -49,13 +49,13 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 	// dropdown styles
 
 	const colourStyles = {
-		control: (styles) => ({ ...styles, backgroundColor: "black", border: "solid #31356E 2px" }),
+		control: (styles) => ({ ...styles, backgroundColor: "black", border: "solid #31356E 2px",        borderRadius: "10px" }),
 		option: (styles, { isDisabled }) => {
 		  return {
 			...styles,
 			backgroundColor: isDisabled ? "red" : "black",
 			color: "#FFF",
-			cursor: isDisabled ? "not-allowed" : "default",
+			cursor: "pointer",
 			border: '0 !important',
 			// This line disable the blue border
 			boxShadow: '0 !important',

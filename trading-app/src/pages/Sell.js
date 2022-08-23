@@ -77,7 +77,7 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 			/>
 			<Cont>
 				<h2>This is the Sell page</h2>
-				<p>Cash: ${user.cash.toFixed(2)}</p>
+				<p>Cash: ${user && user.cash.toFixed(2)}</p>
 				<DropdownCont>
 					<div className="row">
 						<div className="col-md-4"></div>

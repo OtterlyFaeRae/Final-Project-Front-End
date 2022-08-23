@@ -162,6 +162,7 @@ const TR = styled.tr`
 
 const TD = styled.td`
 	width: 30%;
+	padding: 1rem;
 `
 
 const PortTBody = styled.tbody`

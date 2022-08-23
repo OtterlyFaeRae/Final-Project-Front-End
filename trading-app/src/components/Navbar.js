@@ -13,6 +13,7 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut }) => {
   return (
     <Cont>
       <LinksCont>
+      
         <NavItem>
           <Link to='/'>Landing</Link>
         </NavItem>

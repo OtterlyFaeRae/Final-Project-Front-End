@@ -99,7 +99,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 							{
 								user
 								&&
-								user.cash.toFixed(2)
+								<p>${user.cash.toFixed(2)}</p>
 							}
 						</EndBox>
 					</tr>
@@ -115,7 +115,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 							Total:
 						</EndBox>
 						<EndBox colour={'#28292e'}>
-							<p>{total}</p>
+							<p>${total.toFixed(2)}</p>
 						</EndBox>
 					</tr>
 					</PortTBody>

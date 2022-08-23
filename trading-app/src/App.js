@@ -158,6 +158,7 @@ export default App;
 const GlobalStyle = createGlobalStyle`
 * {
     box-sizing: border-box;
+	text-decoration: none;
     padding: 0;
     margin: 0;
     font-family: 'Roboto', 'Oxygen',

@@ -70,7 +70,6 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
                                 <p>{user.stocks.find(x => x.name === stockToSell.label).number}</p>
                             </OwnedStockBox>
                         </TopSubCont>
-                            
                             <ValBox>
                                 <h2>${Math.round(price*100)/100}</h2>
                             </ValBox>

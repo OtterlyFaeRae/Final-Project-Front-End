@@ -35,7 +35,7 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 		const sellPrice = await getPrices([stockToSell.label])
 		console.log(stockToSell.label);
 		console.log("sellprice = " + sellPrice);
-		if (sellPrice !== 0) {
+		if (sellPrice) {
 			setPrice( () => sellPrice )
 		}
 	}

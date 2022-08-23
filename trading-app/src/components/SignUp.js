@@ -13,14 +13,11 @@ const SignUp = ({toggle, setUser, setCookie, setIsLoggedIn}) => {
   
   return (
     <div className="login-form">
-      <p id="sign-up-text">Sign up to make or lose lots of money.</p>
+      <h2>Sign Up</h2>
       <form onSubmit={submitHandler}>
         <input placeholder="Username" value={username} onChange={(event) => setUsername(event.target.value)}/>
-        <br></br>
         <input placeholder="Email" value={email}onChange={(event) => setEmail(event.target.value)}/>
-        <br></br>
         <input type="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)}/>
-        <br></br>
         <button className="submit" type="submit">Sign Up</button>
       </form>
       {/* Display below if sign up fails */}

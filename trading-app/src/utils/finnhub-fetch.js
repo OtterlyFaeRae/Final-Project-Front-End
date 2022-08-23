@@ -1,6 +1,6 @@
 const getPrice = async (symbol) => {
     try {
-        const response = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=cbtqh1qad3i651t1f21g`)
+        const response = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${process.env.REACT_APP_FINNHUB_KEY}`)
         const data = await response.json()
         const result = data.c
         console.log(result);

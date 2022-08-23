@@ -15,9 +15,7 @@ const LoginForm = ({toggle, setUser, changeToken, setCookie, setIsLoggedIn}) => 
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
           <input type='text' value={username} onChange={(e)=>setUsername(e.target.value)} placeholder='Username'/>
-        <br/>
           <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password"/>
-        <br/>
         <button className="submit" type="submit">Log In</button>
       </form>
       {/* set this to appear if login fails */}

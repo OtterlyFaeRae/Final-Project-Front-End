@@ -23,10 +23,10 @@ const PortfolioItem = ({symbol, price, number, index}) => {
                     {number}
                 </TableData>
                 <TableData>
-                    {price}
+                    ${price}
                 </TableData>
                 <TableData>
-                    {total}
+                    ${total.toFixed(2)}
                 </TableData>
         </StyledRow>
     )

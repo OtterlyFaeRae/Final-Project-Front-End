@@ -55,7 +55,7 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
     return (
         <>
         <Cont>
-            <h4>Sell container. Cash: ${user.cash}.</h4>
+            <h4>Sell container. Cash: ${user.cash.toFixed(2)}.</h4>
             {
                 stockToSell 
                 &&

@@ -108,7 +108,7 @@ const Cont = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding-top: 10%;
+	padding-top: 5%;
 `
 const DropdownCont = styled.div`
 	margin: 1rem;

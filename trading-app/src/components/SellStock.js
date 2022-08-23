@@ -55,18 +55,31 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
     return (
         <>
         <Cont>
-            <h4>Sell container. Cash: ${user && user.cash.toFixed(2)}.</h4>
             {
                 stockToSell 
                 &&
                 <StockCont>
                     <TopCont>
-                        <p>Symbol</p>
-                        <p>{stockToSell.lebel}</p>
+                        <TopSubCont>
+                            <SymbolCont>
+                                <p>Symbol:</p>
+                                <SymbolBox>{stockToSell.label}</SymbolBox>
+                            </SymbolCont>
+                            <OwnedStockBox>
+                                <p>Your stocks:</p>
+                                <p>{user.stocks.find(x => x.name === stockToSell.label).number}</p>
+                            </OwnedStockBox>
+                        </TopSubCont>
+                            
+                            <ValBox>
+                                <h2>${Math.round(price*100)/100}</h2>
+                            </ValBox>
                     </TopCont>
                     <BottomCont>
-                        <p>{price}</p>
-                        <input type="number" placeholder="Quantity" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input} ></input>
+                        <label>
+                            Number: 
+                            <Input type="number" placeholder="Quantity" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input}/>
+                        </label>
                         <button placeholder="Sell" onClick={handleClick}>Sell</button>
                     </BottomCont>
                 </StockCont>
@@ -79,18 +92,57 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
 export default SellStock
 
 const Cont = styled.div`
-    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 `
 const StockCont = styled.div`
 	display: flex;
     flex-direction: column;
-	& > div > p {
-		padding: 0 1rem;
-	}
+    border: 2px solid #31356E;
+    background: black;
+    min-height: 100px;
+    min-width: 300px;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
 `
+
 const TopCont = styled.div`
-	display: flex;
+    display:flex;
+    padding-bottom: 30px;
 `
+
+const TopSubCont = styled.div`
+    display:flex;
+    flex-direction: column; 
+`
+
+const SymbolCont = styled.div`
+	display: flex;
+    padding-bottom: 10px;
+`
+
+const OwnedStockBox = styled.div`
+    display:flex;
+`
+
+const ValBox = styled.div`
+    padding-left: 25%;
+`
+
+const SymbolBox = styled.p`
+    padding-left: 5px;
+`
+
 const BottomCont = styled.div`
 	display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+`
+
+const Input = styled.input`
+    margin-left: 20%;
+    width: 15%;
 `

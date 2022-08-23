@@ -59,7 +59,7 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 				<h2>This is the Buy page.</h2>
 				<p>Cash: {user && user.cash.toFixed(2)}</p>
 				<SearchCont>
-					<Input type="text" placeholder="Search" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input}></Input>
+					<Input type="text" placeholder="Search..." onKeyDown={handleKeyDown} onChange={handleOnChange} value={input}></Input>
 					<ClearInput onClick={handleClickClear}>X</ClearInput>
 					<SearchButton onClick={handleClickSearch}>Search</SearchButton>
 				</SearchCont>
@@ -107,7 +107,6 @@ const Input = styled.input`
 	background-color: black;
 	color: white;
 	padding: 8px 10px 8px 30px;
-	font-size: larger;
 	&:focus {
 		outline: none;
     /* border-color: #3d428a;

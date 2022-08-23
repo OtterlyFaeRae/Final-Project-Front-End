@@ -59,9 +59,9 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 				<h2>This is the Buy page.</h2>
 				<p>Cash: {user && user.cash.toFixed(2)}</p>
 				<SearchCont>
-					<input type="text" placeholder="Search" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input} ></input>
-					<button onClick={handleClickClear} >X</button>
-					<button onClick={handleClickSearch}>search</button>
+					<Input type="text" placeholder="Search" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input}></Input>
+					<ClearInput onClick={handleClickClear}>X</ClearInput>
+					<SearchButton onClick={handleClickSearch}>Search</SearchButton>
 				</SearchCont>
 				<DropdownCont>
 					<DropdownList>
@@ -92,6 +92,65 @@ const Cont = styled.div`
 	align-items: center;
 `
 const SearchCont = styled.div`
+	margin: 1rem;
+	width: 300px;
+    height: 40px;
+	position: relative;
+`
+const Input = styled.input`
+	width: 100%;
+	height: 100%;
+	border: solid #31356E 2px;
+	border-radius: 10px;
+	position: absolute;
+	font-size: medium;
+	background-color: black;
+	color: white;
+	padding: 8px 10px 8px 30px;
+	font-size: larger;
+	&:focus {
+		outline: none;
+    /* border-color: #3d428a;
+    box-shadow: 0 0 3px #3d428a; */
+	}
+	&:hover {
+		outline: none;
+    border-color: #483d8b;
+    box-shadow: 0 0 10px #3d428a;
+	}
+`
+const SearchButton = styled.button`
+	position: absolute;
+	height: 36px;
+	border-radius: 6px;
+	right: 0;
+	background-color: #3d428a;
+	&:hover {
+		background-color: #3d428a;
+		outline: solid #3d428a 1px;
+		box-shadow: 0 0 15px #31356E;
+	}
+	border: none;
+	cursor: pointer;
+	color: rgba(255,255,255,0.7);
+	font-size: medium;
+	padding: 0 12px;
+	margin: 2px;
+`
+const ClearInput = styled.button`
+	background-color: black;
+	border: none;
+	color: rgba(255,255,255,0.55);
+	&:hover {
+		color: rgba(255,255,255,0.45);
+	}
+	position: absolute;
+	z-index: 3;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+	font-size: large;
+	cursor: pointer;
 `
 const DropdownCont = styled.div`
 `

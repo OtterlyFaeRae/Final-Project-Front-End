@@ -110,7 +110,7 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
                             </SymbolCont>
                             <OwnedStockBox>
                                 <p>Your stocks:</p>
-                                <p>{user.stocks.find(x => x.name === stockToBuy).number}</p>
+                                <p>{user.stocks.find(x => x.name === stockToBuy) ?  user.stocks.find(x => x.name === stockToBuy).number : 'None.'}</p>
                             </OwnedStockBox>
                         </TopSubCont>
                             <ValBox>
@@ -129,9 +129,9 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
         }
 
         <Modal
-         isOpen={modalOpen}
-         style={customStyles}
-         closeTimeoutMS={200}
+        isOpen={modalOpen}
+        style={customStyles}
+        closeTimeoutMS={200}
 
         //  onAfterOpen={afterOpenModal}
         >

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { useEffect, useState } from "react"
 
-const PortfolioItem = ({name, symbol, price, number, index}) => {
+const PortfolioItem = ({symbol, price, number, index}) => {
 
     const [ total, setTotal ] = useState(0)
 
@@ -15,10 +15,9 @@ const PortfolioItem = ({name, symbol, price, number, index}) => {
     }, [price])
 
     return (
-            <TableRow index = {index}>
-
+            <StyledRow index = {index} symbol = {symbol} price = {price} number = {number} total = {total}>
                 <TableData>
-                    {symbol}
+                {symbol}
                 </TableData>
                 <TableData>
                     {number}
@@ -29,12 +28,31 @@ const PortfolioItem = ({name, symbol, price, number, index}) => {
                 <TableData>
                     {total}
                 </TableData>
-            </TableRow>
+        </StyledRow>
     )
 }
 
-const TableRow = styled.tr`
-    ${props => props.index % 2 === 1 ? 'background-color: #222224' : 'background-color: #28292e'}
+// const TableRow = ({index, symbol, price, number, total}) => {
+//     return (
+    // <tr>
+    //     <TableData>
+    //         {symbol}
+    //     </TableData>
+    //     <TableData>
+    //         {number}
+    //     </TableData>
+    //     <TableData>
+    //         {price}
+    //     </TableData>
+    //     <TableData>
+    //         {total}
+    //     </TableData>
+    // </tr>
+//     )
+// }
+
+const StyledRow = styled.tr`
+    ${props => props.index % 2 === 1 ? 'background-color: #222224;' : 'background-color: #28292e;'}
 `
 const TableData = styled.td`
     width: 25%;

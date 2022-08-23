@@ -151,7 +151,7 @@ const PortTable = styled.thead`
 `
 
 const PortTHead = styled.thead`
-	background: #31356e;
+	background: #31356e !important;
 	padding: auto;
 `
 

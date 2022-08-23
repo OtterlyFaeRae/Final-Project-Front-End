@@ -71,6 +71,7 @@ function App() {
 								isLoggedIn={isLoggedIn}
 								setIsLoggedIn={setIsLoggedIn}
 								user={user}
+								logOut={logOut}
 							/>
 						</Protected>
 					}
@@ -87,6 +88,7 @@ function App() {
 								isLoggedIn={isLoggedIn}
 								setIsLoggedIn={setIsLoggedIn}
 								user={user}
+								logOut={logOut}
 							/>
 						</Protected>
 					}
@@ -102,6 +104,7 @@ function App() {
 								setIsLoggedIn={setIsLoggedIn}
 								user={user}
 								cookies={cookies}
+								logOut={logOut}
 							/>
 						</Protected>
 					}
@@ -117,6 +120,8 @@ function App() {
 								setIsLoggedIn={setIsLoggedIn}
 								user={user}
 								cookies={cookies}
+								logOut={logOut}
+								setUser={setUser}
 							/>
 						</Protected>
 					}
@@ -136,6 +141,7 @@ function App() {
 								setCookie={setCookie}
 								user={user}
 								setUser={setUser}
+								logOut={logOut}
 							/>
 						</Protected>
 					}

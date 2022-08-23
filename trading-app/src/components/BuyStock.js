@@ -2,10 +2,23 @@ import { useState } from "react";
 import styled from "styled-components"
 import { useNavigate } from 'react-router-dom'
 import { addStocks, updateCash } from "../utils";
+import Modal from 'react-modal';
 
 const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
 
     const [ input, setInput ] = useState("")
+    const [modalOpen, setModalOpen] = useState(false)
+
+    const isModalOpen = () => {
+        setModalOpen(true)
+    }
+
+    const closeModal = () => {
+        setModalOpen(false)
+    }
+
+    Modal.setAppElement('#root');
+
     const navigate = useNavigate();
 
     const handleOnChange = async e => {
@@ -33,22 +46,24 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
         //              updateCash( cash - total )
         //              modal pop up "Purchase sucessful"
         //              redirect to portfolio page
+
+        
         if (input) {
+            
             const total = price * input
             if (total > user.cash) {
-                alert("Insufficient funds.")
-                setInput("")
+                isModalOpen();
             } else {
                 await addStocks( stockToBuy, "stock name", parseInt(input), cookies, setUser)
                 await updateCash( user.cash - total, setUser, cookies )
-                alert("Purchase sucessful.")
+                isModalOpen();
                 navigate("/portfolio")
                 refreshPage() // update user stocks
             }
             setInput("")
         }
     }
-
+        
     const refreshPage = () => {
         window.location.reload(false);
     }
@@ -75,6 +90,17 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
                 <p>No stock found.</p>
             </StockNotFoundCont>
         }
+
+        <Modal
+         isOpen={modalOpen}
+
+        //  onAfterOpen={afterOpenModal}
+        >
+            <div>
+            <button onClick={closeModal}>CLOSE</button>
+            <h1>INSUFFICENT FUNDS</h1>
+            </div>
+        </Modal>
 
     </Cont>
     )

@@ -1,7 +1,15 @@
-import {Link} from "react-router-dom";
-import styled from "styled-components"
+import {Link, useNavigate} from "react-router-dom";
+import styled from "styled-components";
 
-const Navbar = ({ setIsLoggedIn, isLoggedIn }) => {
+
+const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut }) => {
+
+
+  const handleLogout = async () => {
+    await logOut()
+
+  }
+
   return (
     <Cont>
       <LinksCont>
@@ -22,7 +30,8 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn }) => {
           <Link to='/connections'>Connections</Link>
         </NavItem>
         <NavItem>
-          <Link to='/Login'>Logout</Link>
+          {/* <Link onClick={handleLogout} to='/login'>Logout</Link> */}
+          <p onClick={handleLogout}>Logout</p>
         </NavItem>
       </LinksCont>
     </Cont>

@@ -33,11 +33,17 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 
 	const searchStock = async () => {
 		const sellPrice = await getPrices([stockToSell.label])
-		setPrice( sellPrice )
+		console.log(stockToSell.label);
+		console.log("sellprice = " + sellPrice);
+		if (sellPrice) {
+			setPrice( () => sellPrice )
+		}
 	}
 
 	useEffect( () => {
-		searchStock() 
+		if (stockToSell) {
+			searchStock() 
+		}
 	}, [stockToSell] )
 
 	return (

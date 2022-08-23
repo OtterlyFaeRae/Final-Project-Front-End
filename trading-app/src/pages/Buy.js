@@ -56,8 +56,9 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 				logOut={logOut}
 			/>
 			<Cont>
-				<h2>This is the Buy page.</h2>
-				<p>Cash: {user && user.cash.toFixed(2)}</p>
+				<h2>Buy Stocks</h2>
+				<br/>
+				<p>Your Cash: ${user && user.cash.toFixed(2)}</p>
 				<SearchCont>
 					<Input type="text" placeholder="Search..." onKeyDown={handleKeyDown} onChange={handleOnChange} value={input}></Input>
 					<ClearInput onClick={handleClickClear}>X</ClearInput>
@@ -90,11 +91,13 @@ const Cont = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding-top: 5%;
 `
 const SearchCont = styled.div`
 	margin: 1rem;
 	width: 300px;
     height: 40px;
+	margin-top: 5%;
 	position: relative;
 `
 const Input = styled.input`

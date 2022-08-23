@@ -22,7 +22,7 @@ function Login({ logOut, logIn, isLoggedIn, setIsLoggedIn, cookies, setCookie, u
 
 	return (
 		<Cont background={background}>
-			<h1>TradeWarZ</h1>
+			<Header1>TradeWarZ</Header1>
 				{/* Login and Log out state functions */}
 				{isLoggedIn ? (
 					<>
@@ -58,6 +58,8 @@ export default Login;
 const Cont =  styled.div`
   display: flex;
   flex-direction: column;
+  padding-top: 90px;
+  gap: 60px;
   align-items: center;
   height: 100vh;
   background-image: url(${props => props.background});
@@ -65,4 +67,10 @@ const Cont =  styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
+`
+
+const Header1 =  styled.h1`
+	font-size: 100px;
+	font-family: 'Play', sans-serif;
+	text-align: center;
 `

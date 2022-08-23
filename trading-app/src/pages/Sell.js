@@ -49,24 +49,23 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 	// dropdown styles
 
 	const colourStyles = {
-		control: (styles) => ({ ...styles, backgroundColor: "black", border: "solid #31356E 2px" }),
+		control: (styles) => ({ ...styles, backgroundColor: "black", border: "solid #31356E 2px",        borderRadius: "10px" }),
 		option: (styles, { isDisabled }) => {
-		  return {
-			...styles,
-			backgroundColor: isDisabled ? "red" : "black",
-			color: "#FFF",
-			cursor: isDisabled ? "not-allowed" : "default",
-			border: '0 !important',
-			// This line disable the blue border
-			boxShadow: '0 !important',
-			'&:hover': {
-				backgroundColor: "white",
-				color: "black",
-			 }
-
-		  };
+			return {
+				...styles,
+				backgroundColor: isDisabled ? "red" : "black",
+				color: "#FFF",
+				cursor: isDisabled ? "not-allowed" : "default",
+				border: '0 !important',
+				// This line disable the blue border
+				boxShadow: '0 !important',
+				'&:hover': {
+					backgroundColor: "white",
+					color: "black",
+				}
+			};
 		}
-	  };
+	};
 
 	return (
 		<>
@@ -76,8 +75,9 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 				logOut={logOut}
 			/>
 			<Cont>
-				<h2>This is the Sell page</h2>
-				<p>Cash: ${user && user.cash.toFixed(2)}</p>
+				<h2>Sell Stocks</h2>
+				<br/>
+				<p>Your Cash: ${user && user.cash.toFixed(2)}</p>
 				<DropdownCont>
 					<div className="row">
 						<div className="col-md-4"></div>
@@ -92,7 +92,6 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 						<div className="col-md-4"></div>
 					</div>
 				</DropdownCont>
-
 				{
 					stockToSell && price
 					&&
@@ -109,8 +108,10 @@ const Cont = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding-top: 5%;
 `
 const DropdownCont = styled.div`
-margin: 1rem;
+	margin: 1rem;
+	margin-top: 5%;
 	width: 300px;
 `

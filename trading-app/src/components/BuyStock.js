@@ -94,22 +94,31 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
           transform: 'translate(-50%, -50%)',
           background: "#222224"
         },
-      };
+    };
 
     return (
         <Cont>
-        <h4>Buy container. Cash: ${user && user.cash.toFixed(2)}.</h4>
         {
             stockToBuy !== "No stock found."
             ?
             <StockCont>
                 <TopCont>
-                    <p>Symbol</p>
-                    <p>{stockToBuy}</p>
-                </TopCont>
+                        <TopSubCont>
+                            <SymbolCont>
+                                <p>Symbol:</p>
+                                <SymbolBox>{stockToBuy}</SymbolBox>
+                            </SymbolCont>
+                            <OwnedStockBox>
+                                <p>Your stocks:</p>
+                                <p>{user.stocks.find(x => x.name === stockToBuy).number}</p>
+                            </OwnedStockBox>
+                        </TopSubCont>
+                            <ValBox>
+                                <h2>${Math.round(price*100)/100}</h2>
+                            </ValBox>
+                    </TopCont>
                 <BottomCont>
-                    <p>{price}</p>
-                    <input type="number" placeholder="Quantity" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input} ></input>
+                    <input type="number" placeholder="Quantity" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input} />
                     <button onClick={handleClick} placeholder="buy">Buy</button>
                 </BottomCont>
             </StockCont>
@@ -154,18 +163,49 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
 export default BuyStock
 
 const Cont = styled.div`
-    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 `
 const StockCont = styled.div`
-	display: flex;
+    display: flex;
     flex-direction: column;
-	& > div > p {
-		padding: 0 1rem;
-	}
+    border: 2px solid #31356E;
+    background: black;
+    min-height: 150px;
+    min-width: 300px;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
 `
 const TopCont = styled.div`
-	display: flex;
+    display:flex;
+    padding-bottom: 30px;
 `
+
+const TopSubCont = styled.div`
+    display:flex;
+    flex-direction: column; 
+`
+
+const SymbolCont = styled.div`
+	display: flex;
+    padding-bottom: 10px;
+`
+
+const SymbolBox = styled.p`
+    padding-left: 5px;
+`
+
+const OwnedStockBox = styled.div`
+    display:flex;
+`
+
+const ValBox = styled.div`
+    padding-left: 25%;
+`
+
 const BottomCont = styled.div`
 	display: flex;
 `

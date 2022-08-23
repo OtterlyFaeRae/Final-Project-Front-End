@@ -12,11 +12,10 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut }) => {
 
   return (
     <Cont>
-      <Header1>TradeWarz</Header1>
+      <Link to='/'>
+        <Header1>TradeWarz</Header1>
+      </Link>
       <LinksCont>
-        <NavItem>
-          <Link to='/'>Landing</Link>
-        </NavItem>
         <NavItem>
           <Link to='/Portfolio'>Portfolio</Link>
         </NavItem>
@@ -25,9 +24,6 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut }) => {
         </NavItem>
         <NavItem>
           <Link to='/Sell'>Sell</Link>
-        </NavItem>
-        <NavItem>
-          <Link to='/connections'>Connections</Link>
         </NavItem>
         <div>
         <NavItem>

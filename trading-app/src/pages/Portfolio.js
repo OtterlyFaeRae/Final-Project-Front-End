@@ -52,7 +52,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 				isLoggedIn={isLoggedIn} 
 				logOut={logOut}
 			/>
-			<h2>This is the Portfolio Page</h2>
+			<Title>Portfolio</Title>
 			<TableCont>
 				<PortTable>
 					<PortTHead>
@@ -127,18 +127,21 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 
 export default Portfolio;
 
+const Title = styled.h2`
+	padding-top: 5%;
+`
+
 const Cont = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
 `
 
 const TableCont = styled.div`
 	display: table;
 	padding: auto;
 	margin: auto;
-	padding-top: 10%;
+	padding-top: 5%;
 	width: 40%;
 `
 

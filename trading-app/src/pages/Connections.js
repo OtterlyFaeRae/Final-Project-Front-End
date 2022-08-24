@@ -1,11 +1,10 @@
 import React from "react";
 import Navbar from "../components/Navbar"
-import { signUp, login, checkToken, addStocks, updateCash } from "../utils"
+import { signUp, login, checkToken, addStocks, updateCash, deleteUser } from "../utils"
 
 function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
     logOut, user }) {
     const handleSignUp  = async () => {
-        // recieve user and token.  set user set token.
         await signUp("test7", "email7", "password7", setUser, setCookie, setIsLoggedIn)
     }
     const handleLogin  = async () => {
@@ -18,8 +17,10 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
         await addStocks("GOOGL", "GOOGL", 1, cookies, setUser)
     }
     const handleUpdateCash = async () => {
-        // note: change controller to just check token and return the user.
         await updateCash(9000, setUser, cookies)
+    }
+    const handleDeleteUser = async () => {
+        await deleteUser("shaun", "shaun", setUser, setCookie, setIsLoggedIn  )
     }
 
 	return (
@@ -37,7 +38,7 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
             <button onClick={handleCheckCookies}>checkToken</button>
             <button onClick={handleAddStocks}>addStocks</button>
             <button onClick={handleUpdateCash}>updateCash</button>
-            <button>delete user</button>
+            <button onClick={handleDeleteUser}>delete user</button>
             <button>logout (maybe)</button>
     
 		</div>

@@ -9,7 +9,7 @@ const Navbar = ({ logOut, user }) => {
 		<Cont>
 			<Left>
 				<Link to="/">
-					<Header1>TradeWarz</Header1>
+					<Header1>TradeWarZ</Header1>
 				</Link>
 				<Link to="/Portfolio">Portfolio</Link>
 				<Link to="/Buy">Buy</Link>

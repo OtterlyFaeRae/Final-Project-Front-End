@@ -4,7 +4,6 @@ import LoginForm from "../components/LoginForm";
 import { useState } from "react";
 import { changeToken } from "../utils/helpers";
 import styled from "styled-components";
-import "../Login.css";
 import background from "../images/stocks3.jpg"
 import { useNavigate } from 'react-router-dom'
 

@@ -51,6 +51,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
 				logOut={logOut}
+				user={user}
 			/>
 			<Title>Portfolio</Title>
 			<TableCont>
@@ -148,6 +149,9 @@ const TableCont = styled.div`
 const PortTable = styled.thead`
 	border-collapse: collapse;
 	color: white;
+
+	/* shaun */
+	/* box-shadow: 0px 1px 5px white; */
 `
 
 const PortTHead = styled.thead`
@@ -157,6 +161,9 @@ const PortTHead = styled.thead`
 
 const TH = styled.th`
 	width: 30%;
+
+	/* shaun */
+	padding: 1rem 0;
 `
 
 const TR = styled.tr`
@@ -179,4 +186,13 @@ const EndBox = styled.td`
 	background: ${props => props.colour};
 	width: 30%;
 	min-width: 70px;
+
+	/* shaun */
+	padding: 0.6rem 2rem;
+
+    /* shaun */
+    &:hover {
+		background-color: #31356e;
+        cursor: pointer;
+	}
 `

@@ -12,8 +12,8 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut }) => {
 
   return (
     <Cont>
+      <Header1>TradeWarz</Header1>
       <LinksCont>
-      
         <NavItem>
           <Link to='/'>Landing</Link>
         </NavItem>
@@ -29,10 +29,12 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut }) => {
         <NavItem>
           <Link to='/connections'>Connections</Link>
         </NavItem>
+        <div>
         <NavItem>
           {/* <Link onClick={handleLogout} to='/login'>Logout</Link> */}
-          <p onClick={handleLogout}>Logout</p>
+          <Button2 onClick={handleLogout}>Logout</Button2>
         </NavItem>
+        </div>
       </LinksCont>
     </Cont>
   );
@@ -41,11 +43,55 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut }) => {
 export default Navbar;
 
 const Cont = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom-style: solid;
+  border-bottom-color: #5E5DF0;
+  border-bottom-width: 1px;
+  background-color: #212121;
 `
 const LinksCont = styled.ul`
   display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+  color: white;
+  margin-left: 25px;
+  list-style: none;
 `
 const NavItem = styled.li`
-padding: 0 1rem`
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+`
+
+const Header1 = styled.h1`
+  text-decoration: none;
+  margin: 20px;
+  font-size: 40px;
+  text-align: center;
+  color: white;
+  margin-left: 30px;
+`
+const Button2 = styled.button`
+  background: #5E5DF0;
+  margin-top: 5px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 28px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+  margin-right: 15px;
+`

@@ -3,8 +3,7 @@ import Navbar from "../components/Navbar"
 import PortfolioItem from "../components/PortfolioItem"
 import { useState } from "react"
 import styled from "styled-components";
-// import { getPrices } from "../utils/stock-prices"
-// import { getPrices } from "../utils/finnhub-api"
+import background from "../images/stocks3.jpg"
 import { getPrices } from "../utils/finnhub-fetch"
 
 function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
@@ -19,15 +18,16 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 		}
 	}, [user])
 
-	useEffect( () => {
-		getPortfolioPrices()
-	}, [stocks])
-
 	const getPortfolioPrices = async () => {
 		const stockSymbols = stocks.map( x => x.name )
 		const result = await getPrices(stockSymbols)
 		setPrices(result)
 	}
+
+	useEffect( () => {
+		getPortfolioPrices()
+		// eslint-disable-next-line
+	}, [stocks])
 
 	const getTotal = () => {
 		// map though prices and stocks and make a new array of totals 
@@ -43,15 +43,18 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 
 	useEffect( () => {
 		getTotal()
+		// eslint-disable-next-line
 	}, [prices])
 	
 	return (
-		<Cont>
+		<Cont background={background}>
 			<Navbar 
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
 				logOut={logOut}
+				user={user}
 			/>
+			<Content>
 			<Title>Portfolio</Title>
 			<TableCont>
 				<PortTable>
@@ -85,42 +88,43 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 						))
 					}
 					{/* cash row */}
-					<tr>
+					<TR>
 						<TD>
 						
 						</TD>
 						<TD>
 							
 						</TD>
-						<EndBox colour={'#222224'}>
+						<EndBox className={"cash-row"} colour={'#222224'}>
 							Cash:
 						</EndBox>
-						<EndBox colour={'#222224'}>
+						<EndBox className={"cash-row"} colour={'#222224'}>
 							{
 								user
 								&&
 								<p>${user.cash.toFixed(2)}</p>
 							}
 						</EndBox>
-					</tr>
+					</TR>
 					{/* total row */}
-					<tr>
+					<TR>
 						<TD>
 							
 						</TD>
 						<TD>
 							
 						</TD>
-						<EndBox colour={'#28292e'}>
+						<EndBox className={"total-row"} colour={'#28292e'}>
 							Total:
 						</EndBox>
-						<EndBox colour={'#28292e'}>
+						<EndBox className={"total-row"} colour={'#28292e'}>
 							<p>${total.toFixed(2)}</p>
 						</EndBox>
-					</tr>
+					</TR>
 					</PortTBody>
 				</PortTable>
 			</TableCont>
+			</Content>
 		</Cont>
 	);
 }
@@ -135,43 +139,73 @@ const Cont = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	gap: 3em;
+	height: 100vh;
+	background-image: url(${props => props.background});
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	gap: 100px;
+`
+
+const Content = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding-top: 20px;
+padding-bottom: 100px;
+padding-right: 100px;
+padding-left: 100px;
+border-radius: 10px;
+border: solid;
+background-color: #212121;
+border-color: #5E5DF0;
+border-width: 1.5px;
+opacity: 1;
+gap: 40px;
+max-width: 75%;
 `
 
 const TableCont = styled.div`
 	display: table;
-	padding: auto;
-	margin: auto;
-	padding-top: 5%;
-	width: 40%;
 `
 
-const PortTable = styled.thead`
+const PortTable = styled.table`
 	border-collapse: collapse;
 	color: white;
+	/* shaun */
+	/* box-shadow: 0px 1px 5px white; */
 `
 
 const PortTHead = styled.thead`
-	background: #31356e !important;
+	background: #5e5df0;
 	padding: auto;
 `
 
 const TH = styled.th`
-	width: 30%;
+	min-width: 150px;
+
+	/* shaun */
+
+	padding: 15px;
 `
 
 const TR = styled.tr`
 	text-align: center;
+	&:hover > .cash-row {
+		background-color: #31356e;
+	}
+	&:hover > .total-row {
+		background-color: #31356e;
+	}
 `
 
 const TD = styled.td`
-	width: 30%;
 	min-width: 70px;
-	padding: 1rem;
 `
 
 const PortTBody = styled.tbody`
-	padding: auto;
-	width: 100%;
 	text-align: center;
 `
 
@@ -179,4 +213,13 @@ const EndBox = styled.td`
 	background: ${props => props.colour};
 	width: 30%;
 	min-width: 70px;
+
+	/* shaun */
+	padding: 0.6rem 2rem;
+
+    /* shaun */
+    &:hover {
+		background-color: #31356e;
+        cursor: pointer;
+	}
 `

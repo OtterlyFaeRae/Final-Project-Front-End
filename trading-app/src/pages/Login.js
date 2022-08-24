@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
-import Navbar from "../components/Navbar"
 import SignUp from "../components/SignUp"
 import LoginForm from "../components/LoginForm";
 import { useState } from "react";
 import { changeToken } from "../utils/helpers";
 import styled from "styled-components";
-import "../Login.css";
 import background from "../images/stocks3.jpg"
 import { useNavigate } from 'react-router-dom'
 
@@ -18,6 +16,7 @@ function Login({ logOut, logIn, isLoggedIn, setIsLoggedIn, cookies, setCookie, u
 		if (isLoggedIn) {
 			navigate("/")
 		}
+		// eslint-disable-next-line
 	}, [user])
 
 	return (
@@ -56,17 +55,17 @@ function Login({ logOut, logIn, isLoggedIn, setIsLoggedIn, cookies, setCookie, u
 export default Login;
 
 const Cont =  styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-top: 90px;
-  gap: 60px;
-  align-items: center;
-  height: 100vh;
-  background-image: url(${props => props.background});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: white;
+	display: flex;
+	flex-direction: column;
+	padding-top: 90px;
+	gap: 60px;
+	align-items: center;
+	height: 100vh;
+	background-image: url(${props => props.background});
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
 `
 
 const Header1 =  styled.h1`

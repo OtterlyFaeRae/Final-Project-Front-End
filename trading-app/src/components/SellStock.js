@@ -6,47 +6,37 @@ import Modal from 'react-modal';
 import "../Modal.css"
 const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
 
-    const [ input, setInput ] = useState("")
-    const [modalOpen, setModalOpen] = useState(false)
-    const [purchaseSuccesful, setPurchaseSuccesful] = useState(false)
+    const [ input, setInput ] = useState("");
+    const [modalOpen, setModalOpen] = useState(false);
+    const [purchaseSuccesful, setPurchaseSuccesful] = useState(false);
     const navigate = useNavigate();
 
     const handleOnChange = async e => {
-        setInput(e.target.value)
-    }
+        setInput(e.target.value);
+    };
 
     const handleKeyDown = async e => {
         if (e.key === "Enter") {
-            await sellStock()
-        }
-    }
+            await sellStock();
+        };
+    };
 
     const handleClick = async () => {
-        await sellStock()
-    }
+        await sellStock();
+    };
 
     const sellStock = async () => {
-        // if there is a quantity :
-        //      total = price * quantity
-        //      if quantity is greater than users stocks :
-        //              modal pop up "Insufficient stocks."
-        //              clear input
-        //      else :
-        //              addStocks( symbol, name, -quantity )
-        //              updateCash( cash + total )
-        //              modal pop up "Sale sucessful"
-        //              redirect to portfolio page
-        if (input) {
+        if (input > 0) {
             const total = price * input 
             if (input > user.stocks.find(x => x.name === stockToSell.label).number) {
-                isModalOpen()
+                alert("Insufficient stocks.")
+                setInput("")
             } else {
                 await addStocks( stockToSell.label, "stock name", -1 * parseInt(input), cookies, setUser)
                 await updateCash( user.cash + total, setUser, cookies )
-                setPurchaseSuccesful(true)
-                isModalOpen()
-                // navigate("/portfolio")
-                // refreshPage() // update user stocks
+                alert("Sale sucessful.")
+                navigate("/portfolio")
+                refreshPage() // update user stocks
             }
         }
     }
@@ -55,38 +45,33 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
         window.location.reload(false);
     }
 
-        //MODAL FUNCTIONS
-        const closeModalUnsuccessful = () => {
-            closeModal()
-            setInput("")
-        }
+    //Modal Functions
+    const closeModal = () => {
+        setModalOpen(false);
+      };
     
-        const closeModalSuccessful = () => {
-            navigate("/portfolio")
-            refreshPage()
-        }
+
+    const closeModalUnsuccessful = () => {
+        closeModal();
+        setInput("");
+      };
     
-        const isModalOpen = () => {
-            setModalOpen(true)
-        }
-    
-        const closeModal = () => {
-            setModalOpen(false)
-        }
-    
-        Modal.setAppElement('#root');
-    
-        const customStyles = {
-            content: {
-              top: '50%',
-              left: '50%',
-              right: 'auto',
-              bottom: "auto",
-              marginRight: '-50%',
-              transform: 'translate(-50%, -50%)',
-              background: "#222224"
-            },
-        };
+      const closeModalSuccessful = () => {
+        navigate("/portfolio");
+        refreshPage();
+      };
+
+      const customStyles = {
+        content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: "auto",
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+          background: "#222224"
+        },
+    };
 
     return (
         <>
@@ -103,7 +88,7 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
                             </SymbolCont>
                             <OwnedStockBox>
                                 <p>Your stocks:</p>
-                                <p>{user.stocks.find(x => x.name === stockToSell.label).number}</p>
+                                <p>{user.stocks.find(x => x.name === stockToSell) ?  user.stocks.find(x => x.name === stockToSell).number : 'None.'}</p>
                             </OwnedStockBox>
                         </TopSubCont>
                             <ValBox>

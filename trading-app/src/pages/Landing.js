@@ -3,13 +3,14 @@ import Navbar from "../components/Navbar"
 import styled from "styled-components";
 import background from "../images/stocks3.jpg"
 
-function Landing({ setIsLoggedIn, isLoggedIn, logOut }) {
+function Landing({ setIsLoggedIn, isLoggedIn, logOut, user }) {
 	return (
 		<Cont background={background}>
 			<Navbar 
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
 				logOut={logOut}
+        user={user}
 			/>
 			<Content>
 				<Header1>Welcome to TradeWarZ</Header1>
@@ -18,7 +19,7 @@ function Landing({ setIsLoggedIn, isLoggedIn, logOut }) {
 				</p>
 				<p>Above would be an intro and some instructions for how the app works</p>
 				<p>Final Code Nation project by Liam, Mahed, Mohammed, Saoirse and Shaun</p>
-				<Button2>Buy some stocks!</Button2>
+				<Button2 href='/buy'>Buy some stocks!</Button2>
 			</Content>
 		</Cont>
 	);
@@ -62,7 +63,7 @@ const Content = styled.div`
 	text-align: center;
 `
 
-const Button2 = styled.button`
+const Button2 = styled.a`
   background: #5E5DF0;
   margin-top: 5px;
   border-radius: 12px;

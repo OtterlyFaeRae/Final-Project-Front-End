@@ -13,7 +13,7 @@ export const signUp = async (username, email, password, setUser, setCookie, setI
               pass: password
             }),
           });
-          const data = await response.json()
+          const data = await response.json();
           console.log("Found user : ");
           console.log(data);
           if (response.status !== 200) {
@@ -24,9 +24,9 @@ export const signUp = async (username, email, password, setUser, setCookie, setI
             setUser( data.user)
             changeToken(setCookie, data.Token)
             setIsLoggedIn(true)
-          }
+          };
     } catch (error) {
-        console.log(error) 
+        console.log(error);
     }
 }
 
@@ -51,10 +51,10 @@ export const login = async (username, password, setUser, setCookie, setIsLoggedI
         setUser( data.user)
         changeToken(setCookie, data.Token)
         setIsLoggedIn(true)
-      }
+      };
     } catch (error) {
       console.log(error);
-    }
+    };
   };
 
   export const checkToken = async (cookies, setCookie, setUser, setIsLoggedIn) => {

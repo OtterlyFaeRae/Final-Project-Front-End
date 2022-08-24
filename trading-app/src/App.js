@@ -11,7 +11,7 @@ import Connections from "./pages/Connections";
 import { useCookies } from 'react-cookie'
 
 // react router dom modules
-import { Link, Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 // import components
 import Protected from "./components/Protected";

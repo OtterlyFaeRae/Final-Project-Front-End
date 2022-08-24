@@ -52,4 +52,3 @@ const TableData = styled.td`
 `
 
 export default PortfolioItem
-

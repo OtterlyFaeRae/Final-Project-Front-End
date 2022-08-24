@@ -32,7 +32,7 @@ function App() {
 
 	useEffect( () => {
 		checkToken(cookies, setCookie, setUser, setIsLoggedIn)
-	}, []);
+	}, [cookies, setCookie]);
 
 	// ------------------------------------------------------------------- //
 	// state altering functions

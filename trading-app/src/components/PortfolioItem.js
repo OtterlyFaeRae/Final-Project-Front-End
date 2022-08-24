@@ -32,25 +32,6 @@ const PortfolioItem = ({symbol, price, number, index}) => {
     )
 }
 
-// const TableRow = ({index, symbol, price, number, total}) => {
-//     return (
-    // <tr>
-    //     <TableData>
-    //         {symbol}
-    //     </TableData>
-    //     <TableData>
-    //         {number}
-    //     </TableData>
-    //     <TableData>
-    //         {price}
-    //     </TableData>
-    //     <TableData>
-    //         {total}
-    //     </TableData>
-    // </tr>
-//     )
-// }
-
 const StyledRow = styled.tr`
     ${props => props.index % 2 === 1 ? 'background-color: #222224;' : 'background-color: #28292e;'}
 `

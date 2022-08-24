@@ -3,8 +3,6 @@ import Navbar from "../components/Navbar"
 import PortfolioItem from "../components/PortfolioItem"
 import { useState } from "react"
 import styled from "styled-components";
-// import { getPrices } from "../utils/stock-prices"
-// import { getPrices } from "../utils/finnhub-api"
 import { getPrices } from "../utils/finnhub-fetch"
 
 function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {

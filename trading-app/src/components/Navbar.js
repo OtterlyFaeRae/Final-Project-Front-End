@@ -2,12 +2,10 @@ import {Link, useNavigate} from "react-router-dom";
 import styled from "styled-components";
 
 
-const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut }) => {
-
+const Navbar = ({ logOut }) => {
 
   const handleLogout = async () => {
     await logOut()
-
   }
 
   return (
@@ -27,7 +25,6 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut }) => {
         </NavItem>
         <div>
         <NavItem>
-          {/* <Link onClick={handleLogout} to='/login'>Logout</Link> */}
           <Button2 onClick={handleLogout}>Logout</Button2>
         </NavItem>
         </div>

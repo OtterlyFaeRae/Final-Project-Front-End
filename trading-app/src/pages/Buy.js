@@ -3,55 +3,53 @@ import styled from "styled-components"
 import DropdownItem from "../components/DropdownItem";
 import Navbar from "../components/Navbar"
 import BuyStock from "../components/BuyStock"
-// import { getPrice } from "../utils/av-api";
 import { getPrices } from "../utils/finnhub-fetch";
 
 function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 
-	const [ input, setInput ] = useState("")
-	const [ tempStocks, setTempStocks ] = useState(['stock1', 'stock2', 'stock3', 'stock3'])
-	const [ stockToBuy, SetStockToBuy ] = useState("")
-	const [ price, setPrice ] = useState("")
-	// const [ cash, setCash ] = useState(user.cash)
+	const [ input, setInput ] = useState("");
+	const [ tempStocks, setTempStocks ] = useState(['stock1', 'stock2', 'stock3', 'stock3']);
+	const [ stockToBuy, SetStockToBuy ] = useState("");
+	const [ price, setPrice ] = useState("");
 
 	const handleClickClear = () => {
-        setInput("")
-    }
+        setInput("");
+    };
 
 	const handleOnChange = async e => {
-        setInput(e.target.value)
-    }
+        setInput(e.target.value);
+    };
 
     const handleKeyDown = e => {
         if (e.key === "Enter" && input) {
-			searchStock()
-        }
-    }
+			searchStock();
+        };
+    };
 
 	const handleClickSearch = async () => {
 		if (input) {
-			searchStock()
-		}
-    }
+			searchStock();
+		};
+    };
 
 	const searchStock = async () => {
-		const buyPrice = await getPrices([input])
-		SetStockToBuy( () => input )
+		const buyPrice = await getPrices([input]);
+		SetStockToBuy( () => input );
 		if (!buyPrice) {
 			SetStockToBuy( () => "No stock found.");
-		}
-		setPrice( buyPrice )
-        setInput("")
-	}
+		};
+		setPrice( buyPrice );
+        setInput("");
+	};
 
 	useEffect( () => {
 
-	}, [price])
+	}, [price]);
 
 	return (
 		<>
 			<Navbar 
-				setIsLoggedIn={setIsLoggedIn} 
+				setIsLoggedIn={setIsLoggedIn}
 				isLoggedIn={isLoggedIn} 
 				logOut={logOut}
 			/>
@@ -83,7 +81,7 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 			</Cont>
 		</>
 	);
-}
+};
 
 export default Buy;
 

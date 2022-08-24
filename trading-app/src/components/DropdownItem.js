@@ -1,8 +1,7 @@
-import { useState } from "react";
+
 import styled from "styled-components"
 
 const DropdownItem = ({stock}) => {
-
     return (
         <ListItem>
             <p>{stock}</p>
@@ -18,7 +17,3 @@ margin: 5px;
 border: solid black 1px;
 
 `
-// const DropdownItem = styled.ul`
-// `
-// const DropdownItem = styled.ul`
-// `

@@ -5,52 +5,42 @@ import { addStocks, updateCash } from "../utils";
 
 const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
 
-    const [ input, setInput ] = useState("")
+    const [ input, setInput ] = useState("");
     const navigate = useNavigate();
 
     const handleOnChange = async e => {
-        setInput(e.target.value)
-    }
+        setInput(e.target.value);
+    };
 
     const handleKeyDown = async e => {
         if (e.key === "Enter") {
-            await sellStock()
-        }
-    }
+            await sellStock();
+        };
+    };
 
     const handleClick = async () => {
-        await sellStock()
-    }
+        await sellStock();
+    };
 
     const sellStock = async () => {
-        // if there is a quantity :
-        //      total = price * quantity
-        //      if quantity is greater than users stocks :
-        //              modal pop up "Insufficient stocks."
-        //              clear input
-        //      else :
-        //              addStocks( symbol, name, -quantity )
-        //              updateCash( cash + total )
-        //              modal pop up "Sale sucessful"
-        //              redirect to portfolio page
         if (input) {
             const total = price * input 
             if (input > user.stocks.find(x => x.name === stockToSell.label).number) {
-                alert("Insufficient stocks.")
-                setInput("")
+                alert("Insufficient stocks.");
+                setInput("");
             } else {
-                await addStocks( stockToSell.label, "stock name", -1 * parseInt(input), cookies, setUser)
-                await updateCash( user.cash + total, setUser, cookies )
-                alert("Sale sucessful.")
-                navigate("/portfolio")
-                refreshPage() // update user stocks
-            }
-        }
-    }
+                await addStocks( stockToSell.label, "stock name", -1 * parseInt(input), cookies, setUser);
+                await updateCash( user.cash + total, setUser, cookies );
+                alert("Sale sucessful.");
+                navigate("/portfolio");
+                refreshPage(); // update user stocks
+            };
+        };
+    };
 
     const refreshPage = () => {
         window.location.reload(false);
-    }
+    };
 
     return (
         <>

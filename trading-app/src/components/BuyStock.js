@@ -29,7 +29,7 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
   };
 
   const buyStock = async () => {
-    if (input) {
+    if (input > 0) {
       const total = price * input;
       if (total > user.cash) {
         isModalOpen();
@@ -45,8 +45,8 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
         setPurchaseSuccesful(true);
         isModalOpen();
       }
-      setInput("");
     }
+    setInput("");
   };
 
   const refreshPage = () => {

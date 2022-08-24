@@ -56,20 +56,8 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
             onChange={handleOnChange}
             value={input}
           ></Input>
-          {/* <ClearInput onClick={handleClickClear}>X</ClearInput> */}
           <SearchButton onClick={handleClickSearch}>Search</SearchButton>
         </SearchCont>
-        {/* <DropdownCont>
-					<DropdownList>
-						{
-							input 
-							&&
-							tempStocks.map( (x,i) => (
-								<DropdownItem stock={tempStocks[i]} key={i}/>
-							))
-						}
-					</DropdownList>
-				</DropdownCont> */}
         {stockToBuy && (
           <BuyStock
             price={price}
@@ -164,10 +152,3 @@ const SearchButton = styled.button`
   word-break: break-word;
   border: 0;
 `;
-
-// const DropdownCont = styled.div`
-// `
-// const DropdownList = styled.ul`
-// `
-// const BuyCont = styled.div`
-// `

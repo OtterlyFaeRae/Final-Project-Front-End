@@ -5,14 +5,10 @@ const PortfolioItem = ({symbol, price, number, index}) => {
 
     const [ total, setTotal ] = useState(0)
 
-    const getTotal = async () => {
+    useEffect( () => {
         const result = price * number
         setTotal( result )
-    }
-
-    useEffect( () => {
-        getTotal()
-    }, [price])
+    }, [price, number]);
 
     return (
             <StyledRow index = {index} symbol = {symbol} price = {price} number = {number} total = {total}>

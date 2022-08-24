@@ -1,10 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
 
 a {
-  text-decoration: none;
-  list-style: none;
-  font-size: 16px;
-  color: white;
+	text-decoration: none;
+	list-style: none;
+	font-size: 16px;
+	color: white;
+}
+
+a:hover {
+	color: #1167a8;
 }
 
 /* body {
@@ -33,7 +37,6 @@ a {
   border-color: #5E5DF0;
   opacity: 0.9;
 } */
-
 
 /* form {
   display: flex;

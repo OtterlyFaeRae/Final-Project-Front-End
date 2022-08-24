@@ -15,7 +15,6 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 // import components
 import Protected from "./components/Protected";
-import LoginForm from "./components/LoginForm";
 import { checkToken } from "./utils";
 
 // utils

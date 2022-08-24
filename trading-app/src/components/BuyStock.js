@@ -121,14 +121,18 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
                 ?
                 <div>
                     <h1 className="Insufficent">INSUFFICIENT FUNDS</h1>
-                    <img alt="" className="noMoney" src={noMoney} />
+
+                    <img className="noMoney" src={noMoney} alt=""/>
+
                     <h2 className="valid-ammount">PLEASE ENTER A VALID AMMOUNT</h2>
                     <button className="closeUnsuccessful" onClick={closeModalUnsuccessful}>CLOSE</button>
                 </div>
                 :
                 <div>
                     <h1 className="Insufficent">PURCHASE SUCCESSFUL</h1>
-                    <img alt="" className="yesMoney" src={yesMoney} />
+
+                    <img className="yesMoney" src={yesMoney} alt=""/>
+
                     <button className="closeSuccessful" onClick={closeModalSuccessful}>CLOSE</button>
                 </div>
                 };

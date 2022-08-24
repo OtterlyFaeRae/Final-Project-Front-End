@@ -8,12 +8,12 @@ const Navbar = ({ logOut, user }) => {
 	return (
 		<Cont>
 			<Left>
-				<Link to="/">
+				<Logo to="/">
 					<Header1>TradeWarZ</Header1>
-				</Link>
-				<Link to="/Portfolio">Portfolio</Link>
-				<Link to="/Buy">Buy</Link>
-				<Link to="/Sell">Sell</Link>
+				</Logo>
+				<NavLink to="/Portfolio">Portfolio</NavLink>
+				<NavLink to="/Buy">Buy</NavLink>
+				<NavLink to="/Sell">Sell</NavLink>
 			</Left>
 			<LinksCont>
 				<p>Logged in as {user.username}</p>
@@ -34,6 +34,7 @@ const Cont = styled.div`
 	border-bottom-color: #5e5df0;
 	border-bottom-width: 1px;
 	background-color: #212121;
+	padding-left: 30px;
 
 	/* shaun */
 
@@ -42,6 +43,36 @@ const Cont = styled.div`
 	padding-top: 20px;
 	padding-bottom: 20px;
 `;
+
+const NavLink = styled(Link)` {
+	display: inline-block;
+	position: relative;
+	color: white;
+	padding-bottom: 7px;
+	margin-top: 5px;
+
+	&:after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		transform: scaleX(0);
+		height: 2px;
+		bottom: 0;
+		left: 0;
+		background-color: #5E5DF0;
+		transform-origin: bottom right;
+		transition: transform 0.25s ease-out;
+	  }
+	  &:hover:after {
+		transform: scaleX(1);
+		transform-origin: bottom left;
+	  }`
+
+const Logo = styled(Link)` {
+
+		  }`
+
+
 const LinksCont = styled.ul`
 	display: flex;
 	justify-content: center;
@@ -58,8 +89,14 @@ const Header1 = styled.h1`
 	font-size: 40px;
 	text-align: center;
 	color: white;
-	margin-left: 30px;
+	&:after {
+		text-decoration: none;
+	  }
+	  &:hover:after {
+		text-decoration: none;
+	  }
 `;
+
 const Button2 = styled.button`
 	background: #5e5df0;
 	border-radius: 12px;

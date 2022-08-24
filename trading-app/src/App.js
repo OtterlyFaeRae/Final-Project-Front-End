@@ -170,16 +170,4 @@ const GlobalStyle = createGlobalStyle`
 body {
 	background-color: #212121;
 	color: white;
-}
-
-a {
-	text-decoration: none;
-	list-style: none;
-	font-size: 16px;
-	color: white;
-}
-
-a:hover {
-	color: #5E5DF0;
-}
-`;
+}`

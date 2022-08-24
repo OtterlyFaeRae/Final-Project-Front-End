@@ -17,6 +17,7 @@ function Login({ logOut, logIn, isLoggedIn, setIsLoggedIn, cookies, setCookie, u
 		if (isLoggedIn) {
 			navigate("/")
 		}
+		// eslint-disable-next-line
 	}, [user])
 
 	return (

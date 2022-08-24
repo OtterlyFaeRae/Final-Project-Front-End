@@ -1,6 +1,6 @@
-import { useEffect, useReducer, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components"
-import DropdownItem from "../components/DropdownItem";
+// import DropdownItem from "../components/DropdownItem";
 import Navbar from "../components/Navbar"
 import BuyStock from "../components/BuyStock"
 import { getPrices } from "../utils/finnhub-fetch";
@@ -8,7 +8,6 @@ import { getPrices } from "../utils/finnhub-fetch";
 function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 
 	const [ input, setInput ] = useState("");
-	const [ tempStocks, setTempStocks ] = useState(['stock1', 'stock2', 'stock3', 'stock3']);
 	const [ stockToBuy, SetStockToBuy ] = useState("");
 	const [ price, setPrice ] = useState("");
 
@@ -59,7 +58,7 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 					<ClearInput onClick={handleClickClear}>X</ClearInput>
 					<SearchButton onClick={handleClickSearch}>Search</SearchButton>
 				</SearchCont>
-				<DropdownCont>
+				{/* <DropdownCont>
 					<DropdownList>
 						{
 							input 
@@ -69,7 +68,7 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 							))
 						}
 					</DropdownList>
-				</DropdownCont>
+				</DropdownCont> */}
 				{
 					stockToBuy 
 					&&
@@ -151,9 +150,9 @@ const ClearInput = styled.button`
 	padding-left: 5px;
 
 `
-const DropdownCont = styled.div`
-`
-const DropdownList = styled.ul`
-`
+// const DropdownCont = styled.div`
+// `
+// const DropdownList = styled.ul`
+// `
 // const BuyCont = styled.div`
 // `

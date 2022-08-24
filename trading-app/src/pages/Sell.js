@@ -22,6 +22,7 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 		if (user) {
 			setStocks(user.stocks.map( (stock, i) => ({ label: stock.name, value: i })));
 		};
+		// eslint-disable-next-line
 	}, [] );
 
 	const handleChange = (options) => {
@@ -41,6 +42,7 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 		if (stockToSell) {
 			searchStock();
 		};
+		// eslint-disable-next-line
 	}, [stockToSell] );
 
 	// dropdown styles

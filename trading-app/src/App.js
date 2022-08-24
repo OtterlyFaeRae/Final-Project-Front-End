@@ -28,11 +28,11 @@ function App() {
 	// state hooked variables
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	const [cookies, setCookie] = useCookies(["token"]);
-	const [ user, setUser ] = useState("")
+	const [ user, setUser ] = useState("");
 
 	useEffect( () => {
 		checkToken(cookies, setCookie, setUser, setIsLoggedIn)
-	}, [])
+	}, []);
 
 	// ------------------------------------------------------------------- //
 	// state altering functions
@@ -40,14 +40,14 @@ function App() {
 		setIsLoggedIn(true); // once logged just set setIsLoggedIn as false
 	};
 	const logOut = () => {
-		logout(setUser, setCookie, setIsLoggedIn)
+		logout(setUser, setCookie, setIsLoggedIn);
 		setIsLoggedIn(false);
 	};
 	// ------------------------------------------------------------------- //
 	// main render component
 	return (
 		<BrowserRouter>
-      	<GlobalStyle/>
+			<GlobalStyle/>
 			<Routes>
 				<Route path="/login" element={
 				<Login 

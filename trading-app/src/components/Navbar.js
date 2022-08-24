@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut, user }) => {
+const Navbar = ({ logOut, user }) => {
   const handleLogout = async () => {
     await logOut();
   };
-
   return (
     <Cont>
       <Left>
@@ -19,7 +18,6 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut, user }) => {
       <LinksCont>
         <p>Logged in as {user.username}</p>
         <p>Total funds: ${user && user.cash.toFixed(2)}</p>
-        {/* <Link onClick={handleLogout} to='/login'>Logout</Link> */}
         <Button2 onClick={handleLogout}>Logout</Button2>
       </LinksCont>
     </Cont>

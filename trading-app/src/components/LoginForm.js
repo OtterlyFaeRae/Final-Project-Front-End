@@ -92,5 +92,3 @@ const Button2 = styled.button`
 const Header2 = styled.h2`
   font-size: 30px;
 `
-
-

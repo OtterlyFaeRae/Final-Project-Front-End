@@ -18,7 +18,7 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
         await addStocks("GOOGL", "GOOGL", 1, cookies, setUser)
     }
     const handleUpdateCash = async () => {
-        // note: change controler to just check token and return the user.
+        // note: change controller to just check token and return the user.
         await updateCash(9000, setUser, cookies)
     }
 

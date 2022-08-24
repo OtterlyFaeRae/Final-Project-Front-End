@@ -5,14 +5,10 @@ const PortfolioItem = ({symbol, price, number, index}) => {
 
     const [ total, setTotal ] = useState(0)
 
-    const getTotal = async () => {
+    useEffect( () => {
         const result = price * number
         setTotal( result )
-    }
-
-    useEffect( () => {
-        getTotal()
-    }, [price])
+    }, [price, number]);
 
     return (
             <StyledRow index = {index} symbol = {symbol} price = {price} number = {number} total = {total}>
@@ -31,25 +27,6 @@ const PortfolioItem = ({symbol, price, number, index}) => {
         </StyledRow>
     )
 }
-
-// const TableRow = ({index, symbol, price, number, total}) => {
-//     return (
-    // <tr>
-    //     <TableData>
-    //         {symbol}
-    //     </TableData>
-    //     <TableData>
-    //         {number}
-    //     </TableData>
-    //     <TableData>
-    //         {price}
-    //     </TableData>
-    //     <TableData>
-    //         {total}
-    //     </TableData>
-    // </tr>
-//     )
-// }
 
 const StyledRow = styled.tr`
     ${props => props.index % 2 === 1 ? 'background-color: #222224; ' : 'background-color: #28292e;'};
@@ -71,4 +48,3 @@ const TableData = styled.td`
 `
 
 export default PortfolioItem
-

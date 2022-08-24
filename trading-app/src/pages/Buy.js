@@ -42,10 +42,6 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
         setInput("");
 	};
 
-	useEffect( () => {
-
-	}, [price]);
-
 	return (
 		<>
 			<Navbar 

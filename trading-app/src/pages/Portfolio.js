@@ -18,29 +18,33 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 		}
 	}, [user])
 
-	useEffect( () => {
-		const getPortfolioPrices = async () => {
-			const stockSymbols = stocks.map( x => x.name )
-			const result = await getPrices(stockSymbols)
-			setPrices(result)
-		}
-		getPortfolioPrices()
-	}, [stocks])
+	const getPortfolioPrices = async () => {
+		const stockSymbols = stocks.map( x => x.name )
+		const result = await getPrices(stockSymbols)
+		setPrices(result)
+	}
 
 	useEffect( () => {
-		const getTotal = () => {
-			// map though prices and stocks and make a new array of totals 
-			// use reduce to sum the array
-			// add users cash
-			const totalPrices = stocks.map( (stock, i) => 
-				stocks[i].number * prices[i]
-			)
-			const stockTotals =  totalPrices.reduce( (prev, curr) => prev + curr, 0)
-			const result = user.cash + stockTotals
-			setTotal(result)
-		}
+		getPortfolioPrices()
+		// eslint-disable-next-line
+	}, [stocks])
+
+	const getTotal = () => {
+		// map though prices and stocks and make a new array of totals 
+		// use reduce to sum the array
+		// add users cash
+		const totalPrices = stocks.map( (stock, i) => 
+			stocks[i].number * prices[i]
+		)
+		const stockTotals =  totalPrices.reduce( (prev, curr) => prev + curr, 0)
+		const result = user.cash + stockTotals
+		setTotal(result)
+	}
+
+	useEffect( () => {
 		getTotal()
-	}, [prices, stocks, user.cash])
+		// eslint-disable-next-line
+	}, [prices])
 	
 	return (
 		<Cont background={background}>

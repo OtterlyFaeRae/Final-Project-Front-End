@@ -88,39 +88,39 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 						))
 					}
 					{/* cash row */}
-					<tr>
+					<TR>
 						<TD>
 						
 						</TD>
 						<TD>
 							
 						</TD>
-						<EndBox colour={'#222224'}>
+						<EndBox className={"cash-row"} colour={'#222224'}>
 							Cash:
 						</EndBox>
-						<EndBox colour={'#222224'}>
+						<EndBox className={"cash-row"} colour={'#222224'}>
 							{
 								user
 								&&
 								<p>${user.cash.toFixed(2)}</p>
 							}
 						</EndBox>
-					</tr>
+					</TR>
 					{/* total row */}
-					<tr>
+					<TR>
 						<TD>
 							
 						</TD>
 						<TD>
 							
 						</TD>
-						<EndBox colour={'#28292e'}>
+						<EndBox className={"total-row"} colour={'#28292e'}>
 							Total:
 						</EndBox>
-						<EndBox colour={'#28292e'}>
+						<EndBox className={"total-row"} colour={'#28292e'}>
 							<p>${total.toFixed(2)}</p>
 						</EndBox>
-					</tr>
+					</TR>
 					</PortTBody>
 				</PortTable>
 			</TableCont>
@@ -193,10 +193,15 @@ const TH = styled.th`
 
 const TR = styled.tr`
 	text-align: center;
+	&:hover > .cash-row {
+		background-color: #31356e;
+	}
+	&:hover > .total-row {
+		background-color: #31356e;
+	}
 `
 
 const TD = styled.td`
-	
 	min-width: 70px;
 `
 

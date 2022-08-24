@@ -23,11 +23,10 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
     };
 
     const sellStock = async () => {
-        if (input) {
+        if (input > 0) {
             const total = price * input 
             if (input > user.stocks.find(x => x.name === stockToSell.label).number) {
                 alert("Insufficient stocks.");
-                setInput("");
             } else {
                 await addStocks( stockToSell.label, "stock name", -1 * parseInt(input), cookies, setUser);
                 await updateCash( user.cash + total, setUser, cookies );
@@ -36,6 +35,7 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
                 refreshPage(); // update user stocks
             };
         };
+        setInput("");
     };
 
     const refreshPage = () => {

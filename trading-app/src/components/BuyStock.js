@@ -21,15 +21,21 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
   const handleKeyDown = async (e) => {
     if (e.key === "Enter") {
       await buyStock();
+      if (price[0] === 0) {
+        alert("Error. No stock found.")
+      }
     }
   };
 
   const handleClick = async () => {
     await buyStock();
+    if (price[0] === 0) {
+      alert("Error. No stock found.")
+    }
   };
 
   const buyStock = async () => {
-    if (input > 0) {
+    if (input > 0 && price > 0) {
       const total = price * input;
       if (total > user.cash) {
         isModalOpen();

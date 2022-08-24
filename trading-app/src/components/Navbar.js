@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut }) => {
+const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut, user }) => {
   const handleLogout = async () => {
     await logOut();
   };
@@ -17,8 +17,8 @@ const Navbar = ({ setIsLoggedIn, isLoggedIn, logOut }) => {
         <Link to="/Sell">Sell</Link>
       </Left>
       <LinksCont>
-        <p>Logged in as Liam</p>
-        <p>Total funds: £100</p>
+        <p>Logged in as {user.username}</p>
+        <p>Total funds: ${user && user.cash.toFixed(2)}</p>
         {/* <Link onClick={handleLogout} to='/login'>Logout</Link> */}
         <Button2 onClick={handleLogout}>Logout</Button2>
       </LinksCont>
@@ -36,6 +36,12 @@ const Cont = styled.div`
   border-bottom-color: #5e5df0;
   border-bottom-width: 1px;
   background-color: #212121;
+  
+  /* shaun */
+  background-color: rgb(39, 39, 39);
+  box-shadow: 0 4px 2px -2px #5e5df0;
+
+
   padding-top: 20px;
   padding-bottom: 20px;
 `;

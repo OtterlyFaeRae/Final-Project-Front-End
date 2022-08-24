@@ -3,13 +3,14 @@ import Navbar from "../components/Navbar"
 import styled from "styled-components";
 import background from "../images/stocks3.jpg"
 
-function Landing({ setIsLoggedIn, isLoggedIn, logOut }) {
+function Landing({ setIsLoggedIn, isLoggedIn, logOut, user }) {
 	return (
 		<Cont background={background}>
 			<Navbar 
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
 				logOut={logOut}
+        user={user}
 			/>
 			<Content>
 				<Header1>Welcome to TradeWarZ</Header1>

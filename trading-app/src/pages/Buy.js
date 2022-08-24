@@ -54,6 +54,7 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
 				logOut={logOut}
+				user={user}
 			/>
 			<Cont>
 				<h2>Buy Stocks</h2>
@@ -112,6 +113,8 @@ const Input = styled.input`
 	padding: 8px 10px 8px 35px;
 	&:focus {
 		outline: none;
+		border-color: #483d8b;
+    	box-shadow: 0 0 10px #3d428a;
 	}
 	&:hover {
 		outline: none;

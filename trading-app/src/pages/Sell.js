@@ -73,6 +73,7 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
 				logOut={logOut}
+				user={user}
 			/>
 			<Cont>
 				<h2>Sell Stocks</h2>

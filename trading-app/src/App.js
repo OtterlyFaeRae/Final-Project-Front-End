@@ -30,7 +30,7 @@ function App() {
 	const [cookies, setCookie] = useCookies(["token"]);
 	const [ user, setUser ] = useState("");
 
-	useEffect( () => {
+	useEffect( (cookies, setCookie) => {
 		checkToken(cookies, setCookie, setUser, setIsLoggedIn)
 	}, [cookies, setCookie]);
 

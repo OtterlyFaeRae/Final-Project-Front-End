@@ -36,7 +36,7 @@ const Cont = styled.div`
   background-color: #212121;
   
   /* shaun */
-  background-color: rgb(39, 39, 39);
+  
   box-shadow: 0 4px 2px -2px #5e5df0;
 
 

@@ -30,8 +30,9 @@ function App() {
 	const [cookies, setCookie] = useCookies(["token"]);
 	const [ user, setUser ] = useState("");
 
-	useEffect( (cookies, setCookie) => {
-		checkToken(cookies, setCookie, setUser, setIsLoggedIn)
+	useEffect( () => {
+		checkToken(cookies, setCookie, setUser, setIsLoggedIn) 
+		// eslint-disable-next-line
 	}, []);
 
 	// ------------------------------------------------------------------- //

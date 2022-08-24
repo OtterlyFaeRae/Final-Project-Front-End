@@ -1,33 +1,24 @@
-import {Link, useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-
-const Navbar = ({ logOut }) => {
-
+const Navbar = ({ logOut, user }) => {
   const handleLogout = async () => {
-    await logOut()
-  }
-
+    await logOut();
+  };
   return (
     <Cont>
-      <Link to='/'>
-        <Header1>TradeWarz</Header1>
-      </Link>
+      <Left>
+        <Link to="/">
+          <Header1>TradeWarz</Header1>
+        </Link>
+        <Link to="/Portfolio">Portfolio</Link>
+        <Link to="/Buy">Buy</Link>
+        <Link to="/Sell">Sell</Link>
+      </Left>
       <LinksCont>
-        <NavItem>
-          <Link to='/Portfolio'>Portfolio</Link>
-        </NavItem>
-        <NavItem>
-          <Link to='/Buy'>Buy</Link>
-        </NavItem>
-        <NavItem>
-          <Link to='/Sell'>Sell</Link>
-        </NavItem>
-        <div>
-        <NavItem>
-          <Button2 onClick={handleLogout}>Logout</Button2>
-        </NavItem>
-        </div>
+        <p>Logged in as {user.username}</p>
+        <p>Total funds: ${user && user.cash.toFixed(2)}</p>
+        <Button2 onClick={handleLogout}>Logout</Button2>
       </LinksCont>
     </Cont>
   );
@@ -40,10 +31,18 @@ const Cont = styled.div`
   justify-content: space-between;
   width: 100%;
   border-bottom-style: solid;
-  border-bottom-color: #5E5DF0;
+  border-bottom-color: #5e5df0;
   border-bottom-width: 1px;
   background-color: #212121;
-`
+  
+  /* shaun */
+  background-color: rgb(39, 39, 39);
+  box-shadow: 0 4px 2px -2px #5e5df0;
+
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+`;
 const LinksCont = styled.ul`
   display: flex;
   justify-content: center;
@@ -52,27 +51,20 @@ const LinksCont = styled.ul`
   color: white;
   margin-left: 25px;
   list-style: none;
-`
-const NavItem = styled.li`
-  text-decoration: none;
-  font-size: 16px;
-  color: white;
-`
+`;
 
 const Header1 = styled.h1`
   text-decoration: none;
-  margin: 20px;
   font-size: 40px;
   text-align: center;
   color: white;
   margin-left: 30px;
-`
+`;
 const Button2 = styled.button`
-  background: #5E5DF0;
-  margin-top: 5px;
+  background: #5e5df0;
   border-radius: 12px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   font-size: 16px;
   font-weight: 700;
@@ -87,4 +79,10 @@ const Button2 = styled.button`
   word-break: break-word;
   border: 0;
   margin-right: 15px;
-`
+`;
+const Left = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3em;
+  font-weight: bold;
+`;

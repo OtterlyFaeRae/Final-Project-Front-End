@@ -52,13 +52,14 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 				setIsLoggedIn={setIsLoggedIn}
 				isLoggedIn={isLoggedIn} 
 				logOut={logOut}
+				user={user}
 			/>
 			<Cont>
 				<h2>Buy Stocks</h2>
 				<br/>
 				<p>Your Cash: ${user && user.cash.toFixed(2)}</p>
 				<SearchCont>
-					<Input type="text" placeholder="Search..." onKeyDown={handleKeyDown} onChange={handleOnChange} value={input}></Input>
+					<Input type="text" placeholder="Search stocks..." onKeyDown={handleKeyDown} onChange={handleOnChange} value={input}></Input>
 					<ClearInput onClick={handleClickClear}>X</ClearInput>
 					<SearchButton onClick={handleClickSearch}>Search</SearchButton>
 				</SearchCont>
@@ -107,11 +108,11 @@ const Input = styled.input`
 	font-size: medium;
 	background-color: black;
 	color: white;
-	padding: 8px 10px 8px 30px;
+	padding: 8px 10px 8px 35px;
 	&:focus {
 		outline: none;
-    /* border-color: #3d428a;
-    box-shadow: 0 0 3px #3d428a; */
+		border-color: #483d8b;
+    	box-shadow: 0 0 10px #3d428a;
 	}
 	&:hover {
 		outline: none;
@@ -128,7 +129,7 @@ const SearchButton = styled.button`
 	&:hover {
 		background-color: #3d428a;
 		outline: solid #3d428a 1px;
-		box-shadow: 0 0 15px #31356E;
+		box-shadow: 0 0 25px #31356E;
 	}
 	border: none;
 	cursor: pointer;
@@ -147,10 +148,12 @@ const ClearInput = styled.button`
 	position: absolute;
 	z-index: 3;
     position: absolute;
-    top: 10px;
+    top: 9px;
     left: 10px;
 	font-size: large;
 	cursor: pointer;
+	padding-left: 5px;
+
 `
 const DropdownCont = styled.div`
 `

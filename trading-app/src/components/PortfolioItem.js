@@ -33,12 +33,23 @@ const PortfolioItem = ({symbol, price, number, index}) => {
 }
 
 const StyledRow = styled.tr`
-    ${props => props.index % 2 === 1 ? 'background-color: #222224;' : 'background-color: #28292e;'}
+    ${props => props.index % 2 === 1 ? 'background-color: #222224; ' : 'background-color: #28292e;'};
+
+    /* shaun */
+    &:hover {
+		background-color: #31356e;
+        cursor: pointer;
+	}
+
 `
 const TableData = styled.td`
     width: 25%;
     padding-top: 5px;
     padding-bottom: 5px;
+
+    /* shaun */
+    padding: 0.6rem 2rem;
 `
 
 export default PortfolioItem
+

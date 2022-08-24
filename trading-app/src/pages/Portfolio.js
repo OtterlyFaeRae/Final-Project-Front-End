@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar"
 import PortfolioItem from "../components/PortfolioItem"
 import { useState } from "react"
 import styled from "styled-components";
+import background from "../images/stocks3.jpg"
 import { getPrices } from "../utils/finnhub-fetch"
 
 function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
@@ -42,13 +43,14 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 	}, [prices, stocks, user.cash])
 	
 	return (
-		<Cont>
+		<Cont background={background}>
 			<Navbar 
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
 				logOut={logOut}
 				user={user}
 			/>
+			<Content>
 			<Title>Portfolio</Title>
 			<TableCont>
 				<PortTable>
@@ -118,6 +120,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 					</PortTBody>
 				</PortTable>
 			</TableCont>
+			</Content>
 		</Cont>
 	);
 }
@@ -132,14 +135,36 @@ const Cont = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	gap: 3em;
+	height: 100vh;
+	background-image: url(${props => props.background});
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	gap: 100px;
+`
+
+const Content = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding-top: 20px;
+padding-bottom: 100px;
+padding-right: 100px;
+padding-left: 100px;
+border-radius: 10px;
+border: solid;
+background-color: #212121;
+border-color: #5E5DF0;
+border-width: 1.5px;
+opacity: 1;
+gap: 40px;
+max-width: 75%;
 `
 
 const TableCont = styled.div`
 	display: table;
-	padding: auto;
-	margin: auto;
-	padding-top: 5%;
-	width: 40%;
 `
 
 const PortTable = styled.table`
@@ -150,15 +175,16 @@ const PortTable = styled.table`
 `
 
 const PortTHead = styled.thead`
-	background: #31356e !important;
+	background: #5e5df0;!important;
 	padding: auto;
 `
 
 const TH = styled.th`
-	width: 30%;
+	min-width: 150px;
 
 	/* shaun */
-	padding: 1rem 0;
+
+	padding: 15px;
 `
 
 const TR = styled.tr`
@@ -166,14 +192,11 @@ const TR = styled.tr`
 `
 
 const TD = styled.td`
-	width: 30%;
+	
 	min-width: 70px;
-	padding: 1rem;
 `
 
 const PortTBody = styled.tbody`
-	padding: auto;
-	width: 100%;
 	text-align: center;
 `
 

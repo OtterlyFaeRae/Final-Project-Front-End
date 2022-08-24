@@ -19,7 +19,7 @@ function Landing({ setIsLoggedIn, isLoggedIn, logOut, user }) {
 				</p>
 				<p>Above would be an intro and some instructions for how the app works</p>
 				<p>Final Code Nation project by Liam, Mahed, Mohammed, Saoirse and Shaun</p>
-				<Button2>Buy some stocks!</Button2>
+				<Button2 href='/buy'>Buy some stocks!</Button2>
 			</Content>
 		</Cont>
 	);
@@ -63,7 +63,7 @@ const Content = styled.div`
 	text-align: center;
 `
 
-const Button2 = styled.button`
+const Button2 = styled.a`
   background: #5E5DF0;
   margin-top: 5px;
   border-radius: 12px;

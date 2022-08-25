@@ -128,6 +128,9 @@ const Input = styled.input`
   color: white;
   max-width: 120px;
   margin-top: 7px;
+  -webkit-appearance: none;
+  appearance: none;  
+  -moz-appearance: textfield;
   &:focus {
     border-color: #5e5df0;
   }

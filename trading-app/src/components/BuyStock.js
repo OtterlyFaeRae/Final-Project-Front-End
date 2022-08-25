@@ -43,7 +43,7 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
         await addStocks(
           stockToBuy,
           "stock name",
-          parseInt(input),
+          parseFloat(input),
           cookies,
           setUser
         );

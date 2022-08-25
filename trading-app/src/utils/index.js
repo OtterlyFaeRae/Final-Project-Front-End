@@ -87,22 +87,23 @@ export const login = async (username, password, setUser, setCookie, setIsLoggedI
 
   // }
 
-  export const deleteUser = async (username, password, cookies) => {
+  export const deleteUser = async (username, password, setUser, setCookie, setIsLoggedIn ) => {
     try {
       const response = await fetch(`${process.env.REACT_APP_REST_API}/user`, {
-        headers: {
-          'Authorization': cookies.token
-        },
         method: "DELETE",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           username: username,
-          password: password,
+          pass: password,
         }),
       });
-
-      const data = await response.json();
-      console.log(data.user);
-      console.log("User Deleted");
+      if (response.status === 200) {
+        setUser("")
+        changeToken(setCookie, "")
+        setIsLoggedIn(false)
+      } else {
+        throw new Error("Error deleting user.")
+      }
 
     }catch (error) {
         console.log(error)

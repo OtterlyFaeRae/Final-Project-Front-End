@@ -51,7 +51,9 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
                 <StockCont>
                      <h2>{stockToSell.label}</h2>
                      <p>Quantity of stock owned:&nbsp;
-                            {user.stocks.find(x => x.name === stockToSell) ?  user.stocks.find(x => x.name === stockToSell).number : 'None.'}
+                     {user.stocks.find((x) => x.name === stockToSell.label)
+                        ? user.stocks.find((x) => x.name === stockToSell.label).number
+                        : "None."}
                     </p>
                     <p>Price per stock: ${Math.round(price*100)/100}</p>
                     <BottomCont>

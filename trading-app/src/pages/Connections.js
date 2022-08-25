@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import Navbar from "../components/Navbar"
 import { signUp, login, checkToken, addStocks, updateCash, deleteUser } from "../utils"
 
@@ -24,7 +25,7 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
     }
 
 	return (
-		<div>
+		<Cont>
 			<Navbar 
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
@@ -32,17 +33,54 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
                 user={user}
 			/>
 			<h2>This page is for testing connections</h2>
-
-            <button onClick={handleSignUp}>Sign up</button>
-            <button onClick={handleLogin}>login</button>
-            <button onClick={handleCheckCookies}>checkToken</button>
-            <button onClick={handleAddStocks}>addStocks</button>
-            <button onClick={handleUpdateCash}>updateCash</button>
-            <button onClick={handleDeleteUser}>delete user</button>
-            <button>logout (maybe)</button>
-    
-		</div>
+            <ButtonCont>
+            <Button2 onClick={handleSignUp}>Sign up</Button2>
+            <Button2 onClick={handleLogin}>login</Button2>
+            <Button2 onClick={handleCheckCookies}>checkToken</Button2>
+            <Button2 onClick={handleAddStocks}>addStocks</Button2>
+            <Button2 onClick={handleUpdateCash}>updateCash</Button2>
+            <Button2 onClick={handleDeleteUser}>delete user</Button2>
+            <Button2>logout (maybe)</Button2>
+            </ButtonCont>
+		</Cont>
 	);
 }
 
 export default Connections;
+
+const Cont =  styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+    gap: 50px;
+`
+
+const ButtonCont =  styled.div`
+	display: flex;
+	align-items: center;
+    justify-content: center;
+    gap: 30px;
+`
+
+const Button2 = styled.button`
+	background: #5e5df0;
+	margin-top: 5px;
+	border-radius: 12px;
+	box-sizing: border-box;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 24px;
+	opacity: 1;
+	outline: 0 solid transparent;
+	padding: 8px 28px;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	width: fit-content;
+	word-break: break-word;
+	border: 0;
+`;
+

@@ -10,18 +10,6 @@ const ErrorModal = ({ message, setModalOpen }) => {
     
       Modal.setAppElement("#root");
 
-      const customStyles = {
-        content: {
-          top: "50%",
-          left: "50%",
-          right: "auto",
-          bottom: "auto",
-          marginRight: "-50%",
-          transform: "translate(-50%, -50%)",
-          background: "#222224",
-        },
-      };
-
     return (
         // <Modal style={customStyles} closeTimeoutMS={200}>
             <Cont>

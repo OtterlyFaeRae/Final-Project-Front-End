@@ -14,12 +14,13 @@ function Landing({ setIsLoggedIn, isLoggedIn, logOut, user }) {
 			/>
 			<Content>
 				<Header1>Welcome to TradeWarZ</Header1>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tellus quam, eleifend nec tincidunt ut, cursus vel risus. Sed scelerisque congue efficitur. Quisque ultricies nisi vitae dolor sagittis sollicitudin. Sed dignissim porttitor mattis. Aliquam feugiat, nunc quis aliquam vehicula, tellus nisi auctor ex, sit amet volutpat magna justo sed leo. Quisque in libero ipsum. Sed ut euismod turpis. Proin dictum porta dui, eget malesuada risus malesuada in. Duis eget auctor lacus. Nunc eleifend interdum sagittis. Etiam fermentum porttitor sagittis.
-				</p>
-				<p>Above would be an intro and some instructions for how the app works</p>
-				<p>Final Code Nation project by Liam, Mahed, Mohammed, Saoirse and Shaun</p>
+				<p>TradeWarZ is a trading simulator where you can buy and sell stocks on the New York Stock Exchange.</p>
+        <p>We then keep track of the real-time value of your portfolio!</p>
+        <p>You start with $5000 which is yours to invest however you want.</p>
+        <p>Hit the button below to get started</p>
 				<Button2 href='/buy'>Buy some stocks!</Button2>
+        <p>This application was built by Liam, Mahed, Mohammed, Saoirse and Shaun</p>
+        <p>Data provided for free by Finnhub Stock API. View Finnhub's <Terms href="https://finnhub.io/terms-of-service#:~:text=You%20hereby%20agree%20to%20not,use%20unless%20explicitly%20stated%20otherwise" target="_blank" rel="noopener noreferrer">terms of service.</Terms></p>
 			</Content>
 		</Cont>
 	);
@@ -55,7 +56,7 @@ const Content = styled.div`
   border-color: #5E5DF0;
   border-width: 1.5px;
   opacity: 0.9;
-  gap: 25px;
+  gap: 15px;
   max-width: 50%;
 `
   const Header1 =  styled.h1`
@@ -65,7 +66,8 @@ const Content = styled.div`
 
 const Button2 = styled.a`
   background: #5E5DF0;
-  margin-top: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   border-radius: 12px;
   box-sizing: border-box;
   color: #FFFFFF;
@@ -83,4 +85,28 @@ const Button2 = styled.a`
   word-break: break-word;
   border: 0;
   margin-right: 15px;
+`
+
+const Terms = styled.a`
+  font-weight: bold;
+  color: #5E5DF0;
+  display: inline-block;
+	position: relative;
+  padding-bottom: 7px;
+  &:after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		transform: scaleX(0);
+		height: 2px;
+		bottom: 0;
+		left: 0;
+		background-color: #5E5DF0;
+		transform-origin: bottom right;
+		transition: transform 0.25s ease-out;
+	  }
+	  &:hover:after {
+		transform: scaleX(1);
+		transform-origin: bottom left;
+	  }
 `

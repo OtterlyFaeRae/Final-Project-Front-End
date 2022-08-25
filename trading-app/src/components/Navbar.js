@@ -17,7 +17,7 @@ const Navbar = ({ logOut, user }) => {
 			</Left>
 			<LinksCont>
 				<p>Logged in as {user.username}</p>
-				<p>Total funds: ${user && user.cash.toFixed(2)}</p>
+				<p>Total Funds: ${user && user.cash.toFixed(2)}</p>
 				<Button2 onClick={handleLogout}>Logout</Button2>
 			</LinksCont>
 		</Cont>

@@ -83,10 +83,9 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
   const customStyles = {
     content: {
       position: 'absolute',
-      top: '300px',
-      left: '750px',
-      right: '800px',
-      bottom: '500px',
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
       width: "450px",
       height: "300px",
       background: "#222224",

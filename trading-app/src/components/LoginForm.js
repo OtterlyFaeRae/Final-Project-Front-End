@@ -27,6 +27,10 @@ const LoginForm = ({
 	const isModalOpen = () => {
         setModalOpen(true);
       };
+	
+	// const closeModal = () => {
+    //     setModalOpen();
+    // };
 
 	return (
 		<>
@@ -48,15 +52,16 @@ const LoginForm = ({
 				<Button2 className="submit" type="submit">
 					Log In
 				</Button2>
+				{
+				modalOpen
+				&&
+				<ErrorModal message={"Incorrect username or password"} setModalOpen={setModalOpen}/>
+			}
 			</Form>
 			<p>Not got an account?</p>
 			<Button2 onClick={() => toggle(true)}>Sign Up</Button2>
+			
 			</Cont>
-			{
-				modalOpen
-				&&
-				<ErrorModal message={"Incorrect credentials."} setModalOpen={setModalOpen}/>
-			}
 		</>
 		
 	);
@@ -78,6 +83,7 @@ const Cont = styled.div`
 	border-width: 1.5px;
 	opacity: 0.9;
 	gap: 25px;
+	min-height: 415px;
 `;
 const Form = styled.form`
 	display: flex;

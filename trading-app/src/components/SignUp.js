@@ -24,6 +24,10 @@ const SignUp = ({ toggle, setUser, setCookie, setIsLoggedIn }) => {
         setModalOpen(true);
       };
 
+	// const closeModal = () => {
+    //     setModalOpen();
+    // };
+
 
 	return ( 
 		<>
@@ -51,15 +55,15 @@ const SignUp = ({ toggle, setUser, setCookie, setIsLoggedIn }) => {
 				<Button2 className="submit" type="submit">
 					Sign Up
 				</Button2>
+				{
+				modalOpen
+				&&
+				<ErrorModal message={"Incorrect credentials"} setModalOpen={setModalOpen}/>
+			}
 			</Form>
 			<p>Already have an account?</p>
 			<Button2 onClick={() => toggle(false)}>Click here to login</Button2>
 		</Cont>
-			{
-				modalOpen
-				&&
-				<ErrorModal message={"Incorrect credentials."} setModalOpen={setModalOpen}/>
-			}
 		</>
 	);
 };
@@ -80,7 +84,9 @@ const Cont = styled.div`
 	border-width: 1.5px;
 	opacity: 0.9;
 	gap: 25px;
+	min-height: 466px;
 `;
+
 const Form = styled.form`
 	display: flex;
 	flex-direction: column;

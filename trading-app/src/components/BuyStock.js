@@ -150,7 +150,6 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
               </button>
             </div>
           )}
-          ;
         </div>
       </Modal>
     </Cont>

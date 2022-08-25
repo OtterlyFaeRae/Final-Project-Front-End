@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
 import SignUp from "../components/SignUp"
 import LoginForm from "../components/LoginForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { changeToken } from "../utils/helpers";
 import styled from "styled-components";
 import background from "../images/stocks3.jpg"

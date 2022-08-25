@@ -1,22 +1,35 @@
 import styled from "styled-components";
-const { useState } = require("react");
-const { login } = require("../utils");
+import ErrorModal from "./ErrorModal";
+import { useState } from "react";
+import { login } from "../utils";
+
 
 const LoginForm = ({
 	toggle,
 	setUser,
-	changeToken,
 	setCookie,
 	setIsLoggedIn,
 }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [modalOpen, setModalOpen] = useState(false);
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		await login(username, password, setUser, setCookie, setIsLoggedIn);
+		const loggedIn = await login(username, password, setUser, setCookie, setIsLoggedIn)
+		if (!loggedIn) {
+			isModalOpen()
+		}
 	};
 
+	// Modal funcs
+
+	const isModalOpen = () => {
+        setModalOpen(true);
+      };
+
 	return (
+		<>
 		<Cont>
 			<Header2>Login</Header2>
 			<Form onSubmit={handleSubmit}>
@@ -36,11 +49,16 @@ const LoginForm = ({
 					Log In
 				</Button2>
 			</Form>
-			{/* set this to appear if login fails */}
-			<p>Incorrect username or password</p>
 			<p>Not got an account?</p>
 			<Button2 onClick={() => toggle(true)}>Sign Up</Button2>
-		</Cont>
+			</Cont>
+			{
+				modalOpen
+				&&
+				<ErrorModal message={"Incorrect credentials."} setModalOpen={setModalOpen}/>
+			}
+		</>
+		
 	);
 };
 

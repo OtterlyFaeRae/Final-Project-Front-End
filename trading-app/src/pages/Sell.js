@@ -4,6 +4,7 @@ import Select from 'react-select';
 import styled from "styled-components";
 import SellStock from "../components/SellStock"
 import { getPrices } from "../utils/finnhub-fetch";
+import background from "../images/stocks3.jpg";
 
 function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 	// dropdown menu source: https://appdividend.com/2022/03/12/react-dropdown-select/
@@ -47,70 +48,152 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 
 	// dropdown styles
 	const colourStyles = {
-		control: (styles) => ({ ...styles, backgroundColor: "black", border: "solid #31356E 2px",        borderRadius: "10px" }),
-		option: (styles, { isDisabled }) => {
-			return {
-				...styles,
-				backgroundColor: isDisabled ? "red" : "black",
-				color: "#FFF",
-				cursor: isDisabled ? "not-allowed" : "default",
-				border: '0 !important',
-				// This line ^^ disables the blue border
-				boxShadow: '0 !important',
-				'&:hover': {
-					backgroundColor: "white",
-					color: "black",
+
+		singleValue: (styles) => {
+			return { 
+				...styles, 
+  				color: "#6d6d6e",
 				}
-			};
+		},
+
+		placeholder: (styles) => {
+			return { 
+				...styles, 
+  				color: "#6d6d6e",
+				}
+		},
+		
+		input: (styles) => {
+			return { 
+				...styles, 
+  				caretColor: "white",
+  				color: "white",
+				fontSize: "20px",
+			}
+		},
+
+
+		control: (styles) => {
+			return { 
+				...styles, 
+				backgroundColor: "#212121", 
+				border: "solid #5e5df0 1px",
+				borderRadius: "5px",
+  				padding: "5px",
+  				fontSize: "20px",
+  				outline: "none",
+  				caretColor: "white",
+  				color: "white",
+				minWidth: "200px",
+  				maxWidth: "220px",
+				marginBottom: "50px",
+				'&:hover': {
+					border: "solid #5e5df0 1px",
+				}
+			}
+		},
+		menu: (styles) => {
+					return {
+						...styles,
+						border: "solid #5e5df0 1px",
+						backgroundColor: "#212121"	
+						
+					};
+				},
+			
+		option: (styles) => {
+				return {
+					...styles,
+					backgroundColor: "#212121",
+					'&:hover': {
+						backgroundColor: "#5e5df0",
+					}
+			}
 		}
-	};
+	}
+	// 	option: (styles, { isDisabled }) => {
+	// 		return {
+	// 			...styles,
+	// 			borderRadius: "5px",
+	// 			backgroundColor: isDisabled ? "red" : "black",
+	// 			border: "solid #5e5df0 1px",
+	// 			color: "#FFF",
+	// 			cursor: isDisabled ? "not-allowed" : "default",
+	// 			// This line ^^ disables the blue border
+	// 			boxShadow: '0 !important',
+	// 			'&:hover': {
+	// 				backgroundColor: "white",
+	// 				color: "black",
+	// 			}
+	// 		};
+	// 	}
+	// };
 
 	return (
-		<>
+		<Cont background={background}>
 			<Navbar 
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
 				logOut={logOut}
 				user={user}
 			/>
-			<Cont>
+			<Content>
 				<h2>Sell Stocks</h2>
-				<br/>
 				<p>Your Cash: ${user && user.cash.toFixed(2)}</p>
-				<DropdownCont>
-					<div className="row">
-						<div className="col-md-4"></div>
-							<div className="col-md-4">
-								<Select 
-									placeholder={<div>Select stock...</div>}
-									onChange={ handleChange } 
-									options={ stocks } 
-									styles={colourStyles}
-								/>
-							</div>
-						<div className="col-md-4"></div>
-					</div>
-				</DropdownCont>
+				<Stock>
+				<div>
+				<Select 
+					placeholder={<p>Select stock...</p>}
+					onChange={ handleChange } 
+					options={ stocks } 
+					styles={colourStyles}
+					/>
+				</div>
 				{
 					stockToSell && price
 					&&
 					<SellStock price={price} stockToSell={stockToSell} user={user} cookies={cookies} setUser={setUser}/>
 				}
-			</Cont>
-		</>
+				</Stock>
+			</Content>
+		</Cont>	
 	);
 }
 
 export default Sell;
 
 const Cont = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding-top: 5%;
-`
-const DropdownCont = styled.div`
-	margin: 1rem;
-	margin-top: 5%;
-	width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3em;
+  height: 100vh;
+  background-image: url(${(props) => props.background});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  gap: 100px;
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  border-radius: 10px;
+  border: solid;
+  background-color: #212121;
+  border-color: #5e5df0;
+  border-width: 1.5px;
+  opacity: 1;
+  gap: 25px;
+  max-width: 75%;
+  min-width: 603px;
+  padding-left: 30px;
+`;
+
+const Stock = styled.div`
+display: flex;
+margin-top: 30px;
+margin-bottom: 15px;
 `

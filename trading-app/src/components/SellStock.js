@@ -43,95 +43,92 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
     };
 
     return (
-        <>
+        
         <Cont>
             {
                 stockToSell 
                 &&
                 <StockCont>
-                    <TopCont>
-                        <TopSubCont>
-                            <SymbolCont>
-                                <p>Symbol:</p>
-                                <SymbolBox>{stockToSell.label}</SymbolBox>
-                            </SymbolCont>
-                            <OwnedStockBox>
-                                <p>Your stocks:</p>
-                                <p>{user.stocks.find(x => x.name === stockToSell) ?  user.stocks.find(x => x.name === stockToSell).number : 'None.'}</p>
-                            </OwnedStockBox>
-                        </TopSubCont>
-                            <ValBox>
-                                <h2>${Math.round(price*100)/100}</h2>
-                            </ValBox>
-                    </TopCont>
+                     <h2>{stockToSell.label}</h2>
+                     <p>Quantity of stock owned:&nbsp;
+                            {user.stocks.find(x => x.name === stockToSell) ?  user.stocks.find(x => x.name === stockToSell).number : 'None.'}
+                    </p>
+                    <p>Price per stock: ${Math.round(price*100)/100}</p>
                     <BottomCont>
-                        <label>
-                            Number: 
-                            <Input type="number" placeholder="Quantity" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input}/>
-                        </label>
-                        <button placeholder="Sell" onClick={handleClick}>Sell</button>
+                        <Input type="number" placeholder="Quantity" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input}/>
+                        <Button2 placeholder="Sell" onClick={handleClick}>Sell</Button2>
                     </BottomCont>
                 </StockCont>
             }
         </Cont>        
-        </>
+        
     )
 }
 
 export default SellStock
 
 const Cont = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
+
 const StockCont = styled.div`
-	display: flex;
-    flex-direction: column;
-    border: 2px solid #31356E;
-    background: black;
-    min-height: 100px;
-    min-width: 300px;
-    padding-top: 1%;
-    padding-left: 1%;
-    padding-right: 1%;
-`
-
-const TopCont = styled.div`
-    display:flex;
-    padding-bottom: 30px;
-`
-
-const TopSubCont = styled.div`
-    display:flex;
-    flex-direction: column; 
-`
-
-const SymbolCont = styled.div`
-	display: flex;
-    padding-bottom: 10px;
-`
-
-const OwnedStockBox = styled.div`
-    display:flex;
-`
-
-const ValBox = styled.div`
-    padding-left: 25%;
-`
-
-const SymbolBox = styled.p`
-    padding-left: 5px;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  min-height: 150px;
+  min-width: 200px;
+  padding-bottom: 20px;
+`;
 
 const BottomCont = styled.div`
-	display: flex;
-    flex-direction: row;
-    margin-bottom: 20px;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+min-width: 400px;
+gap: 20px;
+`;
+
+const Button2 = styled.button`
+  background: #5e5df0;
+  margin-top: 5px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 28px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
 `
 
 const Input = styled.input`
-    margin-left: 20%;
-    width: 15%;
-`
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  background-color: #212121;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 20px;
+  outline: none;
+  caret-color: white;
+  color: white;
+  max-width: 120px;
+  margin-top: 7px;
+  &:focus {
+    border-color: #5e5df0;
+  }
+`;

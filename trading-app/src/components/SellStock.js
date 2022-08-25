@@ -33,7 +33,7 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
             if (input > user.stocks.find(x => x.name === stockToSell.label).number) {
                 isModalOpen();
             } else {
-                await addStocks( stockToSell.label, "stock name", -1 * parseInt(input), cookies, setUser);
+                await addStocks( stockToSell.label, "stock name", -1 * parseFloat(input), cookies, setUser);
                 await updateCash( user.cash + total, setUser, cookies );
                 setPurchaseSuccesful(true);
                 isModalOpen();

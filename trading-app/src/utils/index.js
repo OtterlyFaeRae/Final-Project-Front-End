@@ -20,6 +20,10 @@ export const signUp = async (username, email, password, setUser, setCookie, setI
             setUser("")
             changeToken(setCookie, "")
             setIsLoggedIn(false)
+            if (data.err) {
+              throw new Error("Incorred credentials.")
+            }
+            return 1
           } else {
             setUser( data.user)
             changeToken(setCookie, data.Token)
@@ -27,6 +31,7 @@ export const signUp = async (username, email, password, setUser, setCookie, setI
           };
     } catch (error) {
         console.log(error);
+        return 0
     }
 }
 
@@ -47,6 +52,10 @@ export const login = async (username, password, setUser, setCookie, setIsLoggedI
         setUser("")
         changeToken(setCookie, "")
         setIsLoggedIn(false)
+        if (data.err) {
+          throw new Error("Incorred credentials.")
+        }
+        return 1
       } else {
         setUser( data.user)
         changeToken(setCookie, data.Token)
@@ -54,6 +63,7 @@ export const login = async (username, password, setUser, setCookie, setIsLoggedI
       };
     } catch (error) {
       console.log(error);
+      return 0
     };
   };
 

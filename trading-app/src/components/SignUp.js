@@ -1,18 +1,32 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { signUp } from "../utils";
+import ErrorModal from "./ErrorModal";
 
 const SignUp = ({ toggle, setUser, setCookie, setIsLoggedIn }) => {
 	const [username, setUsername] = useState();
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
+	const [modalOpen, setModalOpen] = useState(false);
 
 	const submitHandler = async (event) => {
 		event.preventDefault();
-		await signUp(username, email, password, setUser, setCookie, setIsLoggedIn);
+		const singedUp = await signUp(username, email, password, setUser, setCookie, setIsLoggedIn)
+		console.log(singedUp);
+		if (!singedUp) {
+			isModalOpen()
+		}
 	};
 
-	return (
+	// Modal funcs
+
+	const isModalOpen = () => {
+        setModalOpen(true);
+      };
+
+
+	return ( 
+		<>
 		<Cont>
 			<Header2>Sign Up</Header2>
 			<Form onSubmit={submitHandler}>
@@ -43,6 +57,12 @@ const SignUp = ({ toggle, setUser, setCookie, setIsLoggedIn }) => {
 			<p>Already have an account?</p>
 			<Button2 onClick={() => toggle(false)}>Click here to login</Button2>
 		</Cont>
+			{
+				modalOpen
+				&&
+				<ErrorModal message={"Incorrect credentials."} setModalOpen={setModalOpen}/>
+			}
+		</>
 	);
 };
 

@@ -49,8 +49,6 @@ const LoginForm = ({
 					Log In
 				</Button2>
 			</Form>
-			{/* set this to appear if login fails */}
-			<p>Incorrect username or password</p>
 			<p>Not got an account?</p>
 			<Button2 onClick={() => toggle(true)}>Sign Up</Button2>
 			</Cont>

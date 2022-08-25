@@ -52,8 +52,6 @@ const SignUp = ({ toggle, setUser, setCookie, setIsLoggedIn }) => {
 					Sign Up
 				</Button2>
 			</Form>
-			{/* Display below if sign up fails */}
-			<p>The username or email has already been registered</p>
 			<p>Already have an account?</p>
 			<Button2 onClick={() => toggle(false)}>Click here to login</Button2>
 		</Cont>

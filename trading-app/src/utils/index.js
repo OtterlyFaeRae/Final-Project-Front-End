@@ -97,7 +97,6 @@ export const login = async (username, password, setUser, setCookie, setIsLoggedI
           pass: password,
         }),
       });
-      const data = await response.json();
       if (response.status === 200) {
         setUser("")
         changeToken(setCookie, "")

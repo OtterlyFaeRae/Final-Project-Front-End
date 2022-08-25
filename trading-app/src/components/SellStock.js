@@ -72,10 +72,9 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
   const customStyles = {
     content: {
       position: 'absolute',
-      top: '300px',
-      left: '780px',
-      right: '700px',
-      bottom: '500px',
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
       width: "350px",
       height: "300px",
       background: "#222224",

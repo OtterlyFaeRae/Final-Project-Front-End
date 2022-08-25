@@ -17,9 +17,9 @@ function Landing({ setIsLoggedIn, isLoggedIn, logOut, user }) {
 				<p>TradeWarZ is a trading simulator where you can buy and sell stocks on the New York Stock Exchange.</p>
         <p>We then keep track of the real-time value of your portfolio!</p>
         <p>You start with $5000 which is yours to invest however you want.</p>
-        <p>Hit the button below to get started</p>
+        <p>Hit the button below to get started.</p>
 				<Button2 href='/buy'>Buy some stocks!</Button2>
-        <p>This application was built by Liam, Mahed, Mohammed, Saoirse and Shaun</p>
+        <p>This application was built by Liam, Mahed, Mohammed, Saoirse and Shaun.</p>
         <p>Data provided for free by Finnhub Stock API. View Finnhub's <Terms href="https://finnhub.io/terms-of-service#:~:text=You%20hereby%20agree%20to%20not,use%20unless%20explicitly%20stated%20otherwise" target="_blank" rel="noopener noreferrer">terms of service.</Terms></p>
 			</Content>
 		</Cont>

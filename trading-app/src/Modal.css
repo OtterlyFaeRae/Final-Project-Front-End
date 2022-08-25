@@ -15,13 +15,15 @@
 }
 
 .Insufficent {
-    font-size: 50px;
+    text-align: center;
+    font-size: 30px;
 }
 
 .valid-ammount {
     text-align: center;
     position: relative;
-    top: 5px;
+    font-size: 20px;
+    top: 30px;
 }
 
 .closeUnsuccessful {
@@ -35,17 +37,19 @@
     display: inline-block;
     margin: 10px 90px;
     position: relative;
-    left: 125px;
+    left: 70px;
+    top: 40px;
     cursor: pointer;
     border-radius: 16px;
 
 }
 
 .noMoney {
-    width:7em;
-    height:7em;
+    width:6em;
+    height:6em;
     position:relative;
-    left:200px;
+    top: 10px;
+    left:155px;
 
 }
 
@@ -53,7 +57,24 @@
     width:8em;
     height:8em;
     position:relative;
-    left:250px;
+    top: 20px;
+    left:130px;
+}
+
+.tick {
+    width:9em;
+    height:8em;
+    position:relative;
+    top: 20px;
+    left:90px; 
+}
+
+.x {
+    width:5em;
+    height:5em;
+    position:relative;
+    top: 10px;
+    left: 115px;
 }
 
 .closeSuccessful {
@@ -67,8 +88,43 @@
     display: inline-block;
     margin: 10px 90px;
     position: relative;
-    left: 50px;
-    Top: 20px;
+    right: 65px;
+    Top: 70px;
     cursor: pointer;
     border-radius: 16px;
 }
+
+.stock-sold {
+    background-color: #5e5def;
+    border: none;
+    color: whitesmoke;
+    padding: 10px 20px;
+    text-align: center;
+    font-weight: bolder;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 90px;
+    position: relative;
+    left: 20px;
+    Top: 40px;
+    cursor: pointer;
+    border-radius: 16px;
+}
+
+.stock-notSold {
+    background-color: #5e5def;
+    border: none;
+    color: whitesmoke;
+    padding: 10px 20px;
+    text-align: center;
+    font-weight: bolder;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 90px;
+    position: relative;
+    left: 20px;
+    Top: 27px;
+    cursor: pointer;
+    border-radius: 16px;
+}
+

@@ -2,10 +2,15 @@ import { useState } from "react";
 import styled from "styled-components"
 import { useNavigate } from 'react-router-dom'
 import { addStocks, updateCash } from "../utils";
-
+import Modal from 'react-modal';
+import "../Modal.css"
+import tick from "../images/tick.png"
+import x from "../images/x.png"
 const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
 
     const [ input, setInput ] = useState("");
+    const [modalOpen, setModalOpen] = useState(false);
+    const [purchaseSuccesful, setPurchaseSuccesful] = useState(false);
     const navigate = useNavigate();
 
     const handleOnChange = async e => {
@@ -26,13 +31,14 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
         if (input > 0) {
             const total = price * input 
             if (input > user.stocks.find(x => x.name === stockToSell.label).number) {
-                alert("Insufficient stocks.");
+                isModalOpen();
             } else {
-                await addStocks( stockToSell.label, "stock name", -1 * parseFloat(input), cookies, setUser);
+                await addStocks( stockToSell.label, "stock name", -1 * parseInt(input), cookies, setUser);
                 await updateCash( user.cash + total, setUser, cookies );
-                alert("Sale sucessful.");
-                navigate("/portfolio");
-                refreshPage(); // update user stocks
+                setPurchaseSuccesful(true);
+                isModalOpen();
+                // navigate("/portfolio");
+                // refreshPage(); // update user stocks
             };
         };
         setInput("");
@@ -41,6 +47,50 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
     const refreshPage = () => {
         window.location.reload(false);
     };
+
+  //MODAL FUNCTIONS
+  const closeModalUnsuccessful = () => {
+    closeModal();
+    setInput("");
+  };
+
+  const closeModalSuccessful = () => {
+    navigate("/portfolio");
+    refreshPage();
+  };
+
+  const isModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  Modal.setAppElement("#root");
+
+  const customStyles = {
+    content: {
+      position: 'absolute',
+      top: '300px',
+      left: '780px',
+      right: '700px',
+      bottom: '500px',
+      width: "350px",
+      height: "300px",
+      background: "#222224",
+      border: '1px solid #5e5def',
+      
+    },
+    overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.75)'
+    },
+  };
 
     return (
         
@@ -62,6 +112,33 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
                     </BottomCont>
                 </StockCont>
             }
+            <Modal
+         isOpen={modalOpen}
+         style={customStyles}
+         closeTimeoutMS={200}
+
+        //  onAfterOpen={afterOpenModal}
+        >
+            <div>
+            
+            { !purchaseSuccesful
+            ?
+            <div>
+            <h1 className="Insufficent">INSUFFICIENT STOCKS</h1>
+            <img className="x" src={x} alt="x" />
+            <h2 className="valid-ammount">PLEASE ENTER A VALID AMMOUNT</h2>
+            <button className="stock-notSold" onClick={closeModalUnsuccessful}>CLOSE</button>
+            </div>
+            :
+            <div>
+            <h1 className="Insufficent">STOCK SOLD</h1>
+            <img className="tick" src={tick} alt="tick" />
+            <button className="stock-sold" onClick={closeModalSuccessful}>CLOSE</button>
+            </div>
+            }
+            </div>
+            
+        </Modal>
         </Cont>        
         
     )

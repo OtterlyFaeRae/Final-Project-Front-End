@@ -82,13 +82,24 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
 
   const customStyles = {
     content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
+      position: 'absolute',
+      top: '300px',
+      left: '750px',
+      right: '800px',
+      bottom: '500px',
+      width: "450px",
+      height: "300px",
       background: "#222224",
+      border: '1px solid #5e5def',
+      
+    },
+    overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.75)'
     },
   };
   return (

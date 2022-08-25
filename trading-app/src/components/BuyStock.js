@@ -43,7 +43,7 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
         await addStocks(
           stockToBuy,
           "stock name",
-          parseInt(input),
+          parseFloat(input),
           cookies,
           setUser
         );
@@ -78,70 +78,74 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
     setModalOpen(false);
   };
 
-    Modal.setAppElement('#root');
+  Modal.setAppElement("#root");
 
-    const customStyles = {
-        content: {
-          top: '50%',
-          left: '50%',
-          right: 'auto',
-          bottom: "auto",
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-          background: "#222224"
-        },
-    };
-
-    return (
-        <Cont>
-        {
-            stockToBuy !== "No stock found."
-            ?
-            <StockCont>
-                <TopCont>
-                        <TopSubCont>
-                            <SymbolCont>
-                                <p>Symbol:</p>
-                                <SymbolBox>{stockToBuy}</SymbolBox>
-                            </SymbolCont>
-                            <OwnedStockBox>
-                                <p>Your stocks:</p>
-                                <p>{user.stocks.find(x => x.name === stockToBuy).number}</p>
-                            </OwnedStockBox>
-                        </TopSubCont>
-                            <ValBox>
-                                <h2>${Math.round(price*100)/100}</h2>
-                            </ValBox>
-                    </TopCont>
-                <BottomCont>
-                    <input type="number" placeholder="Quantity" onKeyDown={handleKeyDown} onChange={handleOnChange} value={input} />
-                    <button onClick={handleClick} placeholder="buy">Buy</button>
-                </BottomCont>
-            </StockCont>
-            :
-            <StockNotFoundCont>
-                <p>No stock found.</p>
-            </StockNotFoundCont>
-        }
-
-        <Modal
-         isOpen={modalOpen}
-         style={customStyles}
-         closeTimeoutMS={200}
-
-        //  onAfterOpen={afterOpenModal}
-        >
+  const customStyles = {
+    content: {
+      position: 'absolute',
+      top: '300px',
+      left: '750px',
+      right: '800px',
+      bottom: '500px',
+      width: "450px",
+      height: "300px",
+      background: "#222224",
+      border: '1px solid #5e5def',
+      
+    },
+    overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.75)'
+    },
+  };
+  return (
+    <Cont>
+      {stockToBuy !== "No stock found." ? (
+        <StockCont>
+          <h2>{stockToBuy}</h2>
+          <p>Quantity of stock owned:&nbsp;
+            {user.stocks.find((x) => x.name === stockToBuy)
+              ? user.stocks.find((x) => x.name === stockToBuy).number
+              : "None."}
+          </p>
+          <p>Price per stock: ${Math.round(price * 100) / 100}</p>
+          <BottomCont>
+            <Input
+              type="number"
+              placeholder="Quantity"
+              onKeyDown={handleKeyDown}
+              onChange={handleOnChange}
+              value={input}
+            />
+            <Button2 onClick={handleClick} placeholder="buy">
+              Buy
+            </Button2>
+          </BottomCont>
+        </StockCont>
+      ) : (
+        <StockNotFoundCont>
+          <p>No stock found.</p>
+        </StockNotFoundCont>
+      )}
+      <Modal isOpen={modalOpen} style={customStyles} closeTimeoutMS={200}>
+        <div>
+          {!purchaseSuccesful ? (
             <div>
-            
-            { !purchaseSuccesful ? (
-            
-            <div>
-            <h1 className="Insufficent">INSUFFICIENT FUNDS</h1>
-            <img className="noMoney" src={noMoney} />
-            <h2 className="valid-ammount">PLEASE ENTER A VALID AMMOUNT</h2>
-            <button className="closeUnsuccessful" onClick={closeModalUnsuccessful}
-            >
-                CLOSE</button>
+              <h1 className="Insufficent">INSUFFICIENT FUNDS</h1>
+
+              <img className="noMoney" src={noMoney} alt="" />
+
+              <h2 className="valid-ammount">PLEASE ENTER A VALID AMOUNT</h2>
+              <button
+                className="closeUnsuccessful"
+                onClick={closeModalUnsuccessful}
+              >
+                CLOSE
+              </button>
             </div>
           ) : (
             <div>
@@ -157,7 +161,6 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
               </button>
             </div>
           )}
-          ;
         </div>
       </Modal>
     </Cont>

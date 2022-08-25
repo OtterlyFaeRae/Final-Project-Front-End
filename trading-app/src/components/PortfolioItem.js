@@ -16,7 +16,7 @@ const PortfolioItem = ({symbol, price, number, index}) => {
                 {symbol}
                 </TableData>
                 <TableData>
-                    {number}
+                    {number && number.toFixed(2)}
                 </TableData>
                 <TableData>
                     ${price && price.toFixed(2)}

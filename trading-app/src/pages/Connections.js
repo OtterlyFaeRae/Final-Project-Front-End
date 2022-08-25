@@ -21,7 +21,7 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
         await updateCash(9000, setUser, cookies)
     }
     const handleDeleteUser = async () => {
-        await deleteUser("Steve", "Steve", setUser, setCookie, setIsLoggedIn  )
+        await deleteUser("Gary", "Gary", setUser, setCookie, setIsLoggedIn  )
     }
 
 	return (

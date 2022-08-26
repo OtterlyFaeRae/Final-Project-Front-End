@@ -14,7 +14,7 @@ function Landing({ setIsLoggedIn, isLoggedIn, logOut, user }) {
 			/>
 			<Content>
 				<Header1>Welcome to TradeWarZ</Header1>
-				<p>TradeWarZ is a trading simulator where you can buy and sell stocks on the New York Stock Exchange.</p>
+				<P>TradeWarZ is a trading simulator where you can buy and sell stocks on the New York Stock Exchange.</P>
         <p>We then keep track of the real-time value of your portfolio!</p>
         <p>You start with $5000 which is yours to invest however you want.</p>
         <p>Hit the button below to get started.</p>
@@ -57,7 +57,7 @@ const Content = styled.div`
   border-width: 1.5px;
   opacity: 0.9;
   gap: 15px;
-  max-width: 50%;
+  min-width: 55%;
 `
   const Header1 =  styled.h1`
 	font-size: 60px;
@@ -109,4 +109,8 @@ const Terms = styled.a`
 		transform: scaleX(1);
 		transform-origin: bottom left;
 	  }
+`
+
+const P = styled.p`
+text-align: center;
 `

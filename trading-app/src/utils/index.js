@@ -159,10 +159,35 @@ export const updateCash = async (newCash, setUser, cookies) => {
       }),
     });
     const data = await response.json();
-    console.log(data);
-    // setUser(data.user)
-
+    if (!data) {
+      throw new Error("Error updating cash.")
+    }
   } catch (error) {
       console.log(error)
+  }
+}
+
+export const addHistory = async (cookies, symbol, price, number, buy, cash) => {
+  try {
+    const response = await fetch(`${process.env.REACT_APP_REST_API}/user/history`, {
+      headers: { 
+        "Content-Type": "application/json",
+        'Authorization': cookies.token
+    },
+      method: "PATCH",
+      body: JSON.stringify({
+        "symbol": symbol,
+        "price": price,
+        "number": number,
+        "buy": buy
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    if (!data) {
+      console.log("Error updating transaction history.");
+    }
+  } catch (error) {
+    console.log(error);
   }
 }

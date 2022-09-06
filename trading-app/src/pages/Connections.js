@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar"
-import { signUp, login, checkToken, addStocks, updateCash, deleteUser } from "../utils"
+import { signUp, login, checkToken, addStocks, updateCash, deleteUser, addHistory } from "../utils"
 
 function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
     logOut, user }) {
@@ -23,6 +23,9 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
     const handleDeleteUser = async () => {
         await deleteUser(cookies, setUser, setCookie, setIsLoggedIn  )
     }
+    const handleAddHistory = async () => {
+        await addHistory(cookies, "symbol", 350.87, 23, true, 3000)
+    }
 
 	return (
 		<Cont>
@@ -40,7 +43,7 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
             <Button2 onClick={handleAddStocks}>addStocks</Button2>
             <Button2 onClick={handleUpdateCash}>updateCash</Button2>
             <Button2 onClick={handleDeleteUser}>delete user</Button2>
-            <Button2>logout (maybe)</Button2>
+            <Button2 onClick={handleAddHistory}>addHistory</Button2>
             </ButtonCont>
 		</Cont>
 	);

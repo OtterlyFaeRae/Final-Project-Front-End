@@ -72,10 +72,10 @@ export const login = async (username, password, setUser, setCookie, setIsLoggedI
     try {
         const response = await fetch(`${process.env.REACT_APP_REST_API}/login`, {
             method: "GET",
-            headers: {
-              headers: { "Content-Type": "application/json" },
+            headers: { 
+              "Content-Type": "application/json",
               'Authorization': cookies.token
-            }
+          },
           });
           const data = await response.json()
           console.log(data)
@@ -93,19 +93,14 @@ export const login = async (username, password, setUser, setCookie, setIsLoggedI
     }
   }
 
-  // export const updateUser = async (username, email, password) => {
-
-  // }
-
-  export const deleteUser = async (username, password, setUser, setCookie, setIsLoggedIn ) => {
+  export const deleteUser = async (cookies, setUser, setCookie, setIsLoggedIn ) => {
     try {
       const response = await fetch(`${process.env.REACT_APP_REST_API}/user`, {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: username,
-          pass: password,
-        }),
+        headers: { 
+          "Content-Type": "application/json",
+          'Authorization': cookies.token
+      },
       });
       if (response.status === 200) {
         setUser("")

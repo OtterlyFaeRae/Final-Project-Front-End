@@ -1,9 +1,33 @@
-import React from "react";
 import Navbar from "../components/Navbar"
 import styled from "styled-components";
-import background from "../images/stocks3.jpg"
+import background from "../images/stocks3.jpg";
+import { useCallback, useEffect, useState } from "react";
+import { deleteUser } from ".././utils"
 
-function Landing({ setIsLoggedIn, isLoggedIn, logOut, user }) {
+function Landing({ setIsLoggedIn, isLoggedIn, logOut, user, cookies, setCookie, setUser }) {
+
+  const [ deleteAccountString, setDeleteAccountString ] = useState("");
+
+  const handleKeyPress = useCallback((event) => {
+    setDeleteAccountString( x => x + event.key )
+	}, []);
+
+  useEffect( () => {
+    if (deleteAccountString.slice(-8) === "delEnter"){
+      deleteUser(cookies, setUser, setCookie, setIsLoggedIn)
+      alert("Your account has been sucessfully deleted.")
+    }
+		// eslint-disable-next-line
+  }, [deleteAccountString])
+
+	useEffect(() => {
+		document.addEventListener('keydown', handleKeyPress);
+		return () => {
+		  document.removeEventListener('keydown', handleKeyPress);
+		};
+		// eslint-disable-next-line
+	}, [handleKeyPress]);
+
 	return (
 		<Cont background={background}>
 			<Navbar 
@@ -21,6 +45,7 @@ function Landing({ setIsLoggedIn, isLoggedIn, logOut, user }) {
 				<Button2 href='/buy'>Buy some stocks!</Button2>
         <p>This application was built by Liam, Mahed, Mohammed, Saoirse and Shaun.</p>
         <p>Data provided for free by Finnhub Stock API. View Finnhub's <Terms href="https://finnhub.io/terms-of-service#:~:text=You%20hereby%20agree%20to%20not,use%20unless%20explicitly%20stated%20otherwise" target="_blank" rel="noopener noreferrer">terms of service.</Terms></p>
+        <p>To delete your account, type 'del' + 'Enter'.</p>
 			</Content>
 		</Cont>
 	);

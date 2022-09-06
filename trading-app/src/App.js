@@ -74,6 +74,9 @@ function App() {
 								setIsLoggedIn={setIsLoggedIn}
 								user={user}
 								logOut={logOut}
+								cookies={cookies}
+								setCookie={setCookie}
+								setUser={setUser}
 							/>
 						</Protected>
 					}

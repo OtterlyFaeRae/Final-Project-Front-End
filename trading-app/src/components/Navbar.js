@@ -14,6 +14,7 @@ const Navbar = ({ logOut, user }) => {
 				<NavLink to="/Portfolio">Portfolio</NavLink>
 				<NavLink to="/Buy">Buy</NavLink>
 				<NavLink to="/Sell">Sell</NavLink>
+				<NavLink to="/History">History</NavLink>
 			</Left>
 			<LinksCont>
 				<p>Logged in as {user.username}</p>

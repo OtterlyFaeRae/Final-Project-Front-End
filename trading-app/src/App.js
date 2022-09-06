@@ -7,6 +7,7 @@ import Buy from "./pages/Buy";
 import Landing from "./pages/Landing";
 import Portfolio from "./pages/Portfolio";
 import Sell from "./pages/Sell";
+import History from "./pages/History";
 import Connections from "./pages/Connections";
 import { useCookies } from 'react-cookie'
 
@@ -146,6 +147,21 @@ function App() {
 								setCookie={setCookie}
 								user={user}
 								setUser={setUser}
+								logOut={logOut}
+							/>
+						</Protected>
+					}
+				/>
+				<Route
+					path="/history"
+					element={
+						<Protected 
+						isLoggedIn={isLoggedIn}
+						>
+							<History 
+								isLoggedIn={isLoggedIn}
+								setIsLoggedIn={setIsLoggedIn}
+								user={user}
 								logOut={logOut}
 							/>
 						</Protected>

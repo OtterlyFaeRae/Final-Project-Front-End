@@ -93,7 +93,7 @@ export const login = async (username, password, setUser, setCookie, setIsLoggedI
     }
   }
 
-  export const deleteUser = async (cookies, setUser, setCookie, setIsLoggedIn ) => {
+  export const deleteUser = async (cookies, setUser, setCookie, setIsLoggedIn) => {
     try {
       const response = await fetch(`${process.env.REACT_APP_REST_API}/user`, {
         method: "DELETE",
@@ -148,7 +148,7 @@ export const logout = async (setUser, setCookie, setIsLoggedIn) => {
 
 export const updateCash = async (newCash, setUser, cookies) => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_REST_API}/update-cash`, {
+    const response = await fetch(`${process.env.REACT_APP_REST_API}/user/cash`, {
       headers: { 
         "Content-Type": "application/json",
         'Authorization': cookies.token

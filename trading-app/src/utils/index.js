@@ -19,15 +19,12 @@ export const signUp = async (username, email, password, setUser, setCookie, setI
             setUser("")
             changeToken(setCookie, "")
             setIsLoggedIn(false)
-            if (data.err) {
-              throw new Error("Incorred credentials.")
-            }
-            return 1
-          } else {
-            setUser( data.user)
-            changeToken(setCookie, data.Token)
-            setIsLoggedIn(true)
-          };
+            throw new Error("Incorred credentials.")
+          }
+          setUser( data.user)
+          changeToken(setCookie, data.Token)
+          setIsLoggedIn(true)
+          return 1
     } catch (error) {
         console.log(error);
         return 0
@@ -51,15 +48,12 @@ export const login = async (username, password, setUser, setCookie, setIsLoggedI
         setUser("")
         changeToken(setCookie, "")
         setIsLoggedIn(false)
-        if (data.err) {
-          throw new Error("Incorred credentials.")
-        }
-        return 1
-      } else {
-        setUser( data.user)
-        changeToken(setCookie, data.Token)
-        setIsLoggedIn(true)
-      };
+        throw new Error("Incorred credentials.")
+      }
+      setUser( data.user)
+      changeToken(setCookie, data.Token)
+      setIsLoggedIn(true)
+      return 1
     } catch (error) {
       console.log(error);
       return 0
@@ -67,7 +61,6 @@ export const login = async (username, password, setUser, setCookie, setIsLoggedI
   };
 
   export const checkToken = async (cookies, setCookie, setUser, setIsLoggedIn) => {
-  
     try {
         const response = await fetch(`${process.env.REACT_APP_REST_API}/login`, {
             method: "GET",
@@ -82,13 +75,15 @@ export const login = async (username, password, setUser, setCookie, setIsLoggedI
             setUser("")
             changeToken(setCookie, "")
             setIsLoggedIn(false)
-          } else {
-            setUser( data.user)
-            changeToken(setCookie, data.Token)
-            setIsLoggedIn(true)
+            throw new Error("Incorrect credentials.")
           }
+          setUser(data.user)
+          changeToken(setCookie, data.Token)
+          setIsLoggedIn(true)
+          return 1
     } catch (error) {
         console.log(error)
+        return 0
     }
   }
 
@@ -101,16 +96,16 @@ export const login = async (username, password, setUser, setCookie, setIsLoggedI
           'Authorization': cookies.token
       },
       });
-      if (response.status === 200) {
-        setUser("")
-        changeToken(setCookie, "")
-        setIsLoggedIn(false)
-      } else {
+      if (response.status !== 200) {
         throw new Error("Error deleting user.")
       }
-
+      setUser("")
+      changeToken(setCookie, "")
+      setIsLoggedIn(false)
+      return 1
     }catch (error) {
         console.log(error)
+        return 0
     }
 }
 
@@ -148,7 +143,7 @@ export const logout = async (setUser, setCookie, setIsLoggedIn) => {
   setIsLoggedIn(false)
 }
 
-export const updateCash = async (newCash, setUser, cookies) => {
+export const updateCash = async (newCash, cookies) => {
   try {
     const response = await fetch(`${process.env.REACT_APP_REST_API}/user/cash`, {
       headers: { 

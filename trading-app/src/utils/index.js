@@ -169,7 +169,7 @@ export const updateCash = async (newCash, setUser, cookies) => {
   }
 }
 
-export const addHistory = async (cookies, symbol, price, number, buy, cash) => {
+export const addHistory = async (cookies, symbol, price, number, buy) => {
   try {
     const response = await fetch(`${process.env.REACT_APP_REST_API}/user/history`, {
       headers: { 
@@ -185,6 +185,7 @@ export const addHistory = async (cookies, symbol, price, number, buy, cash) => {
       }),
     });
     const data = await response.json();
+    console.log(data);
     if (!data) {
       console.log("Error updating transaction history.");
     }

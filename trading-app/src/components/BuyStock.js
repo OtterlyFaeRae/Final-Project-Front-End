@@ -46,7 +46,7 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
     let boughtStocks = await addStocks(stockToBuy, stockToBuy, parseFloat(input), cookies, setUser);
     if (boughtStocks) {
       await updateCash(user.cash - price * input, setUser, cookies);
-      await addHistory(cookies, stockToBuy, price, parseFloat(input), true, user.cash - price * input)
+      await addHistory(cookies, stockToBuy, price, parseFloat(input), true)
       setPurchaseSuccesful(true);
       isModalOpen();
     }

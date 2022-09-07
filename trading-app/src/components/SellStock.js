@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components"
 import { useNavigate } from 'react-router-dom'
-import { addStocks, updateCash } from "../utils";
+import { addStocks, updateCash, addHistory } from "../utils";
 import Modal from 'react-modal';
 import "../Modal.css"
 import tick from "../images/tick.png"
@@ -28,21 +28,22 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
     };
 
     const sellStock = async () => {
-        if (input > 0) {
-            const total = price * input 
-            if (input > user.stocks.find(x => x.name === stockToSell.label).number) {
-                isModalOpen();
-            } else {
-                await addStocks( stockToSell.label, "stock name", -1 * parseFloat(input), cookies, setUser);
-                await updateCash( user.cash + total, setUser, cookies );
-                setPurchaseSuccesful(true);
-                isModalOpen();
-                // navigate("/portfolio");
-                // refreshPage(); // update user stocks
-            };
-        };
-        setInput("");
-    };
+        if (input <= 0) {
+          setInput("");
+          return 
+        }
+        if (input > user.stocks.find(x => x.name === stockToSell.label).number) {
+            isModalOpen();
+            return 
+        }
+        const stocksSold = await addStocks( stockToSell.label, stockToSell.label, -1 * parseFloat(input), cookies, setUser);
+        if (stocksSold) {
+          await updateCash( user.cash + price * input, setUser, cookies );
+          await addHistory(cookies, stockToSell.label, price, parseFloat(input), false)
+          setPurchaseSuccesful(true);
+          isModalOpen();
+        }
+      };
 
     const refreshPage = () => {
         window.location.reload(false);

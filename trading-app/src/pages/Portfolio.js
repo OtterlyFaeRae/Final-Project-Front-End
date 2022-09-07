@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar"
 import PortfolioItem from "../components/PortfolioItem"
-import { useState } from "react"
 import styled from "styled-components";
 import background from "../images/stocks3.jpg"
 import { getPrices } from "../utils/finnhub-fetch"
@@ -30,9 +29,6 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 	}, [stocks])
 
 	const getTotal = () => {
-		// map though prices and stocks and make a new array of totals 
-		// use reduce to sum the array
-		// add users cash
 		const totalPrices = stocks.map( (stock, i) => 
 			stocks[i].number * prices[i]
 		)
@@ -87,7 +83,6 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 							/>
 						))
 					}
-					{/* cash row */}
 					<TR>
 						<TD>
 						
@@ -99,14 +94,9 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 							Cash:
 						</EndBox>
 						<EndBox className={"cash-row"} colour={'#222224'}>
-							{
-								user
-								&&
-								<p>${user.cash.toFixed(2)}</p>
-							}
+							${total ? user.cash.toFixed(2) : null}
 						</EndBox>
 					</TR>
-					{/* total row */}
 					<TR>
 						<TD>
 							
@@ -118,7 +108,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 							Total:
 						</EndBox>
 						<EndBox className={"total-row"} colour={'#28292e'}>
-							<p>${total.toFixed(2)}</p>
+							${total ? total.toFixed(2) : null}
 						</EndBox>
 					</TR>
 					</PortTBody>

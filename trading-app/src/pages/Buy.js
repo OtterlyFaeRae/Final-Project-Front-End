@@ -12,7 +12,7 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
   const [price, setPrice] = useState("");
 
   const handleOnChange = async (e) => {
-    setInput(e.target.value);
+    setInput(e.target.value.toUpperCase());
   };
 
   const handleKeyDown = (e) => {
@@ -127,9 +127,25 @@ const Input = styled.input`
   color: white;
   max-width: 220px;
   margin-top: 7px;
+  text-transform: uppercase;
   &:focus {
     border-color: #5e5df0;
   }
+  ::-webkit-input-placeholder {
+   text-transform: initial;
+}
+
+:-moz-placeholder { 
+   text-transform: initial;
+}
+
+::-moz-placeholder {  
+   text-transform: initial;
+}
+
+:-ms-input-placeholder { 
+   text-transform: initial;
+}
 `;
 
 const SearchButton = styled.button`

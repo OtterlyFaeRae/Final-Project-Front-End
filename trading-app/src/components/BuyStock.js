@@ -21,20 +21,17 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
   const handleKeyDown = async (e) => {
     if (e.key === "Enter") {
       await buyStock();
-      if (price[0] === 0) {
-        alert("Sorry. No stock was found.")
-      }
     }
   };
 
   const handleClick = async () => {
     await buyStock();
-    if (price[0] === 0) {
-      alert("Sorry. No stock was found.")
-    }
   };
 
   const buyStock = async () => {
+    if (price[0] === 0) {
+      alert("Sorry. No stock was found.")
+    }
     if (input <= 0 || price <= 0) {
       setInput("");
       return 

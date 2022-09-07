@@ -43,24 +43,24 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
                         ?
 						user.history.map( (item, i) => (
                             <tr key={i}>
-                                <td>
+                                <TD>
                                     {item.buy ? "buy" : "sell"}
-                                </td>
-                                <td>
+                                </TD>
+                                <TD>
                                     {item.symbol}
-                                </td>
-                                <td>
+                                </TD>
+                                <TD>
                                     {item.timeStamp}
-                                </td>
-                                <td>
+                                </TD>
+                                <TD>
                                     {item.price}
-                                </td>
-                                <td>
+                                </TD>
+                                <TD>
                                     {item.quantity}
-                                </td>
-                                <td>
+                                </TD>
+                                <TD>
                                     {item.total}
-                                </td>
+                                </TD>
                             </tr>
 						))
 						:
@@ -153,19 +153,4 @@ const TD = styled.td`
 
 const PortTBody = styled.tbody`
 	text-align: center;
-`
-
-const EndBox = styled.td`
-	background: ${props => props.colour};
-	width: 30%;
-	min-width: 70px;
-
-	/* shaun */
-	padding: 0.6rem 2rem;
-
-    /* shaun */
-    &:hover {
-		background-color: #31356e;
-        cursor: pointer;
-	}
 `

@@ -3,7 +3,6 @@ import { changeToken } from "./helpers";
 export const signUp = async (username, email, password, setUser, setCookie, setIsLoggedIn) => {
 
     try {
-        console.log('Signup Hit')
         const response = await fetch(`${process.env.REACT_APP_REST_API}/user`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -132,11 +131,14 @@ export const addStocks = async (name, symbol, number, cookies, setUser) => {
       }),
     });
     const data = await response.json();
-    console.log(data);
-    setUser(data.user)
-
+    if (!data) {
+      throw new Error("Incorrect credentials.")
+    }
+  setUser(data.user)
+  return 1
   }catch (error) {
       console.log(error)
+      return 0
   }
 }
 
@@ -183,7 +185,6 @@ export const addHistory = async (cookies, symbol, price, number, buy, cash) => {
       }),
     });
     const data = await response.json();
-    console.log(data);
     if (!data) {
       console.log("Error updating transaction history.");
     }

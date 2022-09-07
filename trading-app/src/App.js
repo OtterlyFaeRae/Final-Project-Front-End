@@ -111,6 +111,7 @@ function App() {
 								user={user}
 								cookies={cookies}
 								logOut={logOut}
+								setUser={setUser}
 							/>
 						</Protected>
 					}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { addStocks, updateCash } from "../utils";
+import { addStocks, updateCash, addHistory } from "../utils";
 import Modal from "react-modal";
 import "../Modal.css";
 import noMoney from "../images/no money.png";
@@ -22,7 +22,7 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
     if (e.key === "Enter") {
       await buyStock();
       if (price[0] === 0) {
-        alert("Error. No stock found.")
+        alert("Sorry. No stock was found.")
       }
     }
   };
@@ -30,30 +30,27 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
   const handleClick = async () => {
     await buyStock();
     if (price[0] === 0) {
-      alert("Error. No stock found.")
+      alert("Sorry. No stock was found.")
     }
   };
 
   const buyStock = async () => {
-    if (input > 0 && price > 0) {
-      const total = price * input;
-      if (total > user.cash) {
-        isModalOpen();
-      } else {
-        await addStocks(
-          stockToBuy,
-          "stock name",
-          parseFloat(input),
-          cookies,
-          setUser
-        );
-        await updateCash(user.cash - total, setUser, cookies);
-        setPurchaseSuccesful(true);
-        isModalOpen();
-      }
+    if (input <= 0 || price <= 0) {
+      setInput("");
+      return 
     }
-    setInput("");
-  };
+    if (price * input > user.cash) {
+      isModalOpen();
+      return 
+    }
+    let boughtStocks = await addStocks(stockToBuy, stockToBuy, parseFloat(input), cookies, setUser);
+    if (boughtStocks) {
+      await updateCash(user.cash - price * input, setUser, cookies);
+      await addHistory(cookies, stockToBuy, price, parseFloat(input), true, user.cash - price * input)
+      setPurchaseSuccesful(true);
+      isModalOpen();
+    }
+  }
 
   const refreshPage = () => {
     window.location.reload(false);

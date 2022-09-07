@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar"
 import styled from "styled-components";
 import background from "../images/stocks3.jpg"
@@ -41,9 +40,9 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
 					<PortTBody>
 					{
                         user
-                        &&
+                        ?
 						user.history.map( (item, i) => (
-                            <tr>
+                            <tr key={i}>
                                 <td>
                                     {item.buy ? "buy" : "sell"}
                                 </td>
@@ -51,7 +50,7 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
                                     {item.symbol}
                                 </td>
                                 <td>
-                                    {item.timestamp}
+                                    {item.timeStamp}
                                 </td>
                                 <td>
                                     {item.price}
@@ -64,6 +63,8 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
                                 </td>
                             </tr>
 						))
+						:
+						null
 					}
 					</PortTBody>
 				</PortTable>

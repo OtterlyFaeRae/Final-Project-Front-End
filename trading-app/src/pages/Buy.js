@@ -113,6 +113,7 @@ const Content = styled.div`
 `;
 
 const SearchCont = styled.div`
+  margin-top: 2rem;
 display: flex;
 justify-content: space-evenly;
 align-items: center;

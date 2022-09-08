@@ -179,7 +179,7 @@ const StockCont = styled.div`
   min-width: 300px;
   padding-top: 20px;
   padding-bottom: 20px;
-  margin-top: 50px;
+  margin-top: 2rem;
 `;
 
 const BottomCont = styled.div`

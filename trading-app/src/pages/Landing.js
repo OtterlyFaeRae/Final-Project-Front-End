@@ -64,6 +64,9 @@ const Cont =  styled.div`
   background-size: cover;
   color: white;
   gap: 100px;
+  @media (max-height: 740px) {
+    padding-bottom: 800px;
+  	} 
 `
 
 const Content = styled.div`

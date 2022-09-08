@@ -39,13 +39,13 @@ function Landing({ setIsLoggedIn, isLoggedIn, logOut, user, cookies, setCookie, 
 			<Content>
 				<Header1>Welcome to TradeWarZ</Header1>
 				<P>TradeWarZ is a trading simulator where you can buy and sell stocks on the New York Stock Exchange.</P>
-        <p>We then keep track of the real-time value of your portfolio!</p>
-        <p>You start with $5000 which is yours to invest however you want.</p>
-        <p>Hit the button below to get started.</p>
+        <P>We then keep track of the real-time value of your portfolio!</P>
+        <P>You start with $5000 which is yours to invest however you want.</P>
+        <P>Hit the button below to get started.</P>
 				<Button2 href='/buy'>Buy some stocks!</Button2>
-        <p>This application was built by Liam, Mahed, Mohammed, Saoirse and Shaun.</p>
-        <p>Data provided for free by Finnhub Stock API. View Finnhub's <Terms href="https://finnhub.io/terms-of-service#:~:text=You%20hereby%20agree%20to%20not,use%20unless%20explicitly%20stated%20otherwise" target="_blank" rel="noopener noreferrer">terms of service.</Terms></p>
-        <p>To delete your account, type 'del' + 'Enter'.</p>
+        <P>This application was built by Liam, Mahed, Mohammed, Saoirse and Shaun.</P>
+        <P>Data provided for free by Finnhub Stock API. View Finnhub's <Terms href="https://finnhub.io/terms-of-service#:~:text=You%20hereby%20agree%20to%20not,use%20unless%20explicitly%20stated%20otherwise" target="_blank" rel="noopener noreferrer">terms of service.</Terms></P>
+        <P>To delete your account, type 'del' + 'Enter'.</P>
 			</Content>
 		</Cont>
 	);
@@ -73,20 +73,32 @@ const Content = styled.div`
   align-items: center;
   padding-top: 20px;
   padding-bottom: 30px;
-  padding-right: 30px;
-  padding-left: 30px;
-  border-radius: 10px;
+  padding-right: 10px;
+  padding-left: 2rem;
+  border-radius: 2rem;
   border: solid;
   background-color: #212121;
   border-color: #5E5DF0;
   border-width: 1.5px;
   opacity: 0.9;
   gap: 15px;
-  min-width: 55%;
+  /* min-width: 55%; */
+  width: 75vw;
+  /* max-width: 1000px; */
+  @media (max-width: 450px) {
+      width: 85vw;
+  	} 
 `
   const Header1 =  styled.h1`
 	font-size: 60px;
+  /* font-size: clamp(40px, 60px, 60px); */
 	text-align: center;
+  @media (max-width: 960px) {
+    font-size: 45px;
+  	} 
+    @media (max-width: 390px) {
+    font-size: 40px;
+  	} 
 `
 
 const Button2 = styled.a`
@@ -107,7 +119,6 @@ const Button2 = styled.a`
   -webkit-user-select: none;
   touch-action: manipulation;
   width: fit-content;
-  word-break: break-word;
   border: 0;
   margin-right: 15px;
 `
@@ -138,4 +149,7 @@ const Terms = styled.a`
 
 const P = styled.p`
 text-align: center;
+@media (max-width: 768px) {
+    font-size: smaller;
+  	} 
 `

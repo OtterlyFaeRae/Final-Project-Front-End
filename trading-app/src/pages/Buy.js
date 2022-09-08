@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components";
-// import DropdownItem from "../components/DropdownItem";
 import Navbar from "../components/Navbar";
 import BuyStock from "../components/BuyStock";
 import { getPrices } from "../utils/finnhub-fetch";
@@ -85,6 +84,7 @@ const Cont = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   gap: 100px;
+  
 `;
 
 const Content = styled.div`
@@ -94,8 +94,11 @@ const Content = styled.div`
   align-items: center;
   padding-top: 50px;
   padding-bottom: 50px;
-  padding-right: 100px;
-  padding-left: 100px;
+  width: 75vw;
+  max-width: 600px;
+  /* padding-right: 100px;
+  padding-left: 100px; */
+  padding: 50px 1rem 50px 1rem;
   border-radius: 10px;
   border: solid;
   background-color: #212121;
@@ -103,18 +106,25 @@ const Content = styled.div`
   border-width: 1.5px;
   opacity: 1;
   gap: 20px;
-  max-width: 75%;
+  /* max-width: 75%; */
+  @media (max-width: 450px) {
+      width: 85vw;
+  	}
 `;
 
 const SearchCont = styled.div`
 display: flex;
-flex-direction: row;
 justify-content: space-evenly;
 align-items: center;
-min-width: 400px;
+width: 100%;
+max-width: 400px;
+/* @media (max-width: 768px) {
+      flex-direction: column;
+  	} */
 `;
 
 const Input = styled.input`
+  width: 70%;
   border-style: solid;
   border-color: white;
   border-width: 1px;
@@ -125,8 +135,9 @@ const Input = styled.input`
   outline: none;
   caret-color: white;
   color: white;
-  max-width: 220px;
+  /* max-width: 220px; */
   margin-top: 7px;
+  margin-right: 1.5rem;
   text-transform: uppercase;
   &:focus {
     border-color: #5e5df0;
@@ -146,9 +157,13 @@ const Input = styled.input`
 :-ms-input-placeholder { 
    text-transform: initial;
 }
+@media (max-width: 400px) {
+    margin-right: 1rem;
+  	}
 `;
 
 const SearchButton = styled.button`
+  width: 30%;
   background: #5e5df0;
   margin-top: 5px;
   border-radius: 12px;
@@ -160,11 +175,14 @@ const SearchButton = styled.button`
   line-height: 24px;
   opacity: 1;
   outline: 0 solid transparent;
+  /* padding: 8px 28px; */
   padding: 8px 28px;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   width: fit-content;
-  word-break: break-word;
   border: 0;
+  @media (max-width: 450px) {
+    padding: 8px 12px;
+  	}
 `;

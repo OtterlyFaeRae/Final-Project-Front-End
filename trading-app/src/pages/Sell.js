@@ -72,7 +72,6 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 			}
 		},
 
-
 		control: (styles) => {
 			return { 
 				...styles, 
@@ -141,14 +140,12 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 				<h2>Sell Stocks</h2>
 				<p>Your Cash: ${user && user.cash.toFixed(2)}</p>
 				<Stock>
-				<div>
 				<Select 
 					placeholder={<p>Select stock...</p>}
 					onChange={ handleChange } 
 					options={ stocks } 
 					styles={colourStyles}
 					/>
-				</div>
 				{
 					stockToSell && price
 					&&
@@ -166,7 +163,6 @@ const Cont = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3em;
   height: 100vh;
   background-image: url(${(props) => props.background});
   background-position: center;
@@ -188,12 +184,23 @@ const Content = styled.div`
   opacity: 1;
   gap: 25px;
   max-width: 75%;
-  min-width: 603px;
-  padding-left: 30px;
+  /* min-width: 603px;  */
+  /* padding-left: 30px; */
+  width: 75vw;
+  max-width: 600px;
+  @media (max-width: 450px) {
+      width: 85vw;
+  	} 
 `;
 
 const Stock = styled.div`
+width: 100%;
 display: flex;
+justify-content: space-evenly;
 margin-top: 30px;
 margin-bottom: 15px;
+@media (max-width: 610px) {
+	flex-direction: column;
+	width: auto;
+}
 `

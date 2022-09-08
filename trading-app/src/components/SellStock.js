@@ -150,7 +150,7 @@ const Cont = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
 `;
 
 const StockCont = styled.div`
@@ -160,7 +160,7 @@ const StockCont = styled.div`
   gap: 20px;
   justify-content: center;
   min-height: 150px;
-  min-width: 200px;
+  /* min-width: 200px; */
   padding-bottom: 20px;
 `;
 
@@ -169,7 +169,6 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-min-width: 400px;
 gap: 20px;
 `;
 
@@ -190,7 +189,6 @@ const Button2 = styled.button`
   -webkit-user-select: none;
   touch-action: manipulation;
   width: fit-content;
-  word-break: break-word;
   border: 0;
 `
 

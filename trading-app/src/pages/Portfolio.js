@@ -63,7 +63,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 								Quantity
 							</TH>
 							<TH>
-								Value/Share
+								Value per Share
 							</TH>
 							<TH>
 								Total Value

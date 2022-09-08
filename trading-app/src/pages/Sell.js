@@ -140,12 +140,14 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 				<h2>Sell Stocks</h2>
 				<p>Your Cash: ${user && user.cash.toFixed(2)}</p>
 				<Stock>
+				<div>
 				<Select 
 					placeholder={<p>Select stock...</p>}
 					onChange={ handleChange } 
 					options={ stocks } 
 					styles={colourStyles}
 					/>
+				</div>
 				{
 					stockToSell && price
 					&&

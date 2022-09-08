@@ -18,9 +18,9 @@ const PortfolioItem = ({symbol, price, number, index}) => {
                 <TableData>
                     {number && number.toFixed(2)}
                 </TableData>
-                <TableData>
+                <TableDataTarget>
                     ${price && price.toFixed(2)}
-                </TableData>
+                </TableDataTarget>
                 <TableData>
                     ${price && total.toFixed(2)}
                 </TableData>
@@ -39,12 +39,20 @@ const StyledRow = styled.tr`
 
 `
 const TableData = styled.td`
-    width: 25%;
+width: 25%;
     padding-top: 5px;
     padding-bottom: 5px;
-
-    /* shaun */
-    padding: 0.6rem 2rem;
+    padding: 0.6rem 0;
 `
+const TableDataTarget = styled.td`
+    /* width: 25%; */
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding: 0.6rem 0;
+    @media (max-width: 768px) {
+    display: none;
+  	} 
+`
+
 
 export default PortfolioItem

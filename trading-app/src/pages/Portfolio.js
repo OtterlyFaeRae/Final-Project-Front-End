@@ -62,9 +62,9 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 							<TH>
 								Quantity
 							</TH>
-							<TH>
+							<THTarget>
 								Value per Share
-							</TH>
+							</THTarget>
 							<TH>
 								Total Value
 							</TH>
@@ -87,9 +87,9 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 						<TD>
 						
 						</TD>
-						<TD>
+						<TDTarget>
 							
-						</TD>
+						</TDTarget>
 						<EndBox className={"cash-row"} colour={'#222224'}>
 							Cash:
 						</EndBox>
@@ -101,9 +101,9 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 						<TD>
 							
 						</TD>
-						<TD>
+						<TDTarget>
 							
-						</TD>
+						</TDTarget>
 						<EndBox className={"total-row"} colour={'#28292e'}>
 							Total:
 						</EndBox>
@@ -143,10 +143,10 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-padding-top: 20px;
+/* padding-top: 20px;
 padding-bottom: 100px;
 padding-right: 100px;
-padding-left: 100px;
+padding-left: 100px; */
 border-radius: 10px;
 border: solid;
 background-color: #212121;
@@ -154,31 +154,40 @@ border-color: #5E5DF0;
 border-width: 1.5px;
 opacity: 1;
 gap: 40px;
-max-width: 75%;
+/* max-width: 75%; */
+width: 75vw;
+  max-width: 600px;
+  @media (max-width: 450px) {
+      width: 85vw;
+  	} 
 `
 
 const TableCont = styled.div`
 	display: table;
+	width: 100%;
+	padding: 1rem;
 `
 
 const PortTable = styled.table`
 	border-collapse: collapse;
 	color: white;
-	/* shaun */
-	/* box-shadow: 0px 1px 5px white; */
 `
 
 const PortTHead = styled.thead`
 	background: #5e5df0;
-	padding: auto;
 `
 
 const TH = styled.th`
+	/* min-width: 130px; */
+
+	padding: 15px 0;
+`
+const THTarget = styled.th`
 	min-width: 150px;
-
-	/* shaun */
-
-	padding: 15px;
+	padding: 15px 0;
+	@media (max-width: 768px) {
+    display: none;
+	}
 `
 
 const TR = styled.tr`
@@ -194,6 +203,12 @@ const TR = styled.tr`
 const TD = styled.td`
 	min-width: 70px;
 `
+const TDTarget = styled.td`
+	min-width: 70px;
+	@media (max-width: 768px) {
+    display: none;
+	}
+`
 
 const PortTBody = styled.tbody`
 	text-align: center;
@@ -201,11 +216,10 @@ const PortTBody = styled.tbody`
 
 const EndBox = styled.td`
 	background: ${props => props.colour};
-	width: 30%;
 	min-width: 70px;
 
 	/* shaun */
-	padding: 0.6rem 2rem;
+	padding: 0.6rem 0;
 
     /* shaun */
     &:hover {

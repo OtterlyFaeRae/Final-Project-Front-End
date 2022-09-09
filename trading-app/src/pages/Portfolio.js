@@ -171,6 +171,7 @@ const TableCont = styled.div`
 const PortTable = styled.table`
 	border-collapse: collapse;
 	color: white;
+	width: 100%;
 `
 
 const PortTHead = styled.thead`

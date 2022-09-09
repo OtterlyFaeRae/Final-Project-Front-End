@@ -43,7 +43,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 	}, [prices])
 	
 	return (
-		<Cont background={background}>
+		<Cont background={background} >
 			<Navbar 
 				setIsLoggedIn={setIsLoggedIn} 
 				isLoggedIn={isLoggedIn} 
@@ -131,7 +131,7 @@ const Cont = styled.div`
 	flex-direction: column;
 	align-items: center;
 	gap: 3em;
-	height: 100vh;
+	min-height: 100vh;
 	background-image: url(${props => props.background});
 	background-position: center;
 	background-repeat: no-repeat;
@@ -142,12 +142,14 @@ const Cont = styled.div`
 	} 
 `
 const Background = styled.div`
-	height: 100%;
+	/* height: 100%;
 	width: 100%;
-	position: absolute;
-	background-image: url(${props => props.background});
+	position: absolute; */
+	/* background-image: url(${props => 	props.background});
 	z-index: -1;
-	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover; */
 `
 
 const Content = styled.div`

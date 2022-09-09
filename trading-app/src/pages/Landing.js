@@ -90,7 +90,7 @@ const Content = styled.div`
   gap: 15px;
   /* min-width: 55%; */
   width: 75vw;
-  /* max-width: 1000px; */
+  max-width: 800px;
   @media (max-width: 450px) {
       width: 85vw;
   	} 

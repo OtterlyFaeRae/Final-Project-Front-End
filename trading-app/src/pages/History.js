@@ -4,6 +4,7 @@ import background from "../images/stocks3.jpg"
 
 const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
     return (
+		<Background background={background}>
 		<Cont background={background}>
 			<Navbar 
 				setIsLoggedIn={setIsLoggedIn} 
@@ -13,7 +14,6 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
 			/>
 			<Content>
 			<Title>Transaction History</Title>
-			<Background background={background}></Background>
 			<TableCont>
 				<PortTable>
 					<PortTHead>
@@ -72,6 +72,7 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
 			</TableCont>
 			</Content>
 		</Cont>
+		</Background>
     )
 }
 
@@ -86,9 +87,9 @@ const Cont = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 100vh;
+	min-height: 100vh;
 	background-image: url(${props => props.background});
-	background-position: center;
+	background-position: top;
 	background-repeat: no-repeat;
 	background-size: cover;
 	gap: 100px;
@@ -97,12 +98,16 @@ const Cont = styled.div`
 	} 
 `
 const Background = styled.div`
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	background-image: url(${props => props.background});
-	z-index: -1;
-	background-size: cover;
+	/* height: 100vh; */
+	/* width: 100%; */
+	/* position: absolute; */
+	/* background-image: url(${props => props.background}); */
+	/* z-index: -1; */
+	/* background-position: center;
+	background-repeat: no-repeat; */
+	/* background-size: cover;
+	min-height:100%; */
+	/* border: 5px solid red; */
 `
 const Content = styled.div`
 display: flex;

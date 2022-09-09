@@ -79,8 +79,8 @@ const Content = styled.div`
   align-items: center;
   padding-top: 20px;
   padding-bottom: 30px;
-  padding-right: 10px;
-  padding-left: 2rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
   border-radius: 2rem;
   border: solid;
   background-color: #212121;
@@ -126,7 +126,7 @@ const Button2 = styled.a`
   touch-action: manipulation;
   width: fit-content;
   border: 0;
-  margin-right: 15px;
+  /* margin-right: 15px; */
 `
 
 const Terms = styled.a`

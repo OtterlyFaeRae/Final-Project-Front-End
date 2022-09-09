@@ -18,7 +18,7 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
 				<PortTable>
 					<PortTHead>
 						<TR>
-                            <TH>
+                            <TH style={{ borderTopLeftRadius: "4px"}}>
 								Transaction 
 							</TH>
 							<TH>
@@ -33,7 +33,7 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
 							<TH>
 								Quantity
 							</TH>
-							<TH>
+							<TH style={{ borderTopRightRadius: "4px"}}>
 								Total Value
 							</TH>
 						</TR>
@@ -43,7 +43,7 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
                         user
                         ?
 						user.history.map( (item, i) => (
-                            <tr key={i}>
+                            <StyledRow key={i} index={i}>
                                 <TD>
                                     {item.buy ? "buy" : "sell"}
                                 </TD>
@@ -62,7 +62,7 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
                                 <TD>
                                     ${item.total}
                                 </TD>
-                            </tr>
+                            </StyledRow>
 						))
 						:
 						null
@@ -176,7 +176,13 @@ const TR = styled.tr`
 		background-color: #31356e;
 	}
 `
-
+const StyledRow = styled.tr`
+    ${props => props.index % 2 === 1 ? 'background-color: #222224; ' : 'background-color: #28292e;'};
+    &:hover {
+		background-color: #31356e;
+        cursor: pointer;
+	}
+`
 const TD = styled.td`
 	min-width: 70px;
 	padding: 0.6rem 0;

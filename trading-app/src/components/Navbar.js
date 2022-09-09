@@ -25,6 +25,7 @@ const Navbar = ({ logOut, user }) => {
 				<Li><NavLink to="/Buy">Buy</NavLink></Li>
 				<Li><NavLink to="/Sell">Sell</NavLink></Li>
 				<Li><NavLink to="/History">History</NavLink></Li>
+        <Logout onClick={handleLogout}><NavLink to="/">Logout</NavLink></Logout>
 			</Ul>
 		</Navlinks>
       </Left>
@@ -80,8 +81,9 @@ const Navlinks = styled.ul`
       top: 4rem;
       right: 0;
       z-index: 10;
-      margin-right: 1rem;
+      /* margin-right: 1rem; */
       display: ${ props => props.menuOpen === true ? "flex" : "none" };
+      width: 100vw;
   	}
 `;
 
@@ -91,7 +93,6 @@ const Ul = styled.ul`
       z-index: 100;
       flex-direction: column;
       width: 100%;
-      outline: #5e5df0 solid 1px;
   	}
 `;
 const Li = styled.li`
@@ -126,6 +127,14 @@ const NavLink = styled(Link)`
       padding: 1rem 4rem 1rem 4rem;
       margin: 0;
       z-index: 10;
+      outline: #2e2e2e solid 1px;
+  	}
+`;
+const Logout = styled.li`
+    list-style: none;
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
   	}
 `;
 

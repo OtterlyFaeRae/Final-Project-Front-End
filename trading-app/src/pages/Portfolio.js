@@ -57,7 +57,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 				<PortTable>
 					<PortTHead>
 						<TR>
-							<TH>
+							<TH style={{ borderTopLeftRadius: "4px"}}>
 								Stock 
 							</TH>
 							<TH>
@@ -66,7 +66,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 							<THTarget>
 								Value per Share
 							</THTarget>
-							<TH>
+							<TH style={{ borderTopRightRadius: "4px"}}>
 								Total Value
 							</TH>
 						</TR>
@@ -105,10 +105,10 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 						<TDTarget>
 							
 						</TDTarget>
-						<EndBox className={"total-row"} colour={'#28292e'}>
+						<EndBox className={"total-row"} colour={'#28292e'} style={{ borderBottomLeftRadius: "4px"}}>
 							Total:
 						</EndBox>
-						<EndBox className={"total-row"} colour={'#28292e'}>
+						<EndBox className={"total-row"} colour={'#28292e'} style={{ borderBottomRightRadius: "4px"}}>
 							${total ? total.toFixed(2) : null}
 						</EndBox>
 					</TR>
@@ -188,6 +188,9 @@ const PortTable = styled.table`
 	color: white;
 	width: 100%;
 	font-size: clamp(12px, 3vw, 16px);
+	/* border-radius: 2px;
+	border-style: hidden; 
+	box-shadow: 0 0 0 1px #5E5DF0;  */
 `
 
 const PortTHead = styled.thead`

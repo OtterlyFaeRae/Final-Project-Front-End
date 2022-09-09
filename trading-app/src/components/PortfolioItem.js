@@ -48,7 +48,6 @@ const TableDataTarget = styled.td`
     /* width: 25%; */
     padding-top: 5px;
     padding-bottom: 5px;
-    padding: 0.6rem 0;
     @media (max-width: 768px) {
     display: none;
   	} 

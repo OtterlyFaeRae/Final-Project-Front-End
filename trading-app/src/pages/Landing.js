@@ -66,7 +66,10 @@ const Cont =  styled.div`
   gap: 100px;
   @media (max-height: 740px) {
     padding-bottom: 800px;
-  	} 
+  	};
+  @media (max-width: 768px) {
+		gap: 50px;
+	};
 `
 
 const Content = styled.div`

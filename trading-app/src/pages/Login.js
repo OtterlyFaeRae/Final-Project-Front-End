@@ -68,7 +68,9 @@ const Cont =  styled.div`
 `
 
 const Header1 =  styled.h1`
-	font-size: 100px;
+	/* font-size: clamp(40px, 0px, 120px); */
+	font-size: 12vmin;
+	padding: 0 2rem;
 	font-family: 'Play', sans-serif;
 	text-align: center;
 `

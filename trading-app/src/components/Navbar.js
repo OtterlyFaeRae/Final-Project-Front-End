@@ -146,10 +146,10 @@ const UserCont = styled.p`
   @media (max-width: 950px) {
 		display: none;
   	}
-	margin-right: 1rem;
+	margin-right: 1.5rem;
 `;
 const CashCont = styled.p`
-	margin-right: 1rem;
+	margin-right: 1.5rem;
 `;
 const CashText = styled.span`
   @media (max-width: 430px) {

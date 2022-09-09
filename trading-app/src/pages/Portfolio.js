@@ -51,6 +51,7 @@ function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 				user={user}
 			/>
 			<Content>
+			<Background background={background}></Background>
 			<Title>Portfolio</Title>
 			<TableCont>
 				<PortTable>
@@ -136,6 +137,17 @@ const Cont = styled.div`
 	background-repeat: no-repeat;
 	background-size: cover;
 	gap: 100px;
+	@media (max-width: 768px) {
+		gap: 50px;
+	} 
+`
+const Background = styled.div`
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background-image: url(${props => props.background});
+	z-index: -1;
+	background-size: cover;
 `
 
 const Content = styled.div`
@@ -143,9 +155,9 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-/* padding-top: 20px;
-padding-bottom: 100px;
-padding-right: 100px;
+padding-top: 20px;
+/* padding-bottom: 100px; */
+/* padding-right: 100px;
 padding-left: 100px; */
 border-radius: 10px;
 border: solid;
@@ -154,12 +166,15 @@ border-color: #5E5DF0;
 border-width: 1.5px;
 opacity: 1;
 gap: 40px;
-/* max-width: 75%; */
+margin-bottom: 10px;
 width: 75vw;
   max-width: 600px;
   @media (max-width: 450px) {
       width: 85vw;
-  	} 
+  	};
+@media (max-width: 768px) {
+	gap: 20px;
+};
 `
 
 const TableCont = styled.div`
@@ -172,6 +187,7 @@ const PortTable = styled.table`
 	border-collapse: collapse;
 	color: white;
 	width: 100%;
+	font-size: clamp(12px, 3vw, 16px);
 `
 
 const PortTHead = styled.thead`

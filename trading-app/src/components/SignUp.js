@@ -84,7 +84,12 @@ const Cont = styled.div`
 	border-width: 1.5px;
 	opacity: 0.9;
 	gap: 25px;
-	min-height: 466px;
+	width: 75vw;
+	margin-bottom: 10px;
+	max-width: 466px;
+	@media (max-width: 450px) {
+		width: 85vw;
+} 
 `;
 
 const Form = styled.form`

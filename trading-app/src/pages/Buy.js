@@ -84,7 +84,9 @@ const Cont = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   gap: 100px;
-  
+  @media (max-width: 768px) {
+		gap: 50px;
+	} 
 `;
 
 const Content = styled.div`

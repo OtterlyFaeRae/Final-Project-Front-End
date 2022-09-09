@@ -13,6 +13,7 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
 			/>
 			<Content>
 			<Title>Transaction History</Title>
+			<Background background={background}></Background>
 			<TableCont>
 				<PortTable>
 					<PortTHead>
@@ -23,12 +24,12 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
 							<TH>
 								Stock 
 							</TH>
-                            <TH>
+                            <THTargetSecond>
 								Timestamp
-							</TH>
-							<TH>
+							</THTargetSecond>
+							<THTragetFirst>
 								Value/Share
-							</TH>
+							</THTragetFirst>
 							<TH>
 								Quantity
 							</TH>
@@ -49,17 +50,17 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
                                 <TD>
                                     {item.symbol}
                                 </TD>
-                                <TD>
+                                <TDTargetSecond>
                                     {item.timeStamp}
-                                </TD>
-                                <TD>
-                                    {item.price}
-                                </TD>
+                                </TDTargetSecond>
+                                <TDTargetFirst>
+                                    ${item.price}
+                                </TDTargetFirst>
                                 <TD>
                                     {item.quantity}
                                 </TD>
                                 <TD>
-                                    {item.total}
+                                    ${item.total}
                                 </TD>
                             </tr>
 						))
@@ -85,24 +86,33 @@ const Cont = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 3em;
 	height: 100vh;
 	background-image: url(${props => props.background});
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	gap: 100px;
+	@media (max-width: 768px) {
+		gap: 50px;
+	} 
 `
-
+const Background = styled.div`
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background-image: url(${props => props.background});
+	z-index: -1;
+	background-size: cover;
+`
 const Content = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 padding-top: 20px;
-padding-bottom: 100px;
-padding-right: 100px;
-padding-left: 100px;
+/* padding-bottom: 100px; */
+/* padding-right: 100px;
+padding-left: 100px; */
 border-radius: 10px;
 border: solid;
 background-color: #212121;
@@ -110,18 +120,28 @@ border-color: #5E5DF0;
 border-width: 1.5px;
 opacity: 1;
 gap: 40px;
-max-width: 75%;
+width: 75vw;
+margin-bottom: 10px;
+max-width: 800px;
+@media (max-width: 450px) {
+	width: 85vw;
+};
+@media (max-width: 768px) {
+	gap: 20px;
+};
 `
 
 const TableCont = styled.div`
 	display: table;
+	width: 100%;
+	padding: 1rem;
 `
 
 const PortTable = styled.table`
 	border-collapse: collapse;
 	color: white;
-	/* shaun */
-	/* box-shadow: 0px 1px 5px white; */
+	width: 100%;
+	font-size: clamp(12px, 3vw, 16px);
 `
 
 const PortTHead = styled.thead`
@@ -130,13 +150,23 @@ const PortTHead = styled.thead`
 `
 
 const TH = styled.th`
-	min-width: 150px;
-
-	/* shaun */
-
-	padding: 15px;
+	min-width: 70px;
+	padding: 15px 0;
 `
-
+const THTragetFirst = styled.th`
+	min-width: 70px;
+	padding: 15px 0;
+	@media (max-width: 820px) {
+      display: none;
+  	} 
+`
+const THTargetSecond = styled.th`
+	min-width: 70px;
+	padding: 15px 0;
+	@media (max-width: 670px) {
+      display: none;
+  	} 
+`
 const TR = styled.tr`
 	text-align: center;
 	&:hover > .cash-row {
@@ -149,8 +179,20 @@ const TR = styled.tr`
 
 const TD = styled.td`
 	min-width: 70px;
+	padding: 0.6rem 0;
 `
-
+const TDTargetFirst = styled.td`
+	min-width: 70px;
+	@media (max-width: 820px) {
+      display: none;
+  	} 
+`
+const TDTargetSecond = styled.td`
+	min-width: 70px;
+	@media (max-width: 670px) {
+      display: none;
+  	} 
+`
 const PortTBody = styled.tbody`
 	text-align: center;
 `

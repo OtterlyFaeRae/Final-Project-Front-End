@@ -47,6 +47,8 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
       <Content>
         <h2>Buy Stocks</h2>
         <p>Your Cash: ${user && user.cash.toFixed(2)}</p>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        
         <SearchCont>
           <Input
             type="text"
@@ -57,6 +59,8 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
           ></Input>
           <SearchButton onClick={handleClickSearch}>Search</SearchButton>
         </SearchCont>
+        <P>At the moment we only support searching by stock symbol.  <Terms href="https://www.nyse.com/listings_directory/stock"  target="_blank" rel="noopener noreferrer">  View stock symbols.</Terms></P>
+        </div>
         {stockToBuy && (
           <BuyStock
             price={price}
@@ -78,7 +82,7 @@ const Cont = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 3em;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url(${(props) => props.background});
   background-position: center;
   background-repeat: no-repeat;
@@ -95,12 +99,12 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 50px;
-  padding-bottom: 50px;
+  /* padding-bottom: 50px; */
   width: 75vw;
   max-width: 600px;
   /* padding-right: 100px;
   padding-left: 100px; */
-  padding: 50px 1rem 50px 1rem;
+  padding: 50px 1rem 2rem 1rem;
   border-radius: 10px;
   border: solid;
   background-color: #212121;
@@ -189,3 +193,38 @@ const SearchButton = styled.button`
     padding: 8px 12px;
   	}
 `;
+
+const Terms = styled.a`
+  font-weight: bold;
+  color: #5E5DF0;
+  display: inline-block;
+	position: relative;
+  padding-bottom: 7px;
+  &:after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		transform: scaleX(0);
+		height: 2px;
+		bottom: 0;
+		left: 0;
+		background-color: #5E5DF0;
+		transform-origin: bottom right;
+		transition: transform 0.25s ease-out;
+	  }
+	  &:hover:after {
+		transform: scaleX(1);
+		transform-origin: bottom left;
+	  }
+`
+const P = styled.p`
+text-align: center;
+font-size: smaller;
+padding: 1rem 3rem;
+@media (max-width: 700px) {
+    padding: 1rem 0.5rem;
+  	} 
+  @media (max-width: 550px) {
+  font-size: x-small;
+  } 
+`

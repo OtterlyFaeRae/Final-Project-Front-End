@@ -17,64 +17,47 @@
 .Insufficent {
     text-align: center;
     font-size: 30px;
+    margin-top: 1rem;
 }
 
 .valid-ammount {
     text-align: center;
-    position: relative;
+    /* position: relative; */
     font-size: 20px;
-    top: 30px;
-}
-
-.closeUnsuccessful {
-    background-color: #5e5def;
-    border: none;
-    color: whitesmoke;
-    padding: 10px 20px;
-    text-align: center;
-    font-weight: bolder;
-    text-decoration: none;
-    display: inline-block;
-    margin: 10px 90px;
-    position: relative;
-    left: 70px;
-    top: 40px;
-    cursor: pointer;
-    border-radius: 16px;
-
+    /* top: 30px; */
 }
 
 .noMoney {
     width:6em;
     height:6em;
-    position:relative;
+    /* position:relative;
     top: 10px;
-    left:155px;
+    left:155px; */
 
 }
 
 .yesMoney {
     width:8em;
     height:8em;
-    position:relative;
-    top: 20px;
-    left:130px;
+    /* position:relative; */
+    /* top: 20px; */
+    /* left:130px; */
 }
 
 .tick {
     width:9em;
     height:8em;
-    position:relative;
+    /* position:relative;
     top: 20px;
-    left:90px; 
+    left:90px;  */
 }
 
 .x {
     width:5em;
     height:5em;
-    position:relative;
+    /* position:relative;
     top: 10px;
-    left: 115px;
+    left: 115px; */
 }
 
 .closeSuccessful {
@@ -82,19 +65,20 @@
     border: none;
     color: whitesmoke;
     padding: 10px 20px;
-    text-align: center;
+    /* text-align: center; */
     font-weight: bolder;
     text-decoration: none;
-    display: inline-block;
-    margin: 10px 90px;
-    position: relative;
+    /* display: inline-block; */
+    /* margin: 10px 90px; */
+    /* position: relative;
     right: 65px;
-    Top: 70px;
+    Top: 70px; */
     cursor: pointer;
     border-radius: 16px;
+    margin-bottom: 1rem;
 }
 
-.stock-sold {
+/* .stock-sold {
     background-color: #5e5def;
     border: none;
     color: whitesmoke;
@@ -109,7 +93,7 @@
     Top: 40px;
     cursor: pointer;
     border-radius: 16px;
-}
+} */
 
 .stock-notSold {
     background-color: #5e5def;
@@ -121,9 +105,9 @@
     text-decoration: none;
     display: inline-block;
     margin: 10px 90px;
-    position: relative;
+    /* position: relative;
     left: 20px;
-    Top: 27px;
+    Top: 27px; */
     cursor: pointer;
     border-radius: 16px;
 }

@@ -80,6 +80,12 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
       height: "300px",
       background: "#222224",
       border: '1px solid #5e5def',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: '0.8rem',
+      padding: '1rem 1rem'
       
     },
     overlay: {
@@ -116,27 +122,23 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
          isOpen={modalOpen}
          style={customStyles}
          closeTimeoutMS={200}
-
-        //  onAfterOpen={afterOpenModal}
         >
-            <div>
             
             { !purchaseSuccesful
             ?
-            <div>
+            <>
             <h1 className="Insufficent">INSUFFICIENT STOCKS</h1>
             <img className="x" src={x} alt="x" />
             <h2 className="valid-ammount">PLEASE ENTER A VALID AMMOUNT</h2>
             <button className="stock-notSold" onClick={closeModalUnsuccessful}>CLOSE</button>
-            </div>
+            </>
             :
-            <div>
+            <>
             <h1 className="Insufficent">STOCK SOLD</h1>
             <img className="tick" src={tick} alt="tick" />
-            <button className="stock-sold" onClick={closeModalSuccessful}>CLOSE</button>
-            </div>
+            <button className="stock-notSold" onClick={closeModalSuccessful}>CLOSE</button>
+            </>
             }
-            </div>
             
         </Modal>
         </Cont>        

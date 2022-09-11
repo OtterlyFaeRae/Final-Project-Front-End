@@ -57,7 +57,7 @@ const Cont =  styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url(${props => props.background});
   background-position: center;
   background-repeat: no-repeat;

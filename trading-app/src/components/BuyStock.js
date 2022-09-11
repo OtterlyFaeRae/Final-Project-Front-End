@@ -30,7 +30,7 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
 
   const buyStock = async () => {
     if (price[0] === 0) {
-      alert("Sorry. No stock was found.")
+      alert("Sorry. We couldn't find the stock symbol you were looking for on the NYSE.  Please search again.")
     }
     if (input <= 0 || price <= 0) {
       setInput("");
@@ -80,10 +80,16 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
       top: "50%",
       left: "50%",
       transform: "translate(-50%, -50%)",
-      width: "450px",
-      height: "300px",
+      width: "350px",
+      // height: "600px",
       background: "#222224",
       border: '1px solid #5e5def',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: '1rem',
+      padding: '1rem 1rem'
       
     },
     overlay: {
@@ -97,7 +103,10 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
   };
   return (
     <Cont>
-      {stockToBuy !== "No stock found." ? (
+      {
+      price !== "No stock found." 
+      ? 
+      (
         <StockCont>
           <h2>{stockToBuy}</h2>
           <p>Quantity of stock owned:&nbsp;
@@ -105,7 +114,13 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
               ? user.stocks.find((x) => x.name === stockToBuy).number
               : "None."}
           </p>
-          <p>Price per stock: ${Math.round(price * 100) / 100}</p>
+          {
+            price[0]
+            ?
+            <p>Price per stock: ${Math.round(price * 100) / 100}</p>
+            :
+            <p style={{color: 'red'}}>Stock not found.</p>
+          }
           <BottomCont>
             <Input
               type="number"
@@ -119,29 +134,31 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
             </Button2>
           </BottomCont>
         </StockCont>
-      ) : (
+      ) 
+      : 
+      (
         <StockNotFoundCont>
           <p>No stock found.</p>
         </StockNotFoundCont>
-      )}
+      )
+      }
       <Modal isOpen={modalOpen} style={customStyles} closeTimeoutMS={200}>
-        <div>
           {!purchaseSuccesful ? (
-            <div>
+            <>
               <h1 className="Insufficent">INSUFFICIENT FUNDS</h1>
 
               <img className="noMoney" src={noMoney} alt="" />
 
               <h2 className="valid-ammount">PLEASE ENTER A VALID AMOUNT</h2>
               <button
-                className="closeUnsuccessful"
+                className="closeSuccessful"
                 onClick={closeModalUnsuccessful}
               >
                 CLOSE
               </button>
-            </div>
+            </>
           ) : (
-            <div>
+            <>
               <h1 className="Insufficent">PURCHASE SUCCESSFUL</h1>
 
               <img className="yesMoney" src={yesMoney} alt="" />
@@ -152,9 +169,8 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
               >
                 CLOSE
               </button>
-            </div>
+            </>
           )}
-        </div>
       </Modal>
     </Cont>
   );
@@ -177,9 +193,9 @@ const StockCont = styled.div`
   justify-content: center;
   min-height: 150px;
   min-width: 300px;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   padding-bottom: 20px;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 `;
 
 const BottomCont = styled.div`

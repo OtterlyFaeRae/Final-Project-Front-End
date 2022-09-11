@@ -110,23 +110,6 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
 			}
 		}
 	}
-	// 	option: (styles, { isDisabled }) => {
-	// 		return {
-	// 			...styles,
-	// 			borderRadius: "5px",
-	// 			backgroundColor: isDisabled ? "red" : "black",
-	// 			border: "solid #5e5df0 1px",
-	// 			color: "#FFF",
-	// 			cursor: isDisabled ? "not-allowed" : "default",
-	// 			// This line ^^ disables the blue border
-	// 			boxShadow: '0 !important',
-	// 			'&:hover': {
-	// 				backgroundColor: "white",
-	// 				color: "black",
-	// 			}
-	// 		};
-	// 	}
-	// };
 
 	return (
 		<Cont background={background}>
@@ -165,7 +148,7 @@ const Cont = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url(${(props) => props.background});
   background-position: center;
   background-repeat: no-repeat;

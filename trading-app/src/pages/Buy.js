@@ -113,6 +113,7 @@ const Content = styled.div`
   opacity: 1;
   gap: 20px;
   /* max-width: 75%; */
+  margin-bottom: 20px;
   @media (max-width: 450px) {
       width: 85vw;
   	}

@@ -168,7 +168,7 @@ border-color: #5E5DF0;
 border-width: 1.5px;
 opacity: 1;
 gap: 40px;
-margin-bottom: 10px;
+margin-bottom: 20px;
 width: 75vw;
   max-width: 600px;
   @media (max-width: 450px) {

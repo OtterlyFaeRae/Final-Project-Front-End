@@ -126,7 +126,7 @@ border-width: 1.5px;
 opacity: 1;
 gap: 40px;
 width: 75vw;
-margin-bottom: 10px;
+margin-bottom: 20px;
 max-width: 800px;
 @media (max-width: 450px) {
 	width: 85vw;

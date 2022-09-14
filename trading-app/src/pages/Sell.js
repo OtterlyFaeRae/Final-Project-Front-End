@@ -176,6 +176,7 @@ const Content = styled.div`
   /* padding-left: 30px; */
   width: 75vw;
   max-width: 600px;
+  margin-bottom: 20px;
   @media (max-width: 450px) {
       width: 85vw;
   	} 

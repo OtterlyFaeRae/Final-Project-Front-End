@@ -58,16 +58,14 @@ const Cont =  styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url(${props => props.background});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
   gap: 100px;
-  @media (max-height: 740px) {
-    padding-bottom: 800px;
-  	};
+  margin-bottom: 20px;
   @media (max-width: 768px) {
 		gap: 50px;
 	};

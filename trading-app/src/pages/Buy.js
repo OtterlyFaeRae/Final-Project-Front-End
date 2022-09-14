@@ -193,7 +193,7 @@ const SearchButton = styled.button`
   width: fit-content;
   border: 0;
   @media (max-width: 500px) {
-    padding: 8px 12px;
+    padding: 8px 20px;
   	}
 `;
 

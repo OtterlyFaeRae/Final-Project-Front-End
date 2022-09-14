@@ -147,6 +147,7 @@ const PortTable = styled.table`
 	color: white;
 	width: 100%;
 	font-size: clamp(12px, 3vw, 16px);
+	margin-bottom: 20px;
 `
 
 const PortTHead = styled.thead`

@@ -145,7 +145,8 @@ const Input = styled.input`
   color: white;
   /* max-width: 220px; */
   margin-top: 7px;
-  margin-right: 1.5rem;
+  /* margin-right: 1.5rem; */
+  margin-right: 1rem;
   text-transform: uppercase;
   &:focus {
     border-color: #5e5df0;
@@ -165,8 +166,9 @@ const Input = styled.input`
 :-ms-input-placeholder { 
    text-transform: initial;
 }
-@media (max-width: 400px) {
-    margin-right: 1rem;
+@media (max-width: 600px) {
+    /* margin-right: 1rem; */
+    margin-right: 0.5rem;
   	}
 `;
 
@@ -190,7 +192,7 @@ const SearchButton = styled.button`
   touch-action: manipulation;
   width: fit-content;
   border: 0;
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     padding: 8px 12px;
   	}
 `;

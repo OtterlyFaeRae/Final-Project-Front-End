@@ -183,6 +183,7 @@ const TableCont = styled.div`
 	display: table;
 	width: 100%;
 	padding: 1rem;
+	margin-bottom: 20px;
 `
 
 const PortTable = styled.table`

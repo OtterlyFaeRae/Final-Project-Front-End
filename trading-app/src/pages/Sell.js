@@ -69,6 +69,7 @@ function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
   				caretColor: "white",
   				color: "white",
 				fontSize: "20px",
+				width: "300px"
 			}
 		},
 

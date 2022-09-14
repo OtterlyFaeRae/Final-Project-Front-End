@@ -90,6 +90,7 @@ const Content = styled.div`
   /* min-width: 55%; */
   width: 75vw;
   max-width: 800px;
+  margin-bottom: 20px;
   @media (max-width: 450px) {
       width: 85vw;
   	} 

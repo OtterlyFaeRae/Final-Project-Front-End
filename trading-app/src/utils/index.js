@@ -109,7 +109,7 @@ export const login = async (username, password, setUser, setCookie, setIsLoggedI
     }
 }
 
-export const addStocks = async (name, symbol, number, cookies, setUser) => {
+export const addStocks = async (name, symbol, number, price, cookies, setUser) => {
   try {
     const response = await fetch(`${process.env.REACT_APP_REST_API}/user/stocks`, {
       headers: { 
@@ -121,7 +121,8 @@ export const addStocks = async (name, symbol, number, cookies, setUser) => {
         "addStock": {
           "name": name,
           "symbol": symbol,
-          "number": number
+          "number": number,
+          "price": price
         }
       }),
     });
@@ -143,48 +144,48 @@ export const logout = async (setUser, setCookie, setIsLoggedIn) => {
   setIsLoggedIn(false)
 }
 
-export const updateCash = async (newCash, cookies) => {
-  try {
-    const response = await fetch(`${process.env.REACT_APP_REST_API}/user/cash`, {
-      headers: { 
-        "Content-Type": "application/json",
-        'Authorization': cookies.token
-    },
-      method: "PATCH",
-      body: JSON.stringify({
-          "newCash": newCash
-      }),
-    });
-    const data = await response.json();
-    if (!data) {
-      throw new Error("Error updating cash.")
-    }
-  } catch (error) {
-      console.log(error)
-  }
-}
+// export const updateCash = async (newCash, cookies) => {
+//   try {
+//     const response = await fetch(`${process.env.REACT_APP_REST_API}/user/cash`, {
+//       headers: { 
+//         "Content-Type": "application/json",
+//         'Authorization': cookies.token
+//     },
+//       method: "PATCH",
+//       body: JSON.stringify({
+//           "newCash": newCash
+//       }),
+//     });
+//     const data = await response.json();
+//     if (!data) {
+//       throw new Error("Error updating cash.")
+//     }
+//   } catch (error) {
+//       console.log(error)
+//   }
+// }
 
-export const addHistory = async (cookies, symbol, price, number, buy) => {
-  try {
-    const response = await fetch(`${process.env.REACT_APP_REST_API}/user/history`, {
-      headers: { 
-        "Content-Type": "application/json",
-        'Authorization': cookies.token
-    },
-      method: "PATCH",
-      body: JSON.stringify({
-        "symbol": symbol,
-        "price": price,
-        "number": number,
-        "buy": buy
-      }),
-    });
-    const data = await response.json();
-    console.log(data);
-    if (!data) {
-      console.log("Error updating transaction history.");
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
+// export const addHistory = async (cookies, symbol, price, number, buy) => {
+//   try {
+//     const response = await fetch(`${process.env.REACT_APP_REST_API}/user/history`, {
+//       headers: { 
+//         "Content-Type": "application/json",
+//         'Authorization': cookies.token
+//     },
+//       method: "PATCH",
+//       body: JSON.stringify({
+//         "symbol": symbol,
+//         "price": price,
+//         "number": number,
+//         "buy": buy
+//       }),
+//     });
+//     const data = await response.json();
+//     console.log(data);
+//     if (!data) {
+//       console.log("Error updating transaction history.");
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }

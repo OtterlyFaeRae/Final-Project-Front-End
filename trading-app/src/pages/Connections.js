@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar"
-import { signUp, login, checkToken, addStocks, updateCash, deleteUser, addHistory } from "../utils"
+import { signUp, login, checkToken, addStocks, deleteUser } from "../utils"
 
 function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
     logOut, user }) {
@@ -15,17 +15,17 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
         await checkToken(cookies, setCookie, setUser, setIsLoggedIn)
     }
     const handleAddStocks  = async () => {
-        await addStocks("GOOGL", "GOOGL", 1, cookies, setUser)
+        await addStocks("GOOGL", "GOOGL", 1, 1, cookies, setUser)
     }
-    const handleUpdateCash = async () => {
-        await updateCash(9000, setUser, cookies)
-    }
+    // const handleUpdateCash = async () => {
+    //     await updateCash(9000, setUser, cookies)
+    // }
     const handleDeleteUser = async () => {
         await deleteUser(cookies, setUser, setCookie, setIsLoggedIn)
     }
-    const handleAddHistory = async () => {
-        await addHistory(cookies, "symbol", 350.87, 23, false)
-    }
+    // const handleAddHistory = async () => {
+    //     await addHistory(cookies, "symbol", 350.87, 23, false)
+    // }
 
 	return (
 		<Cont>
@@ -41,9 +41,9 @@ function Connections({ setIsLoggedIn, isLoggedIn, setUser, setCookie, cookies,
             <Button2 onClick={handleLogin}>login</Button2>
             <Button2 onClick={handleCheckCookies}>checkToken</Button2>
             <Button2 onClick={handleAddStocks}>addStocks</Button2>
-            <Button2 onClick={handleUpdateCash}>updateCash</Button2>
+            {/* <Button2 onClick={handleUpdateCash}>updateCash</Button2> */}
             <Button2 onClick={handleDeleteUser}>delete user</Button2>
-            <Button2 onClick={handleAddHistory}>addHistory</Button2>
+            {/* <Button2 onClick={handleAddHistory}>addHistory</Button2> */}
             </ButtonCont>
 		</Cont>
 	);

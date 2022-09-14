@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { addStocks, updateCash, addHistory } from "../utils";
+import { addStocks } from "../utils";
 import Modal from "react-modal";
 import "../Modal.css";
 import noMoney from "../images/no money.png";
@@ -30,21 +30,21 @@ const BuyStock = ({ price, stockToBuy, user, cookies, setUser }) => {
 
   const buyStock = async () => {
     if (price[0] === 0) {
-      alert("Sorry. We couldn't find the stock symbol you were looking for on the NYSE.  Please search again.")
+      alert("Sorry. We couldn't find the stock symbol you were looking for on the NYSE.  Please try again.")
     }
-    if (input <= 0 || price <= 0) {
+    if (input <= 0 || price[0] <= 0) {
       setInput("");
       return 
     }
-    if (price * input > user.cash) {
+    if (price[0] * input > user.cash) {
       isModalOpen();
       return 
     }
-    const quantity = parseFloat(input).toFixed(2)
-    const boughtStocks = await addStocks(stockToBuy, stockToBuy, quantity, cookies, setUser);
+    const boughtStocks = await addStocks(stockToBuy, stockToBuy, parseFloat(input), parseFloat(price[0]), cookies, setUser);
+    // await addStocks("GOOGL", "GOOGL", 1, 1, cookies, setUser)
     if (boughtStocks) {
-      await updateCash(user.cash - price[0] * quantity, cookies);
-      await addHistory(cookies, stockToBuy, price[0], quantity, true)
+      // await updateCash(user.cash - price[0] * quantity, cookies);
+      // await addHistory(cookies, stockToBuy, price[0], quantity, true)
       setPurchaseSuccesful(true);
       isModalOpen();
     }

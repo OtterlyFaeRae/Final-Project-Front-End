@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components"
 import { useNavigate } from 'react-router-dom'
-import { addStocks, updateCash, addHistory } from "../utils";
+import { addStocks } from "../utils";
 import Modal from 'react-modal';
 import "../Modal.css"
 import tick from "../images/tick.png"
@@ -36,11 +36,8 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
             isModalOpen();
             return 
         }
-        const quantity = parseFloat(input).toFixed(2)
-        const stocksSold = await addStocks( stockToSell.label, stockToSell.label, -1 * quantity, cookies, setUser);
+        const stocksSold = await addStocks( stockToSell.label, stockToSell.label, -1 * parseFloat(input), parseFloat(price[0]), cookies, setUser);
         if (stocksSold) {
-          await updateCash( user.cash + price[0] * quantity , cookies );
-          await addHistory(cookies, stockToSell.label, price[0], quantity, false)
           setPurchaseSuccesful(true);
           isModalOpen();
         }

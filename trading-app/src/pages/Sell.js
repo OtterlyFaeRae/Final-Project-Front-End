@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar"
 import Select from 'react-select';
 import styled from "styled-components";
 import SellStock from "../components/SellStock"
-import { getPrices } from "../utils/finnhub-fetch";
+import { getPrices } from "../utils/stocks";
 import background from "../images/stocks3.jpg";
 
 function Sell({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {

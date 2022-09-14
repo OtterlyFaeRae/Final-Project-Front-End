@@ -44,8 +44,9 @@ function Landing({ setIsLoggedIn, isLoggedIn, logOut, user, cookies, setCookie, 
         <P>Hit the button below to get started.</P>
 				<Button2 href='/buy'>Buy some stocks!</Button2>
         <P>This application was built by Liam, Mahed, Mohammed, Saoirse and Shaun.</P>
+        <P>The NYSE operates from 14:00-21:00 GMT, so you'll see your portfolio changing then!</P>
         <P>Data provided for free by Finnhub Stock API. View Finnhub's <Terms href="https://finnhub.io/terms-of-service#:~:text=You%20hereby%20agree%20to%20not,use%20unless%20explicitly%20stated%20otherwise" target="_blank" rel="noopener noreferrer">terms of service.</Terms></P>
-        <P>To delete your account, type 'del' + 'Enter'.</P>
+        <P>To delete your account, type 'del' + press 'Enter'.</P>
 			</Content>
 		</Cont>
 	);

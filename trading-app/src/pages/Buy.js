@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import BuyStock from "../components/BuyStock";
-import { getPrices } from "../utils/finnhub-fetch";
+import { getPrices } from "../utils/stocks";
 import background from "../images/stocks3.jpg";
 
 function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
@@ -224,7 +224,8 @@ padding: 1rem 3rem;
 @media (max-width: 700px) {
     padding: 1rem 0.5rem;
   	} 
-  @media (max-width: 550px) {
+  /* @media (max-width: 550px) {
   font-size: x-small;
-  } 
+  padding: 1rem 1rem;
+  }  */
 `

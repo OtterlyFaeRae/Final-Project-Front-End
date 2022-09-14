@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar"
 import PortfolioItem from "../components/PortfolioItem"
 import styled from "styled-components";
 import background from "../images/stocks3.jpg"
-import { getPrices } from "../utils/finnhub-fetch"
+import { getPrices } from "../utils/stocks"
 
 function Portfolio({ setIsLoggedIn, isLoggedIn, user, logOut }) {
 

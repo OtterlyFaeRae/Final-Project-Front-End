@@ -36,11 +36,11 @@ const SellStock = ({ price, stockToSell, user, cookies, setUser }) => {
             isModalOpen();
             return 
         }
-        const stocksSold = await addStocks( stockToSell.label, stockToSell.label, -1 * parseFloat(input), cookies, setUser);
+        const quantity = parseFloat(input).toFixed(2)
+        const stocksSold = await addStocks( stockToSell.label, stockToSell.label, -1 * quantity, cookies, setUser);
         if (stocksSold) {
-          const newCash = user.cash + price * parseFloat(input).toFixed(2)
-          await updateCash( newCash.toFixed(2) , cookies );
-          await addHistory(cookies, stockToSell.label, price, parseFloat(input).toFixed(2), false)
+          await updateCash( user.cash + price[0] * quantity , cookies );
+          await addHistory(cookies, stockToSell.label, price[0], quantity, false)
           setPurchaseSuccesful(true);
           isModalOpen();
         }

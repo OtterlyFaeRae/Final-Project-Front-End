@@ -110,7 +110,7 @@ const Portfolio = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
 export default Portfolio;
 
 const Title = styled.h2`
-  /* padding-top: 5%; */
+  padding-top: 5%;
 `;
 
 const Cont = styled.div`

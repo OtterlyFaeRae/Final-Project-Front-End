@@ -1,0 +1,72 @@
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+  backdrop-filter: blur(8px);
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  backdrop-filter: blur(8px);
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+  backdrop-filter: blur(8px);
+}
+
+.Insufficent {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 1rem;
+}
+
+.valid-ammount {
+  text-align: center;
+  font-size: 20px;
+}
+
+.noMoney {
+  width: 6em;
+  height: 6em;
+}
+
+.yesMoney {
+  width: 8em;
+  height: 8em;
+}
+
+.tick {
+  width: 9em;
+  height: 8em;
+}
+
+.x {
+  width: 5em;
+  height: 5em;
+}
+
+.closeSuccessful {
+  background-color: #5e5def;
+  border: none;
+  color: whitesmoke;
+  padding: 10px 20px;
+  font-weight: bolder;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+}
+
+.stock-notSold {
+  background-color: #5e5def;
+  border: none;
+  color: whitesmoke;
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: bolder;
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px 90px;
+  cursor: pointer;
+  border-radius: 16px;
+}

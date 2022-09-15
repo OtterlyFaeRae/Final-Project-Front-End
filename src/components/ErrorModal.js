@@ -1,21 +1,14 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import Modal from "react-modal";
 
 const ErrorModal = ({ message, setModalOpen }) => {
-    
-      Modal.setAppElement("#root");
+  Modal.setAppElement("#root");
 
-    return (
-        // <Modal style={customStyles} closeTimeoutMS={200}>
-                <P>
-                    {message}
-                </P>
+  return <P>{message}</P>;
+};
 
-    )
-}
-
-export default ErrorModal
+export default ErrorModal;
 
 const P = styled.p`
-    margin-top: 20px;
-`
+  margin-top: 20px;
+`;

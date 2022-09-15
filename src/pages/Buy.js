@@ -3,9 +3,9 @@ import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import BuyStock from "../components/BuyStock";
 import { getPrices } from "../utils/stocks";
-import background from "../images/stocks3.jpg";
+import background from "../components/images/stocks3.jpg";
 
-function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
+const Buy = ({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) => {
   const [input, setInput] = useState("");
   const [stockToBuy, SetStockToBuy] = useState("");
   const [price, setPrice] = useState("");
@@ -47,19 +47,33 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
       <Content>
         <h2>Buy Stocks</h2>
         <p>Your Cash: ${user && user.cash.toFixed(2)}</p>
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-        
-        <SearchCont>
-          <Input
-            type="text"
-            placeholder="Search stocks..."
-            onKeyDown={handleKeyDown}
-            onChange={handleOnChange}
-            value={input}
-          ></Input>
-          <SearchButton onClick={handleClickSearch}>Search</SearchButton>
-        </SearchCont>
-        <P>At the moment we only support searching by stock symbol.  <Terms href="https://www.nyse.com/listings_directory/stock"  target="_blank" rel="noopener noreferrer">  View stock symbols.</Terms></P>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <SearchCont>
+            <Input
+              type="text"
+              placeholder="Search stocks..."
+              onKeyDown={handleKeyDown}
+              onChange={handleOnChange}
+              value={input}
+            ></Input>
+            <SearchButton onClick={handleClickSearch}>Search</SearchButton>
+          </SearchCont>
+          <P>
+            At the moment we only support searching by stock symbol.{" "}
+            <Terms
+              href="https://www.nyse.com/listings_directory/stock"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View stock symbols.
+            </Terms>
+          </P>
         </div>
         {stockToBuy && (
           <BuyStock
@@ -73,7 +87,7 @@ function Buy({ setIsLoggedIn, isLoggedIn, user, cookies, setUser, logOut }) {
       </Content>
     </Cont>
   );
-}
+};
 
 export default Buy;
 
@@ -89,8 +103,8 @@ const Cont = styled.div`
   background-size: cover;
   gap: 100px;
   @media (max-width: 768px) {
-		gap: 50px;
-	} 
+    gap: 50px;
+  }
 `;
 
 const Content = styled.div`
@@ -99,11 +113,8 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 50px;
-  /* padding-bottom: 50px; */
   width: 75vw;
   max-width: 600px;
-  /* padding-right: 100px;
-  padding-left: 100px; */
   padding: 50px 1rem 2rem 1rem;
   border-radius: 10px;
   border: solid;
@@ -112,23 +123,19 @@ const Content = styled.div`
   border-width: 1.5px;
   opacity: 1;
   gap: 20px;
-  /* max-width: 75%; */
   margin-bottom: 20px;
   @media (max-width: 450px) {
-      width: 85vw;
-  	}
+    width: 85vw;
+  }
 `;
 
 const SearchCont = styled.div`
   margin-top: 2rem;
-display: flex;
-justify-content: space-evenly;
-align-items: center;
-width: 100%;
-max-width: 400px;
-/* @media (max-width: 768px) {
-      flex-direction: column;
-  	} */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
 `;
 
 const Input = styled.input`
@@ -143,33 +150,30 @@ const Input = styled.input`
   outline: none;
   caret-color: white;
   color: white;
-  /* max-width: 220px; */
   margin-top: 7px;
-  /* margin-right: 1.5rem; */
   margin-right: 1rem;
   text-transform: uppercase;
   &:focus {
     border-color: #5e5df0;
   }
   ::-webkit-input-placeholder {
-   text-transform: initial;
-}
+    text-transform: initial;
+  }
 
-:-moz-placeholder { 
-   text-transform: initial;
-}
+  :-moz-placeholder {
+    text-transform: initial;
+  }
 
-::-moz-placeholder {  
-   text-transform: initial;
-}
+  ::-moz-placeholder {
+    text-transform: initial;
+  }
 
-:-ms-input-placeholder { 
-   text-transform: initial;
-}
-@media (max-width: 600px) {
-    /* margin-right: 1rem; */
+  :-ms-input-placeholder {
+    text-transform: initial;
+  }
+  @media (max-width: 600px) {
     margin-right: 0.5rem;
-  	}
+  }
 `;
 
 const SearchButton = styled.button`
@@ -185,7 +189,6 @@ const SearchButton = styled.button`
   line-height: 24px;
   opacity: 1;
   outline: 0 solid transparent;
-  /* padding: 8px 28px; */
   padding: 8px 28px;
   user-select: none;
   -webkit-user-select: none;
@@ -194,42 +197,38 @@ const SearchButton = styled.button`
   border: 0;
   @media (max-width: 500px) {
     padding: 8px 20px;
-  	}
+  }
 `;
 
 const Terms = styled.a`
   font-weight: bold;
-  color: #5E5DF0;
+  color: #5e5df0;
   display: inline-block;
-	position: relative;
+  position: relative;
   padding-bottom: 7px;
   &:after {
-		content: '';
-		position: absolute;
-		width: 100%;
-		transform: scaleX(0);
-		height: 2px;
-		bottom: 0;
-		left: 0;
-		background-color: #5E5DF0;
-		transform-origin: bottom right;
-		transition: transform 0.25s ease-out;
-	  }
-	  &:hover:after {
-		transform: scaleX(1);
-		transform-origin: bottom left;
-	  }
-`
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #5e5df0;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  &:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+`;
 const P = styled.p`
-text-align: center;
-padding: 1rem 3rem;
-line-height: normal;
-/* font-size: clamp(0.5rem, 0.5rem + 1.12vw, 1rem);
-@media (max-width: 500px) {
-    padding: 0.5rem 1rem;
-  	}; */
+  text-align: center;
+  padding: 1rem 3rem;
+  line-height: normal;
   @media (max-width: 700px) {
     padding: 0.5rem 1rem;
     font-size: small;
-  	}; 
-`
+  } ;
+`;

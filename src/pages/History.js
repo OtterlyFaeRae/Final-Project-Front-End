@@ -69,12 +69,13 @@ const Cont = styled.div`
   }
 `;
 const Background = styled.div``;
+
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 50px;
   border-radius: 10px;
   border: solid;
   background-color: #212121;

@@ -222,13 +222,14 @@ const Terms = styled.a`
 `
 const P = styled.p`
 text-align: center;
-font-size: smaller;
 padding: 1rem 3rem;
-@media (max-width: 700px) {
-    padding: 1rem 0.5rem;
-  	} 
-  /* @media (max-width: 550px) {
-  font-size: x-small;
-  padding: 1rem 1rem;
-  }  */
+line-height: normal;
+/* font-size: clamp(0.5rem, 0.5rem + 1.12vw, 1rem);
+@media (max-width: 500px) {
+    padding: 0.5rem 1rem;
+  	}; */
+  @media (max-width: 700px) {
+    padding: 0.5rem 1rem;
+    font-size: small;
+  	}; 
 `

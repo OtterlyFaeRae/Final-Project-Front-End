@@ -27,9 +27,9 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
                             <THTargetSecond>
 								Timestamp
 							</THTargetSecond>
-							<THTragetFirst>
+							<THRespondFirst>
 								Value/Share
-							</THTragetFirst>
+							</THRespondFirst>
 							<TH>
 								Quantity
 							</TH>
@@ -42,26 +42,26 @@ const History = ({ setIsLoggedIn, isLoggedIn, user, logOut }) => {
 					{
                         user
                         ?
-						user.history.map( (item, i) => (
-                            <StyledRow key={i} index={i}>
+						user.history.map( (stock, i) => (
+                            <StyledRow key={i} index={i} buy={stock.buy}>
                                 <TD>
-                                    {item.buy ? "buy" : "sell"}
+                                    {stock.buy ? "buy" : "sell"}
                                 </TD>
                                 <TD>
-                                    {item.symbol}
+                                    {stock.symbol}
                                 </TD>
-                                <TDTargetSecond>
-                                    {item.timeStamp}
-                                </TDTargetSecond>
+                                <TDRespondSecond>
+                                    {stock.timeStamp}
+                                </TDRespondSecond>
                                 <TDTargetFirst>
-                                    ${item.price}
+                                    ${stock.price}
                                 </TDTargetFirst>
                                 <TD>
-                                    {item.quantity}
+                                    {stock.quantity}
                                 </TD>
-                                <TD>
-                                    ${item.total}
-                                </TD>
+                                <TotalCell>
+                                    ${stock.total}
+                                </TotalCell>
                             </StyledRow>
 						))
 						:
@@ -159,7 +159,7 @@ const TH = styled.th`
 	min-width: 70px;
 	padding: 15px 0;
 `
-const THTragetFirst = styled.th`
+const THRespondFirst = styled.th`
 	min-width: 70px;
 	padding: 15px 0;
 	@media (max-width: 820px) {
@@ -175,18 +175,25 @@ const THTargetSecond = styled.th`
 `
 const TR = styled.tr`
 	text-align: center;
-	&:hover > .cash-row {
+	/* &:hover > .cash-row {
 		background-color: #31356e;
 	}
 	&:hover > .total-row {
 		background-color: #31356e;
-	}
+	} */
+`
+const TotalCell = styled.td`
+	min-width: 70px;
+	padding: 0.6rem 0;
 `
 const StyledRow = styled.tr`
     ${props => props.index % 2 === 1 ? 'background-color: #222224; ' : 'background-color: #28292e;'};
     &:hover {
 		background-color: #31356e;
         cursor: pointer;
+	};
+	&:hover ${TotalCell} {
+		color: ${props => props.buy ? "green" : "red"};
 	}
 `
 const TD = styled.td`
@@ -199,7 +206,7 @@ const TDTargetFirst = styled.td`
       display: none;
   	} 
 `
-const TDTargetSecond = styled.td`
+const TDRespondSecond = styled.td`
 	min-width: 70px;
 	@media (max-width: 670px) {
       display: none;

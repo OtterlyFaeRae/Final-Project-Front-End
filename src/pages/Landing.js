@@ -52,11 +52,11 @@ const Landing = ({
         <P>We then keep track of the real-time value of your portfolio!</P>
         <P>You start with $5000 which is yours to invest however you want.</P>
         <P>Hit the button below to get started.</P>
+        <Button2 href="/buy">Buy some stocks!</Button2>
         <P>
           The NYSE is open from 14:00-21:00 GMT, so you'll see your portfolio
           changing then!
         </P>
-        <Button2 href="/buy">Buy some stocks!</Button2>
         <P>
           This application was built by Liam, Mahed, Mohammed, Saoirse and
           Shaun.

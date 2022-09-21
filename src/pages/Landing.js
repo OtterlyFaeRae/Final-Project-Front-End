@@ -54,7 +54,7 @@ const Landing = ({
         <P>Hit the button below to get started.</P>
         <Button2 href="/buy">Buy some stocks!</Button2>
         <P>
-          The NYSE is open from 14:00-21:00 GMT, so you'll see your portfolio
+          The NYSE is open from 14:30-21:00 GMT, so you'll see your portfolio
           changing then!
         </P>
         <P>

@@ -1,1 +1,1 @@
-[Live Demo](https://heroic-rabanadas-45fd1c.netlify.app/)
+[Live Demo](https://trade-war-z.netlify.app/)

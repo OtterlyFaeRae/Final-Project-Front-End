@@ -57,10 +57,6 @@ const Landing = ({
           The NYSE is open from 14:30-21:00 GMT, so you'll see your portfolio
           changing then!
         </P>
-        <P>
-          This application was built by Liam, Mahed, Mohammed, Saoirse and
-          Shaun.
-        </P>
         <P>To delete your account, type 'del' + press 'Enter'.</P>
         <P>
           Data is provided for free by Finnhub Stock API. View Finnhub's{" "}

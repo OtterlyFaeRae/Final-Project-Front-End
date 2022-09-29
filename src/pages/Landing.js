@@ -37,38 +37,44 @@ const Landing = ({
 
   return (
     <Cont background={background}>
-      <Navbar
-        setIsLoggedIn={setIsLoggedIn}
-        isLoggedIn={isLoggedIn}
-        logOut={logOut}
-        user={user}
-      />
-      <Content>
-        <Header1>Welcome to TradeWarZ</Header1>
-        <P>
-          TradeWarZ is a trading simulator where you can buy and sell stocks on
-          the New York Stock Exchange.
-        </P>
-        <P>We then keep track of the real-time value of your portfolio!</P>
-        <P>You start with $5000 which is yours to invest however you want.</P>
-        <P>Hit the button below to get started.</P>
-        <Button2 href="/buy">Buy some stocks!</Button2>
-        <P>
-          The NYSE is open from 14:30-21:00 GMT, so you'll see your portfolio
-          changing then!
-        </P>
-        <P>To delete your account, type 'del' + press 'Enter'.</P>
-        <P>
-          Data is provided for free by Finnhub Stock API. View Finnhub's{" "}
-          <Terms
-            href="https://finnhub.io/terms-of-service#:~:text=You%20hereby%20agree%20to%20not,use%20unless%20explicitly%20stated%20otherwise"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            terms of service.
-          </Terms>
-        </P>
-      </Content>
+      {
+        user
+        &&
+      <>
+        <Navbar
+          setIsLoggedIn={setIsLoggedIn}
+          isLoggedIn={isLoggedIn}
+          logOut={logOut}
+          user={user}
+        />
+        <Content>
+          <Header1>Welcome to TradeWarZ</Header1>
+          <P>
+            TradeWarZ is a trading simulator where you can buy and sell stocks on
+            the New York Stock Exchange.
+          </P>
+          <P>We then keep track of the real-time value of your portfolio!</P>
+          <P>You start with $5000 which is yours to invest however you want.</P>
+          <P>Hit the button below to get started.</P>
+          <Button2 href="/buy">Buy some stocks!</Button2>
+          <P>
+            The NYSE is open from 14:30-21:00 GMT, so you'll see your portfolio
+            changing then!
+          </P>
+          <P>To delete your account, type 'del' + press 'Enter'.</P>
+          <P>
+            Data is provided for free by Finnhub Stock API. View Finnhub's{" "}
+            <Terms
+              href="https://finnhub.io/terms-of-service#:~:text=You%20hereby%20agree%20to%20not,use%20unless%20explicitly%20stated%20otherwise"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              terms of service.
+            </Terms>
+          </P>
+        </Content>
+      </>
+      }
     </Cont>
   );
 };
